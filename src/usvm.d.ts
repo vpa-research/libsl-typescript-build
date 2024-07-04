@@ -53,19 +53,17 @@ namespace org {
                 public static makeSymbolicIdentityMap<K, V>(): SymbolicIdentityMap<K, V>;
 
                 public static typeEquals(a: any, b: any): boolean;
-
-                private static engineApiStubError(): void;
             }
 
 
             export interface SymbolicList<E> {
                 size(): number;
 
-                get(index: number): E | null;
+                get(index: number): E?;
 
-                set(index: number, value: E): void;
+                set(index: number, value: E?): void;
 
-                insert(index: number, value: E): void;
+                insert(index: number, value: E?): void;
 
                 remove(index: number): void;
 
@@ -78,11 +76,11 @@ namespace org {
             export interface SymbolicMap<K, V> {
                 size(): number;
 
-                get(key: K): V | null;
+                get(key: K): V?;
 
                 anyKey(): K;
 
-                set(key: K, value: V | null): void;
+                set(key: K, value: V?): void;
 
                 remove(key: K): void;
 
@@ -96,11 +94,11 @@ namespace org {
             export interface SymbolicIdentityMap<K, V> {
                 size(): number;
 
-                get(key: K): V | null;
+                get(key: K): V?;
 
                 anyKey(): K;
 
-                set(key: K, value: V | null): void;
+                set(key: K, value: V?): void;
 
                 remove(key: K): void;
 

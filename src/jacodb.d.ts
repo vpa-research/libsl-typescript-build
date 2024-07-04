@@ -6,8 +6,8 @@ namespace org {
             namespace annotation {
 
                 // @experimentalDecorators
-                export function Approximate(name: Function) {
-                    return (ctor: Function) => {
+                export function Approximate(clazz: NonNullable) {
+                    return (ctor: Function, x: any) => {
                         // nothing
                     }
                 }
