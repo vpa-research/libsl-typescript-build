@@ -50,8 +50,6 @@ export class Engine {
     public static typeEquals(a: any, b: any): boolean;
 }
 
-declare var Engine: Engine;
-
 
 export interface SymbolicList<E> {
     size(): number;

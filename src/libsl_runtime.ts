@@ -140,6 +140,9 @@ export namespace libsl {
         if (v === Number.MAX_SAFE_INTEGER) return "9007199254740991";
         // TODO: add more common cases
 
+        if (v < Number.MIN_SAFE_INTEGER || Number.MAX_SAFE_INTEGER < v)
+            return toString_float64(v);
+
         Engine.assume(v > Number.MIN_VALUE);
         Engine.assume(v < Number.MAX_VALUE);
 
@@ -151,7 +154,7 @@ export namespace libsl {
 
         let len: number = 0;
         let pos: number = BUFF_SIZE_LONG;
-        while (v != 0) {
+        while (v !== 0) {
             pos -= 1;
             len += 1;
             chars[pos] = DIGITS[v % 10];
@@ -359,7 +362,7 @@ export namespace libsl {
 
         // cut and count trailing zeroes
         let cutZeroes: number = 0;
-        while (decimal % 10 == 0) {
+        while (decimal % 10 === 0) {
             decimal /= 10;
             cutZeroes += 1;
         }
@@ -382,14 +385,14 @@ export namespace libsl {
 
     export function toString_list<V>(v: SymbolicList<V>): string {
         let counter: number = v.size();
-        if (counter == 0)
+        if (counter === 0)
             return "[]";
         Engine.assume(counter > 0);
 
         // TODO: use less complex approach
         let res: string = "[";
 
-        for (let i: number = 0, c = counter; i != c; i++) {
+        for (let i: number = 0, c = counter; i !== c; i++) {
             res = res.concat(toString_any(v.get(i)));
 
             if (counter-- > 1)
@@ -401,7 +404,7 @@ export namespace libsl {
 
     export function toString_map<K, V>(v: Map<K, V>): string {
         let count: number = v.size();
-        if (count == 0)
+        if (count === 0)
             return "{}";
         Engine.assume(count > 0);
 
@@ -409,7 +412,7 @@ export namespace libsl {
         let res: string = "{";
 
         let unseen: Container<K, V> = v.map.duplicate();
-        while (count != 0) {
+        while (count !== 0) {
             let key: K = unseen.anyKey();
             let value: V | null = unseen.get(key);
             unseen.remove(key);
@@ -427,16 +430,16 @@ export namespace libsl {
     }
 
     export function toString_any(v: any): string {
-        if (v === undefined)
-            return "undefined";
         if (v === null)
             return "null";
+        if (v === undefined)
+            return "undefined";
 
         // #question: do we need this?
         if (v instanceof Boolean)
             return toString_bool(v as boolean);
         if (v instanceof Number)
-            return toString_float64(v as number);
+            return toString_int64(v as number);
         if (v instanceof String)
             return v as string;
         if (v instanceof Array)
@@ -448,7 +451,7 @@ export namespace libsl {
     export function toString_array(objects: Array<Object>): string {
         let counter: number = objects.length;
         Engine.assume(counter >= 0);
-        if (counter == 0)
+        if (counter === 0)
             return "[]";
 
         let str: string = "[";
@@ -488,13 +491,13 @@ export namespace libsl {
 
     export function equals_list_list<V>(a: SymbolicList<V> | null, b: SymbolicList<V> | null): boolean {
         // #problem: compare REFERENCES only! (how?)
-        if (a == b)
+        if (a === b)
             return true;
         if (a === null || b === null)
             return false;
 
         let length: number = a.size();
-        if (b.size() != length)
+        if (b.size() !== length)
             return false;
 
         Engine.assume(length >= 0);
@@ -506,21 +509,21 @@ export namespace libsl {
     }
 
     export function equals_map_map<K>(a: Map<K, any> | null, b: Map<K, any> | null): boolean {
-        if (a == b)
+        if (a === b)
             return true;
-        if (a == null || b == null)
+        if (a === null || b === null)
             return false;
 
         let length: number = a.size();
-        if (b.size() != length)
+        if (b.size() !== length)
             return false;
 
-        if (length == 0)
+        if (length === 0)
             return true;
         Engine.assume(length >= 0);
 
         let unseen: Container<K, any> = a.map.duplicate();
-        while (length != 0) {
+        while (length !== 0) {
             let key: K = unseen.anyKey();
 
             if (!b.hasKey(key))
@@ -549,13 +552,13 @@ export namespace libsl {
     }
 
     export function equals_array_array(a: Array<Object | null> | null, b: Array<Object | null> | null): boolean {
-        if (a == b)
+        if (a === b)
             return true;
-        if (a == null || b == null)
+        if (a === null || b === null)
             return false;
 
         let length: number = a.length;
-        if (b.length != length)
+        if (b.length !== length)
             return false;
 
         Engine.assume(length >= 0);
@@ -589,7 +592,7 @@ export namespace libsl {
         }
 
         export function fill<T>(arr: Array<T | null | undefined>, value?: T | null): void {
-            Engine.assume(arr != null);
+            Engine.assume(arr !== null);
 
             let count: number = arr.length;
             Engine.assume(count >= 0);
@@ -601,7 +604,7 @@ export namespace libsl {
         export function fillRange<T>(arr: Array<T | null | undefined>,
                                      fromIndex: number, toIndex: number,
                                      value?: T | null): void {
-            Engine.assume(arr != null);
+            Engine.assume(arr !== null);
 
             let count: number = arr.length;
             Engine.assume(count >= 0);
@@ -623,7 +626,7 @@ export namespace libsl {
         export function find(list: SymbolicList<any>, value: any,
                              from: number, to: number): number {
             // general assumptions for this function to do something useful
-            Engine.assume(list != null);
+            Engine.assume(list !== null);
             Engine.assume(0 <= from);
             Engine.assume(from <= to);
 
@@ -635,6 +638,7 @@ export namespace libsl {
                 }
             } else {
                 for (let i: number = from; i < to; i++) {
+                    // #question: can type be different here?
                     if (list.get(i) == value)
                         return i;
                 }
@@ -720,17 +724,17 @@ export namespace libsl {
             Engine.assume(this.map !== null);
 
             let otherMap: Container<K, V> = other.map;
-            Engine.assume(otherMap != null);
+            Engine.assume(otherMap !== null);
 
-            if (this.map.kind == otherMap.kind) {
+            if (this.map.kind === otherMap.kind) {
                 this.map.merge(otherMap);
             } else {
                 let count: number = otherMap.size();
-                if (count != 0) {
+                if (count !== 0) {
                     Engine.assume(count > 0);
 
                     let unseen: Container<K, V> = otherMap.duplicate();
-                    while (count != 0) {
+                    while (count !== 0) {
                         let key: K = unseen.anyKey();
 
                         // behaving exactly as compatible versions
@@ -754,11 +758,11 @@ export namespace libsl {
             Engine.assume(this.map !== null);
 
             let count: number = otherMap.size();
-            if (count != 0) {
+            if (count !== 0) {
                 Engine.assume(count > 0);
 
                 let unseen: Container<K, V> = otherMap.duplicate();
-                while (count != 0) {
+                while (count !== 0) {
                     let key: K = unseen.anyKey();
 
                     if (thisMap.containsKey(key))
