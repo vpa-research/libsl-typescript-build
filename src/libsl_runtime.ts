@@ -12,6 +12,7 @@ export interface ErrorWithCode extends Error {
 interface AggregateError extends Error {
 }
 interface AggregateErrorConstructor extends ErrorConstructor {
+    // #problem: probably not correct
     new (message?: string): AggregateError;
 }
 declare var AggregateError: AggregateErrorConstructor;
@@ -167,7 +168,9 @@ export namespace libsl {
             chars[pos] = '-';
         }
 
-        return chars.copyWithin(0, pos, pos + len).join('');
+        return pos !== 0
+            ? chars.copyWithin(0, pos, pos + len).join('')
+            : chars.join('');
     }
 
     // TODO: do we need more variants for other primitive array types?
@@ -353,7 +356,7 @@ export namespace libsl {
         }
 
         // put everything together
-        return (isNegative ? "-" : "").concat(result);
+        return isNegative ? "-".concat(result) : result;
     }
 
     function prepareDoubleFraction(decimal: number, expectedFractionLength: number): string {
@@ -383,7 +386,7 @@ export namespace libsl {
     }
 
 
-    export function toString_list<V>(v: SymbolicList<V>): string {
+    export function toString_list(v: SymbolicList<any>): string {
         let counter: number = v.size();
         if (counter === 0)
             return "[]";
@@ -402,7 +405,7 @@ export namespace libsl {
         return res.concat("]");
     }
 
-    export function toString_map<K, V>(v: Map<K, V>): string {
+    export function toString_map(v: Map<any, any>): string {
         let count: number = v.size();
         if (count === 0)
             return "{}";
@@ -411,10 +414,10 @@ export namespace libsl {
         // TODO: use less complex approach
         let res: string = "{";
 
-        let unseen: Container<K, V> = v.map.duplicate();
+        let unseen: Container<any, any> = v.map.duplicate();
         while (count !== 0) {
-            let key: K = unseen.anyKey();
-            let value: V | null = unseen.get(key);
+            let key: any = unseen.anyKey();
+            let value: any = unseen.get(key);
             unseen.remove(key);
 
             res = res
@@ -448,7 +451,7 @@ export namespace libsl {
         return v.toString();
     }
 
-    export function toString_array(objects: Array<Object>): string {
+    export function toString_array(objects: Array<any>): string {
         let counter: number = objects.length;
         Engine.assume(counter >= 0);
         if (counter === 0)
@@ -489,7 +492,7 @@ export namespace libsl {
         return a === b;
     }
 
-    export function equals_list_list<V>(a: SymbolicList<V> | null, b: SymbolicList<V> | null): boolean {
+    export function equals_list_list(a: SymbolicList<any> | null, b: SymbolicList<any> | null): boolean {
         // #problem: compare REFERENCES only! (how?)
         if (a === b)
             return true;
@@ -508,7 +511,7 @@ export namespace libsl {
         return true;
     }
 
-    export function equals_map_map<K>(a: Map<K, any> | null, b: Map<K, any> | null): boolean {
+    export function equals_map_map(a: Map<any, any> | null, b: Map<any, any> | null): boolean {
         if (a === b)
             return true;
         if (a === null || b === null)
@@ -522,9 +525,9 @@ export namespace libsl {
             return true;
         Engine.assume(length >= 0);
 
-        let unseen: Container<K, any> = a.map.duplicate();
+        let unseen: Container<any, any> = a.map.duplicate();
         while (length !== 0) {
-            let key: K = unseen.anyKey();
+            let key: any = unseen.anyKey();
 
             if (!b.hasKey(key))
                 return false;
@@ -545,13 +548,17 @@ export namespace libsl {
             return false;
 
         // #question: do we need this?
+        if (a instanceof Boolean)
+            return equals_bool_bool(a as boolean, b as boolean);
+        if (a instanceof Number)
+            return equals_float64_float64(a as number, b as number)
         if (a instanceof Array)
             return equals_array_array(a, b);
 
         return a.equals(b);
     }
 
-    export function equals_array_array(a: Array<Object | null> | null, b: Array<Object | null> | null): boolean {
+    export function equals_array_array(a: Array<any> | null, b: Array<any> | null): boolean {
         if (a === b)
             return true;
         if (a === null || b === null)
@@ -587,11 +594,12 @@ export namespace libsl {
             Engine.assume(src !== null);
             Engine.assume(dst !== null);
 
+            // #question: is there a better approach?
             for (let i: number = srcPos, j: number = dstPos, end: number = srcPos + count; i < end; i++, j++)
                 dst[j] = src[i];
         }
 
-        export function fill<T>(arr: Array<T | null | undefined>, value?: T | null): void {
+        export function fill(arr: Array<any>, value: any): void {
             Engine.assume(arr !== null);
 
             let count: number = arr.length;
@@ -601,9 +609,9 @@ export namespace libsl {
                 arr[i] = value;
         }
 
-        export function fillRange<T>(arr: Array<T | null | undefined>,
-                                     fromIndex: number, toIndex: number,
-                                     value?: T | null): void {
+        export function fillRange(arr: Array<any>,
+                                  fromIndex: number, toIndex: number,
+                                  value: any): void {
             Engine.assume(arr !== null);
 
             let count: number = arr.length;
@@ -775,7 +783,7 @@ export namespace libsl {
             }
         }
 
-        public  duplicate(): Map<K, V> {
+        public duplicate(): Map<K, V> {
             Engine.assume(this.map !== null);
             return new Map<K, V>(this.map.duplicate());
         }

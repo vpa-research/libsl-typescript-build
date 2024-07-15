@@ -3,7 +3,7 @@
 
 import { libsl } from "./libsl_runtime";
 
-@org.jacodb.approximation.annotation.Approximate(NodeJS.Timeout)
+@org.jacodb.approximation.annotation.Approximate(String)
 class Foo {
     private list: org.usvm.api.SymbolicList<string>;
 
