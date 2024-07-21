@@ -13,7 +13,7 @@ export class QueueAutomaton<T> {
     public constructor (_: libsl.TOKEN, lsl$0: SymbolicList<T>);
     public constructor ();
     public constructor (_?: libsl.TOKEN, lsl$0?: SymbolicList<T>) {
-        this.storage = lsl$0 ?? {} as SymbolicList<T>;
+        this.storage = lsl$0 || {} as SymbolicList<T>;
         {
             if (this instanceof Queue === false)
                 libsl.new_ERROR("BusinessError", 10200012, "The Queue's constructor cannot be directly invoked.");
