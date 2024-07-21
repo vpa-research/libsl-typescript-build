@@ -18,7 +18,7 @@ export class Queue_SymbolIteratorAutomaton<T> {
     }
 
     public next (): T {
-        let result = null;
+        let result = {} as T;
         {
             Engine.assume(this.parent !== null);
             let parentStorage: SymbolicList<T> = (this.parent as QueueAutomaton<T>).storage;

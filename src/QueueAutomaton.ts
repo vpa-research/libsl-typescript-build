@@ -85,7 +85,7 @@ export class QueueAutomaton<T> {
     }
 
     public [Symbol.iterator] (): Queue_SymbolIterator<T> {
-        let result = undefined as any as Queue_SymbolIterator<T>;
+        let result = {} as Queue_SymbolIterator<T>;
         {
             this._isBoundCorrect("The Symbol.iterator method cannot be bound.");
             result = new Queue_SymbolIteratorAutomaton<T>(libsl.TOKEN, this, 0) as Queue_SymbolIterator<T>;
