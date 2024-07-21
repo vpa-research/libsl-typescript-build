@@ -16,7 +16,7 @@ export class QueueAutomaton<T> {
         this.storage = lsl$0 || {} as SymbolicList<T>;
         {
             if (this instanceof Queue === false)
-                libsl.new_ERROR("BusinessError", 10200012, "The Queue's constructor cannot be directly invoked.");
+                throw libsl.new_ERROR("BusinessError", 10200012, "The Queue's constructor cannot be directly invoked.");
             this.storage = Engine.makeSymbolicList();
         }
     }
@@ -40,7 +40,7 @@ export class QueueAutomaton<T> {
 
     public _isBoundCorrect (msg: string): void {
         if (this instanceof Queue === false)
-            libsl.new_ERROR("BusinessError", 10200011, msg);
+            throw libsl.new_ERROR("BusinessError", 10200011, msg);
     }
 
 
