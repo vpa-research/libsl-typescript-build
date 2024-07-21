@@ -12,7 +12,7 @@ export class QueueAutomaton<T> {
 
     public constructor (_: libsl.TOKEN, lsl$0: SymbolicList<T>);
     public constructor ();
-    public constructor (_?: libsl.TOKEN, lsl$0?: SymbolicList<T>) {
+    public constructor (_?: libsl.TOKEN, lsl$0?: SymbolicList<T> /* note: just join params from both signatures here with "?" */) {
         this.storage = lsl$0 || {} as SymbolicList<T>;
         {
             if (this instanceof Queue === false)
