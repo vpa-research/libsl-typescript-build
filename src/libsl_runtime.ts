@@ -21,6 +21,8 @@ declare var AggregateError: AggregateErrorConstructor;
 
 export namespace libsl {
 
+    export type TOKEN = 'LIBSL<#>TOKEN';
+    export const TOKEN: TOKEN = 'LIBSL<#>TOKEN';
 
     // note: adapted from c++ sources, see ContainerError::BusinessError
     export function new_ERROR(clazz: string, errCode: number, msg: string): ErrorWithCode {
@@ -144,8 +146,9 @@ export namespace libsl {
         if (v < Number.MIN_SAFE_INTEGER || Number.MAX_SAFE_INTEGER < v)
             return toString_float64(v);
 
-        Engine.assume(v > Number.MIN_VALUE);
-        Engine.assume(v < Number.MAX_VALUE);
+        // #question: not needed?
+        // Engine.assume(v > Number.MIN_VALUE);
+        // Engine.assume(v < Number.MAX_VALUE);
 
         let chars = new Array<string>(BUFF_SIZE_LONG);
 
@@ -169,8 +172,8 @@ export namespace libsl {
         }
 
         return pos !== 0
-            ? chars.copyWithin(0, pos, pos + len).join('')
-            : chars.join('');
+            ? chars.copyWithin(0, pos, pos + len).join("")
+            : chars.join("");
     }
 
     // TODO: do we need more variants for other primitive array types?
@@ -200,7 +203,7 @@ export namespace libsl {
         if (v === Number.MIN_VALUE)
             return "5e-324";
         if (v === 0.0)
-            return 1.0 / v === Number.NEGATIVE_INFINITY ? "-0.0" : "0.0";
+            return 1.0 / v === Number.NEGATIVE_INFINITY ? "-0" : "0";
 
         let isNegative: boolean = v < 0.0;
         if (isNegative)
@@ -237,7 +240,7 @@ export namespace libsl {
             let fractionStr: string = prepareDoubleFraction(fraction, DOUBLE_MULTIPLIER_REGULAR_count);
 
             // format pieces together
-            let tmp: string = integralStr.concat(".").concat(fractionStr);
+            let tmp: string = "".concat(integralStr, ".", fractionStr);
             let maxCount: number = 18;
             result = tmp;//.substring(0, count);
         } else {
@@ -352,7 +355,7 @@ export namespace libsl {
             let exponentStr: string = toString_int64(exp);
 
             // format pieces together
-            result = integralStr.concat(".").concat(fractionStr).concat("e").concat(exponentStr);
+            result = "".concat(integralStr, ".", fractionStr, "e", exponentStr);
         }
 
         // put everything together
@@ -420,10 +423,7 @@ export namespace libsl {
             let value: any = unseen.get(key);
             unseen.remove(key);
 
-            res = res
-                    .concat(toString_any(key))
-                    .concat("=")
-                    .concat(toString_any(value));
+            res = res.concat(toString_any(key), "=", toString_any(value));
 
             if (count-- > 1)
                 res = res.concat(", ");

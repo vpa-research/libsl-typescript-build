@@ -54,7 +54,7 @@ export class Engine {
 export interface SymbolicList<E> {
     size(): number;
 
-    get(index: number): E | null;
+    get(index: number): E;
 
     set(index: number, value: E | null): void;
 
