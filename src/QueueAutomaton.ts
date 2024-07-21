@@ -12,7 +12,7 @@ export class QueueAutomaton<T> {
 
     public __lsl_init($0: SymbolicList<T>): Queue<T> {
         this.storage = $0;
-        return this as Queue<T>;
+        return this as any as Queue<T>;
     }
 
     // #problem: correct initialization for types with non-trivial constructors (should be no errors thrown)

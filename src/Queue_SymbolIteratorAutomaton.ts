@@ -13,7 +13,7 @@ export class Queue_SymbolIteratorAutomaton<T> {
     public __lsl_init($0: Queue<T>, $1: number): Queue_SymbolIterator<T> {
         this.parent = $0;
         this.cursor = $1;
-        return this as Queue_SymbolIterator<T>;
+        return this as any as Queue_SymbolIterator<T>;
     }
 
     public next (): T {
