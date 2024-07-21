@@ -8,13 +8,17 @@ import { Engine, SymbolicList } from "./org/usvm/api";
 
 @org.jacodb.approximation.annotation.Approximate(Queue)
 export class QueueAutomaton<T> {
-    public storage: SymbolicList<T>;
+    public storage: SymbolicList<T> = {} as SymbolicList<T>;
 
-    public constructor (_: libsl.TOKEN, lsl$0: SymbolicList<T>);
-    public constructor ();
-    public constructor (_?: libsl.TOKEN, lsl$0?: SymbolicList<T> /* note: just join params from both signatures here with "?" */) {
-        this.storage = lsl$0 || {} as SymbolicList<T>;
+    public __lsl_init($0: SymbolicList<T>): Queue<T> {
+        this.storage = $0;
+        return this as Queue<T>;
+    }
+
+    // #problem: correct initialization for types with non-trivial constructors (should be no errors thrown)
+    public constructor () {
         {
+            /* body */
             if (this instanceof Queue === false)
                 throw libsl.new_ERROR("BusinessError", 10200012, "The Queue's constructor cannot be directly invoked.");
             this.storage = Engine.makeSymbolicList();
@@ -24,6 +28,7 @@ export class QueueAutomaton<T> {
     public _unlinkAny (index: number): T {
         let result = {} as T;
         {
+            /* body */
             result = this.storage.get(index);
             this.storage.remove(index);
         }
@@ -33,20 +38,25 @@ export class QueueAutomaton<T> {
     private _unlinkFirst (): T {
         let result = {} as T;
         {
+            /* body */
             result = this._unlinkAny(0);
         }
         return result;
     }
 
     public _isBoundCorrect (msg: string): void {
-        if (this instanceof Queue === false)
-            throw libsl.new_ERROR("BusinessError", 10200011, msg);
+        {
+            /* body */
+            if (this instanceof Queue === false)
+                throw libsl.new_ERROR("BusinessError", 10200011, msg);
+        }
     }
 
 
     public add (element: T): boolean {
         let result = false;
         {
+            /* body */
             this._isBoundCorrect("The add method cannot be bound.");
             this.storage.insert(this.storage.size(), element);
             result = true;
@@ -57,6 +67,7 @@ export class QueueAutomaton<T> {
     public pop (): T {
         let result = {} as T;
         {
+            /* body */
             this._isBoundCorrect("The pop method cannot be bound.");
             result = this._unlinkFirst();
         }
@@ -66,6 +77,7 @@ export class QueueAutomaton<T> {
     public getFirst (): T {
         let result = {} as T;
         {
+            /* body */
             this._isBoundCorrect("The getFirst method cannot be bound.");
             result = this.storage.get(0);
         }
@@ -74,6 +86,7 @@ export class QueueAutomaton<T> {
 
     public forEach (callbackFn: (value: T, index?: number, queue?: Queue<T>) => number, thisArg?: Object): void {
         {
+            /* body */
             this._isBoundCorrect("The forEach method cannot be bound.");
             var i: number = 0;
             while (i < this.storage.size()) {
@@ -87,8 +100,9 @@ export class QueueAutomaton<T> {
     public [Symbol.iterator] (): Queue_SymbolIterator<T> {
         let result = {} as Queue_SymbolIterator<T>;
         {
+            /* body */
             this._isBoundCorrect("The Symbol.iterator method cannot be bound.");
-            result = new Queue_SymbolIteratorAutomaton<T>(libsl.TOKEN, this, 0) as Queue_SymbolIterator<T>;
+            result = new Queue_SymbolIteratorAutomaton<T>().__lsl_init(this, 0);
         }
         return result;
     }

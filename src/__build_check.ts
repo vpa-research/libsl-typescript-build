@@ -15,6 +15,6 @@ class Foo {
 
 }
 
-let qqq = new QueueAutomaton<String>(libsl.TOKEN, {} as SymbolicList<String>);
+let qqq = new QueueAutomaton<String>().__lsl_init({} as SymbolicList<String>);
 let foo = new Foo();
 throw libsl.new_ERROR("TestError", 12345, "test");
