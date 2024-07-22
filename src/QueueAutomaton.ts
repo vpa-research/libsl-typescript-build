@@ -84,7 +84,7 @@ export class QueueAutomaton<T> {
         return result;
     }
 
-    public forEach (callbackFn: (value: T, index?: number, queue?: Queue<T>) => number, thisArg?: Object): void {
+    public forEach (callbackFn: (value: T, index?: number, queue?: Queue<T>) => void, thisArg?: Object): void {
         {
             /* body */
             this._isBoundCorrect("The forEach method cannot be bound.");
