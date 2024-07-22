@@ -28,4 +28,12 @@ export class Queue_SymbolIteratorAutomaton<T> {
         }
         return result;
     }
+
+    public static __lsl_new<T>($0: Queue<T>, $1: number): Queue_SymbolIterator<T> {
+        // #problem: reflection?
+        let auto = Object.create(this.prototype) as Queue_SymbolIteratorAutomaton<T>;
+        auto.parent = $0;
+        auto.cursor = $1;
+        return auto as any as Queue_SymbolIterator<T>;
+    }
 }
