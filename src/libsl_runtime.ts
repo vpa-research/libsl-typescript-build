@@ -23,6 +23,7 @@ export namespace libsl {
 
     export type TOKEN = 'LIBSL<#>TOKEN';
     export const TOKEN: TOKEN = 'LIBSL<#>TOKEN';
+    export const ANYTHING: any = {};
 
     // note: adapted from c++ sources, see ContainerError::BusinessError
     export function new_ERROR(clazz: string, errCode: number, msg: string): ErrorWithCode {

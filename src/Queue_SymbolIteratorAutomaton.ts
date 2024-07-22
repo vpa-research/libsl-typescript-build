@@ -2,12 +2,13 @@
 
 import { QueueAutomaton } from "./QueueAutomaton";
 import { Queue_SymbolIterator } from "./Queue_SymbolIterator";
+import { libsl } from "./libsl_runtime";
 import { Queue } from "./ohos/util/Queue";
 import { Engine, SymbolicList } from "./org/usvm/api";
 
 @org.jacodb.approximation.annotation.Approximate(Queue_SymbolIterator)
 export class Queue_SymbolIteratorAutomaton<T> {
-    public parent: Queue<T> = {} as Queue<T>;
+    public parent: Queue<T> = libsl.ANYTHING;
     public cursor: number = 0;
 
     public __lsl_init($0: Queue<T>, $1: number): Queue_SymbolIterator<T> {
@@ -17,7 +18,7 @@ export class Queue_SymbolIteratorAutomaton<T> {
     }
 
     public next (): T {
-        let result = {} as T;
+        let result = libsl.ANYTHING;
         {
             /* body */
             Engine.assume(this.parent !== null);

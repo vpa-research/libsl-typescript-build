@@ -8,7 +8,7 @@ import { Engine, SymbolicList } from "./org/usvm/api";
 
 @org.jacodb.approximation.annotation.Approximate(Queue)
 export class QueueAutomaton<T> {
-    public storage: SymbolicList<T> = {} as SymbolicList<T>;
+    public storage: SymbolicList<T> = libsl.ANYTHING;
 
     public __lsl_init($0: SymbolicList<T>): Queue<T> {
         this.storage = $0;
@@ -26,7 +26,7 @@ export class QueueAutomaton<T> {
     }
 
     public _unlinkAny (index: number): T {
-        let result = {} as T;
+        let result = libsl.ANYTHING;
         {
             /* body */
             result = this.storage.get(index);
@@ -36,7 +36,7 @@ export class QueueAutomaton<T> {
     }
 
     private _unlinkFirst (): T {
-        let result = {} as T;
+        let result = libsl.ANYTHING;
         {
             /* body */
             result = this._unlinkAny(0);
@@ -65,7 +65,7 @@ export class QueueAutomaton<T> {
     }
 
     public pop (): T {
-        let result = {} as T;
+        let result = libsl.ANYTHING;
         {
             /* body */
             this._isBoundCorrect("The pop method cannot be bound.");
@@ -75,7 +75,7 @@ export class QueueAutomaton<T> {
     }
 
     public getFirst (): T {
-        let result = {} as T;
+        let result = libsl.ANYTHING;
         {
             /* body */
             this._isBoundCorrect("The getFirst method cannot be bound.");
@@ -88,17 +88,17 @@ export class QueueAutomaton<T> {
         {
             /* body */
             this._isBoundCorrect("The forEach method cannot be bound.");
-            var i: number = 0;
-            while (i < this.storage.size()) {
+            let size: number = this.storage.size();
+            let i: number = 0;
+            for (; i < size; i += 1) {
                 let item: T = this.storage.get(i);
                 callbackFn.call(thisArg, item, i, this);
-                i += 1;
             }
         }
     }
 
     public [Symbol.iterator] (): Queue_SymbolIterator<T> {
-        let result = {} as Queue_SymbolIterator<T>;
+        let result = libsl.ANYTHING;
         {
             /* body */
             this._isBoundCorrect("The Symbol.iterator method cannot be bound.");
