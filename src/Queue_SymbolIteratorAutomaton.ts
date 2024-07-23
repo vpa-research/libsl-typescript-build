@@ -11,12 +11,6 @@ export class Queue_SymbolIteratorAutomaton<T> {
     public parent: Queue<T> = libsl.ANYTHING;
     public cursor: number = 0;
 
-    public __lsl_init($0: Queue<T>, $1: number): Queue_SymbolIterator<T> {
-        this.parent = $0;
-        this.cursor = $1;
-        return this as any as Queue_SymbolIterator<T>;
-    }
-
     public next (): T {
         let result = libsl.ANYTHING;
         {
@@ -30,6 +24,7 @@ export class Queue_SymbolIteratorAutomaton<T> {
         return result;
     }
 
+    // #question: is this a suitable approach?
     public static __lsl_new<T>($0: Queue<T>, $1: number): Queue_SymbolIterator<T> {
         // #problem: reflection?
         let auto = Object.create(this.prototype) as Queue_SymbolIteratorAutomaton<T>;

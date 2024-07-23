@@ -10,14 +10,8 @@ import { Engine, SymbolicList } from "./org/usvm/api";
 export class QueueAutomaton<T> {
     public storage: SymbolicList<T> = libsl.ANYTHING;
 
-    public __lsl_init($0: SymbolicList<T>): Queue<T> {
-        this.storage = $0;
-        return this as any as Queue<T>;
-    }
-
-    // #problem: correct initialization for types with non-trivial constructors (should be no errors thrown)
     public constructor () {
-        {
+        if (libsl.constructor_called_by_user) {
             /* body */
             if (this instanceof Queue === false)
                 throw libsl.new_ERROR("BusinessError", 10200012, "The Queue's constructor cannot be directly invoked.");
@@ -102,7 +96,13 @@ export class QueueAutomaton<T> {
         {
             /* body */
             this._isBoundCorrect("The Symbol.iterator method cannot be bound.");
-            result = new Queue_SymbolIteratorAutomaton<T>().__lsl_init(this, 0);
+            libsl.constructor_called_by_user = false;
+            // #note: pass `libsl.ANYTHING as ...` for any parameters that required when calling the constructor
+            let __lsl$auto_0 = new Queue_SymbolIteratorAutomaton<T>();
+            __lsl$auto_0.parent = this;
+            __lsl$auto_0.cursor = 0;
+            libsl.constructor_called_by_user = true;
+            result = __lsl$auto_0 as any as Queue_SymbolIterator<T>;
         }
         return result;
     }

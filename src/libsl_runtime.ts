@@ -25,6 +25,10 @@ export namespace libsl {
     export const TOKEN: TOKEN = 'LIBSL<#>TOKEN';
     export const ANYTHING: any = {};
 
+    // WARNING: This solution is suitable ONLY for single-threading execution.
+    // For multi-threading envirounments this should be completely re-considered.
+    export var constructor_called_by_user: boolean = true;
+
     // note: adapted from c++ sources, see ContainerError::BusinessError
     export function new_ERROR(clazz: string, errCode: number, msg: string): ErrorWithCode {
         let err = new Error(msg) as ErrorWithCode; // #problem: will there be a TypeError thrown here or not?
