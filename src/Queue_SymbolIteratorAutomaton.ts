@@ -4,9 +4,10 @@ import { QueueAutomaton } from "./QueueAutomaton";
 import { Queue_SymbolIterator } from "./Queue_SymbolIterator";
 import { libsl } from "./libsl_runtime";
 import { Queue } from "./ohos/util/Queue";
+import { Approximate } from "./org/jacodb/approximation/annotation/Approximate";
 import { Engine, SymbolicList } from "./org/usvm/api";
 
-@org.jacodb.approximation.annotation.Approximate(Queue_SymbolIterator)
+@Approximate(Queue_SymbolIterator)
 export class Queue_SymbolIteratorAutomaton<T> {
     public parent: Queue<T> = libsl.ANYTHING;
     public cursor: number = 0;
