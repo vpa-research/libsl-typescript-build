@@ -19,39 +19,13 @@ export class QueueAutomaton<T> {
         }
     }
 
-    public _unlinkAny (index: number): T {
-        let result = libsl.ANYTHING;
-        {
-            /* body */
-            result = this.storage.get(index);
-            this.storage.remove(index);
-        }
-        return result;
-    }
-
-    private _unlinkFirst (): T {
-        let result = libsl.ANYTHING;
-        {
-            /* body */
-            result = this._unlinkAny(0);
-        }
-        return result;
-    }
-
-    public _isBoundCorrect (msg: string): void {
-        {
-            /* body */
-            if (this instanceof Queue === false)
-                throw libsl.new_ERROR("BusinessError", 10200011, msg);
-        }
-    }
-
-
     public add (element: T): boolean {
         let result = false;
         {
             /* body */
-            this._isBoundCorrect("The add method cannot be bound.");
+            let msg: string = "The add method cannot be bound.";
+            if (this instanceof Queue === false)
+                throw libsl.new_ERROR("BusinessError", 10200011, msg);
             this.storage.insert(this.storage.size(), element);
             result = true;
         }
@@ -62,8 +36,11 @@ export class QueueAutomaton<T> {
         let result = libsl.ANYTHING;
         {
             /* body */
-            this._isBoundCorrect("The pop method cannot be bound.");
-            result = this._unlinkFirst();
+            let msg: string = "The pop method cannot be bound.";
+            if (this instanceof Queue === false)
+                throw libsl.new_ERROR("BusinessError", 10200011, msg);
+            result = this.storage.get(0);
+            this.storage.remove(0);
         }
         return result;
     }
@@ -72,7 +49,9 @@ export class QueueAutomaton<T> {
         let result = libsl.ANYTHING;
         {
             /* body */
-            this._isBoundCorrect("The getFirst method cannot be bound.");
+            let msg: string = "The getFirst method cannot be bound.";
+            if (this instanceof Queue === false)
+                throw libsl.new_ERROR("BusinessError", 10200011, msg);
             result = this.storage.get(0);
         }
         return result;
@@ -81,7 +60,9 @@ export class QueueAutomaton<T> {
     public forEach (callbackFn: (value: T, index?: number, queue?: Queue<T>) => void, thisArg?: Object): void {
         {
             /* body */
-            this._isBoundCorrect("The forEach method cannot be bound.");
+            let msg: string = "The forEach method cannot be bound.";
+            if (this instanceof Queue === false)
+                throw libsl.new_ERROR("BusinessError", 10200011, msg);
             let size: number = this.storage.size();
             let i: number = 0;
             for (; i < size; i += 1) {
@@ -95,13 +76,15 @@ export class QueueAutomaton<T> {
         let result = libsl.ANYTHING;
         {
             /* body */
-            this._isBoundCorrect("The Symbol.iterator method cannot be bound.");
+            let msg: string = "The Symbol.iterator method cannot be bound.";
+            if (this instanceof Queue === false)
+                throw libsl.new_ERROR("BusinessError", 10200011, msg);
             libsl.constructor_called_by_user = false;
             // #note: pass `libsl.ANYTHING as ...` for any parameters that required when calling the constructor
             let __lsl$auto_0 = new Queue_SymbolIteratorAutomaton<T>();
+            libsl.constructor_called_by_user = true;
             __lsl$auto_0.parent = this;
             __lsl$auto_0.cursor = 0;
-            libsl.constructor_called_by_user = true;
             result = __lsl$auto_0 as any as Queue_SymbolIterator<T>;
         }
         return result;
