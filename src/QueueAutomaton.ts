@@ -1,7 +1,7 @@
 // ???
 
-import { Queue_SymbolIterator } from "./Queue_SymbolIterator";
-import { Queue_SymbolIteratorAutomaton } from "./Queue_SymbolIteratorAutomaton";
+import { LSL_ListIterator } from "./LSL_ListlIterator";
+import { LSL_ListIteratorAutomaton } from "./LSL_ListIteratorAutomaton";
 import { libsl } from "./libsl_runtime";
 import { Queue } from "./ohos/util/Queue";
 import { Engine, SymbolicList } from "./org/usvm/api";
@@ -72,7 +72,7 @@ export class QueueAutomaton<T> {
         }
     }
 
-    public [Symbol.iterator] (): Queue_SymbolIterator<T> {
+    public [Symbol.iterator] (): LSL_ListIterator<T> {
         let result = libsl.ANYTHING;
         {
             /* body */
@@ -81,11 +81,11 @@ export class QueueAutomaton<T> {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             libsl.constructor_called_by_user = false;
             // #note: pass `libsl.ANYTHING as ...` for any parameters that required when calling the constructor
-            let __lsl$auto_0 = new Queue_SymbolIteratorAutomaton<T>();
+            let __lsl$auto_0 = new LSL_ListIteratorAutomaton<T>();
             libsl.constructor_called_by_user = true;
-            __lsl$auto_0.parent = this;
+            __lsl$auto_0.parent = this.storage;
             __lsl$auto_0.cursor = 0;
-            result = __lsl$auto_0 as any as Queue_SymbolIterator<T>;
+            result = __lsl$auto_0 as any as LSL_ListIterator<T>;
         }
         return result;
     }

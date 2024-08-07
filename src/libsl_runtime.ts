@@ -24,6 +24,7 @@ export namespace libsl {
     export type TOKEN = 'LIBSL<#>TOKEN';
     export const TOKEN: TOKEN = 'LIBSL<#>TOKEN';
     export const ANYTHING: any = {};
+    export const UNDEFINED: any = undefined;
 
     // WARNING: This solution is suitable ONLY for single-threading execution.
     // For multi-threading envirounments this should be completely re-considered.
