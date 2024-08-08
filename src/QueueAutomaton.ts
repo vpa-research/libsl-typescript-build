@@ -3,7 +3,7 @@
 import { LSL_ListIterator } from "./LSL_ListlIterator";
 import { LSL_ListIteratorAutomaton } from "./LSL_ListIteratorAutomaton";
 import { libsl } from "./libsl_runtime";
-import { Queue } from "./ohos/util/Queue";
+import { Queue } from "@ohos.util.Queue";
 
 @org.jacodb.approximation.annotation.Approximate(Queue)
 export class QueueAutomaton<T> {

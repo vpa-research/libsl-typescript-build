@@ -2,7 +2,7 @@
 
 import { LSL_IteratorResult } from "./LSL_IteratorResult";
 import { libsl } from "./libsl_runtime";
-import { Approximate } from "./org/jacodb/approximation/annotation/Approximate";
+import { Approximate } from "@org.jacodb.approximation.annotation.Approximate";
 
 @Approximate(LSL_IteratorResult)
 export class LSL_IteratorResultAutomaton<T> {

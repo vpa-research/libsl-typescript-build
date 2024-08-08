@@ -1,6 +1,6 @@
 // ???
 
-import { Engine, SymbolicIdentityMap, SymbolicList, SymbolicMap } from "./org/usvm/api";
+import { Engine, SymbolicIdentityMap, SymbolicList, SymbolicMap } from "@org.usvm.api";
 
 
 // #problem: do we need this? can we just ignore TS error about unknown property 'code'?

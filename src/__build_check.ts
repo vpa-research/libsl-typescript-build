@@ -1,9 +1,7 @@
-/// <reference path="jacodb.d.ts" />
-/// <reference path="usvm.d.ts" />
 
 import { QueueAutomaton } from "./QueueAutomaton";
 import { libsl } from "./libsl_runtime";
-import { Engine, SymbolicList } from "./org/usvm/api";
+import { Engine, SymbolicList } from "@org.usvm.api";
 
 @org.jacodb.approximation.annotation.Approximate('String')
 class Foo {
