@@ -3,7 +3,7 @@
 import { LSL_ListIterator } from "./LSL_ListlIterator";
 import { libsl } from "./libsl_runtime";
 import { LSL_IteratorResultAutomaton } from "./LSL_IteratorResultAutomaton";
-import { Approximate } from "@org.jacodb.approximation.annotation.Approximate";
+import { Approximate } from "@org.jacodb.approximation.annotation";
 import { SymbolicList } from "@org.usvm.api";
 
 @Approximate(LSL_ListIterator)
