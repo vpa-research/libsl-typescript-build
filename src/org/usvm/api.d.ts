@@ -23,23 +23,23 @@ export class Engine {
 
     public static makeSymbolicDouble(): number;
 
-    public static makeSymbolicArray<T>(clazz: any, size: number): T[];
+    public static makeSymbolicArray<T>(clazz: any, size: number): Array<T>;
 
-    public static makeSymbolicBooleanArray(size: number): boolean[];
+    public static makeSymbolicBooleanArray(size: number): Array<boolean>;
 
-    public static makeSymbolicByteArray(size: number): number[];
+    public static makeSymbolicByteArray(size: number): Array<number>;
 
-    public static makeSymbolicCharArray(size: number): number[];
+    public static makeSymbolicCharArray(size: number): Array<number>;
 
-    public static makeSymbolicShortArray(size: number): number[];
+    public static makeSymbolicShortArray(size: number): Array<number>;
 
-    public static makeSymbolicIntArray(size: number): number[];
+    public static makeSymbolicIntArray(size: number): Array<number>;
 
-    public static makeSymbolicLongArray(size: number): number[];
+    public static makeSymbolicLongArray(size: number): Array<number>;
 
-    public static makeSymbolicFloatArray(size: number): number[];
+    public static makeSymbolicFloatArray(size: number): Array<number>;
 
-    public static makeSymbolicDoubleArray(size: number): number[];
+    public static makeSymbolicDoubleArray(size: number): Array<number>;
 
     public static makeSymbolicList<T>(): SymbolicList<T>;
 
@@ -62,7 +62,7 @@ export interface SymbolicList<E> {
 
     remove(index: number): void;
 
-    copy(dst: SymbolicList<E>, var2: number, var3: number, var4: number): void;
+    copy(dst: SymbolicList<E>, srcPos: number, dstPos: number, len: number): void;
 }
 
 
@@ -71,7 +71,7 @@ export interface SymbolicList<E> {
 export interface SymbolicMap<K, V> {
     size(): number;
 
-    get(key: K | null): V | null;
+    get(key: K | null): V;
 
     anyKey(): K;
 
@@ -89,7 +89,7 @@ export interface SymbolicMap<K, V> {
 export interface SymbolicIdentityMap<K, V> {
     size(): number;
 
-    get(key: K | null): V | null;
+    get(key: K | null): V;
 
     anyKey(): K;
 

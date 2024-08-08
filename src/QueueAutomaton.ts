@@ -4,18 +4,17 @@ import { LSL_ListIterator } from "./LSL_ListlIterator";
 import { LSL_ListIteratorAutomaton } from "./LSL_ListIteratorAutomaton";
 import { libsl } from "./libsl_runtime";
 import { Queue } from "./ohos/util/Queue";
-import { Engine, SymbolicList } from "./org/usvm/api";
 
 @org.jacodb.approximation.annotation.Approximate(Queue)
 export class QueueAutomaton<T> {
-    public storage: SymbolicList<T> = libsl.ANYTHING;
+    public storage: org.usvm.api.SymbolicList<T> = libsl.ANYTHING;
 
     public constructor () {
         if (libsl.constructor_called_by_user) {
             /* body */
             if (this instanceof Queue === false)
                 throw libsl.new_ERROR("BusinessError", 10200012, "The Queue's constructor cannot be directly invoked.");
-            this.storage = Engine.makeSymbolicList();
+            this.storage = org.usvm.api.Engine.makeSymbolicList();
         }
     }
 
@@ -83,7 +82,7 @@ export class QueueAutomaton<T> {
             // #note: pass `libsl.ANYTHING as ...` for any parameters that required when calling the constructor
             let __lsl$auto_0 = new LSL_ListIteratorAutomaton<T>();
             libsl.constructor_called_by_user = true;
-            __lsl$auto_0.parent = this.storage;
+            __lsl$auto_0.parentStorage = this.storage;
             __lsl$auto_0.cursor = 0;
             result = __lsl$auto_0 as any as LSL_ListIterator<T>;
         }

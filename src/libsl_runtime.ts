@@ -687,11 +687,11 @@ export namespace libsl {
 
         abstract anyKey(): CK;
 
-        abstract get(key: CK | null): CV | null;
+        abstract get(key: CK): CV | null;
 
-        abstract set(key: CK | null, value: CV | null): void;
+        abstract set(key: CK, value: CV | null): void;
 
-        abstract remove(key: CK | null): void;
+        abstract remove(key: CK): void;
 
         abstract size(): number;
     }
@@ -724,7 +724,7 @@ export namespace libsl {
             this.map.set(key, value);
         }
 
-        public remove(key: K | null): void {
+        public remove(key: K): void {
             Engine.assume(this.map !== null);
             this.map.remove(key);
         }
@@ -843,15 +843,15 @@ export namespace libsl {
             return this.map.anyKey();
         }
 
-        public get(key: K): V | null {
+        public get(key: K): V {
             return this.map.get(key);
         }
 
-        public set(key: K | null, value: V | null): void {
+        public set(key: K, value: V | null): void {
             this.map.set(key, value);
         }
 
-        public remove(key: K | null): void {
+        public remove(key: K): void {
             this.map.remove(key);
         }
 
@@ -892,15 +892,15 @@ export namespace libsl {
             return this.map.anyKey();
         }
 
-        public get(key: K | null): V | null {
+        public get(key: K): V {
             return this.map.get(key);
         }
 
-        public set(key: K | null, value: V | null): void {
+        public set(key: K, value: V | null): void {
             this.map.set(key, value);
         }
 
-        public remove(key: K | null): void {
+        public remove(key: K): void {
             this.map.remove(key);
         }
 

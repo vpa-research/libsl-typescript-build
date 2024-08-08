@@ -33,4 +33,5 @@ export class LSL_ListIteratorAutomaton<T> {
         }
         return result;
     }
+
 }

@@ -28,23 +28,23 @@ namespace org {
 
                 public static makeSymbolicDouble(): number;
 
-                public static makeSymbolicArray<T>(clazz: any, size: number): T[];
+                public static makeSymbolicArray<T>(clazz: any, size: number): Array<T>;
 
-                public static makeSymbolicBooleanArray(size: number): boolean[];
+                public static makeSymbolicBooleanArray(size: number): Array<boolean>;
 
-                public static makeSymbolicByteArray(size: number): number[];
+                public static makeSymbolicByteArray(size: number): Array<number>;
 
-                public static makeSymbolicCharArray(size: number): number[];
+                public static makeSymbolicCharArray(size: number): Array<number>;
 
-                public static makeSymbolicShortArray(size: number): number[];
+                public static makeSymbolicShortArray(size: number): Array<number>;
 
-                public static makeSymbolicIntArray(size: number): number[];
+                public static makeSymbolicIntArray(size: number): Array<number>;
 
-                public static makeSymbolicLongArray(size: number): number[];
+                public static makeSymbolicLongArray(size: number): Array<number>;
 
-                public static makeSymbolicFloatArray(size: number): number[];
+                public static makeSymbolicFloatArray(size: number): Array<number>;
 
-                public static makeSymbolicDoubleArray(size: number): number[];
+                public static makeSymbolicDoubleArray(size: number): Array<number>;
 
                 public static makeSymbolicList<T>(): SymbolicList<T>;
 
@@ -59,15 +59,15 @@ namespace org {
             export interface SymbolicList<E> {
                 size(): number;
 
-                get(index: number): E?;
+                get(index: number): E;
 
-                set(index: number, value: E?): void;
+                set(index: number, value: E | null): void;
 
-                insert(index: number, value: E?): void;
+                insert(index: number, value: E | null): void;
 
                 remove(index: number): void;
 
-                copy(dst: SymbolicList<E>, var2: number, var3: number, var4: number): void;
+                copy(dst: SymbolicList<E>, srcPos: number, dstPos: number, len: number): void;
             }
 
 
@@ -76,15 +76,15 @@ namespace org {
             export interface SymbolicMap<K, V> {
                 size(): number;
 
-                get(key: K): V?;
+                get(key: K | null): V;
 
                 anyKey(): K;
 
-                set(key: K, value: V?): void;
+                set(key: K | null, value: V | null): void;
 
-                remove(key: K): void;
+                remove(key: K | null): void;
 
-                containsKey(key: K): boolean;
+                containsKey(key: K | null): boolean;
 
                 merge(other: SymbolicMap<K, V>): void;
             }
@@ -94,15 +94,15 @@ namespace org {
             export interface SymbolicIdentityMap<K, V> {
                 size(): number;
 
-                get(key: K): V?;
+                get(key: K | null): V;
 
                 anyKey(): K;
 
-                set(key: K, value: V?): void;
+                set(key: K | null, value: V | null): void;
 
-                remove(key: K): void;
+                remove(key: K | null): void;
 
-                containsKey(key: K): boolean;
+                containsKey(key: K | null): boolean;
 
                 merge(other: SymbolicIdentityMap<K, V>): void;
             }
