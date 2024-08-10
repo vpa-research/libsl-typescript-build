@@ -414,7 +414,7 @@ export namespace libsl {
         return res.concat("]");
     }
 
-    export function toString_map(v: Map<any, any>): string {
+    export function toString_map(v: LSLMap<any, any>): string {
         let count: number = v.size();
         if (count === 0)
             return "{}";
@@ -453,6 +453,8 @@ export namespace libsl {
             return v as string;
         if (v instanceof Array)
             return toString_array(v);
+        if (v instanceof LSLMap)
+            return toString_map(v);
 
         return v.toString();
     }
@@ -517,7 +519,7 @@ export namespace libsl {
         return true;
     }
 
-    export function equals_map_map(a: Map<any, any> | null, b: Map<any, any> | null): boolean {
+    export function equals_map_map(a: LSLMap<any, any> | null, b: LSLMap<any, any> | null): boolean {
         if (a === b)
             return true;
         if (a === null || b === null)
@@ -697,7 +699,7 @@ export namespace libsl {
     }
 
 
-    export class Map<K, V> {
+    export class LSLMap<K, V> {
         public map: Container<K, V>;
 
         public constructor(container: Container<K, V> ) {
@@ -734,7 +736,7 @@ export namespace libsl {
             return this.map.size();
         }
 
-        public union(other: Map<K, V>): void {
+        public union(other: LSLMap<K, V>): void {
             Engine.assume(this.map !== null);
 
             let otherMap: Container<K, V> = other.map;
@@ -761,7 +763,7 @@ export namespace libsl {
             }
         }
 
-        public intersection(other: Map<K, V>): void {
+        public intersection(other: LSLMap<K, V>): void {
             Engine.assume(this.map !== null);
 
             let otherMap: Container<K, V> = other.map;
@@ -789,9 +791,9 @@ export namespace libsl {
             }
         }
 
-        public duplicate(): Map<K, V> {
+        public duplicate(): LSLMap<K, V> {
             Engine.assume(this.map !== null);
-            return new Map<K, V>(this.map.duplicate());
+            return new LSLMap<K, V>(this.map.duplicate());
         }
 
         public toString(): string {
@@ -805,8 +807,8 @@ export namespace libsl {
         }
 
         public equals(obj: Object): boolean {
-            return obj instanceof Map
-                ? equals_map_map(this, obj as Map<K, V>)
+            return obj instanceof LSLMap
+                ? equals_map_map(this, obj as LSLMap<K, V>)
                 : false;
         }
     }
