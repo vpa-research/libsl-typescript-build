@@ -21,12 +21,10 @@ declare var AggregateError: AggregateErrorConstructor;
 
 export namespace libsl {
 
-    export type TOKEN = 'LIBSL<#>TOKEN';
-    export const TOKEN: TOKEN = 'LIBSL<#>TOKEN';
     export const ANYTHING: any = {};
     export const UNDEFINED: any = undefined;
 
-    // WARNING: This solution is suitable ONLY for single-threading execution.
+    // WARNING: This solution is suitable ONLY for single-threaded execution.
     // For multi-threading envirounments this should be completely re-considered.
     export var constructor_called_by_user: boolean = true;
 
@@ -496,7 +494,6 @@ export namespace libsl {
     }
 
     export function equals_float64_float64(a: number, b: number): boolean {
-        // FIXME: use Double.compare(a, b) ?
         return a === b;
     }
 
