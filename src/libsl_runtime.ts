@@ -25,7 +25,7 @@ export namespace libsl {
     export const UNDEFINED: any = undefined;
 
     // WARNING: This solution is suitable ONLY for single-threaded execution.
-    // For multi-threading envirounments this should be completely re-considered.
+    // For multi-threaded envirounments this should be completely re-considered.
     export var constructor_called_by_user: boolean = true;
 
     // note: adapted from c++ sources, see ContainerError::BusinessError

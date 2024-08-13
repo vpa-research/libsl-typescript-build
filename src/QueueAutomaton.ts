@@ -102,16 +102,13 @@ export class QueueAutomaton<T> {
             if (!(this instanceof Queue)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            result = (() => {
-                // FIXME: this should not be an expression
-                libsl.constructor_called_by_user = false;
-                let lsl$na = new LSL_ListIteratorAutomaton<T>();
-                libsl.constructor_called_by_user = true;
-                // lsl$na.__$state = Initialized;
-                lsl$na.cursor = 0;
-                lsl$na.items = this.storage;
-                return lsl$na as any as LSL_ListIterator<T>;
-            })();
+            libsl.constructor_called_by_user = false;
+            let lsl$na0 = new LSL_ListIteratorAutomaton<T>();
+            libsl.constructor_called_by_user = true;
+            // lsl$na0.__$state = Initialized;
+            lsl$na0.cursor = 0;
+            lsl$na0.items = this.storage;
+            result = lsl$na0 as any as LSL_ListIterator<T>;
         }
         return result;
     }
