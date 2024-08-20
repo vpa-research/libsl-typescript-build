@@ -686,7 +686,7 @@ export namespace libsl {
 
         abstract anyKey(): CK;
 
-        abstract get(key: CK): CV | null;
+        abstract get(key: CK): CV;
 
         abstract set(key: CK, value: CV | null): void;
 
@@ -713,7 +713,7 @@ export namespace libsl {
             return this.map.anyKey();
         }
 
-        public get(key: K): V | null {
+        public get(key: K): V {
             Engine.assume(this.map !== null);
             return this.map.get(key);
         }
