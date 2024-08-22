@@ -25,19 +25,17 @@ export class LSL_MapIterator_tupleKK_Automaton<K> {
         /* body */ {
             let iteratorDone: boolean = true;
             let iteratorValue: [K, K] | undefined = undefined;
-            if (this.unseen.size() != 0) {
+            if (this.unseen.size() !== 0) {
                 let key: K = this.unseen.anyKey();
                 this.unseen.remove(key);
                 iteratorDone = false;
                 iteratorValue = [ key, key ];
             }
-            libsl.constructor_called_by_user = false;
-            let lsl$na7 = new LSL_IteratorResultAutomaton<[K, K]>();
-            libsl.constructor_called_by_user = true;
-            // lsl$na7.__$state = Initialized;
-            lsl$na7.value = iteratorValue;
-            lsl$na7.done = iteratorDone;
-            result = lsl$na7 as any as LSL_IteratorResult<[K, K]>;
+            let lsl$na10 = new LSL_IteratorResultAutomaton<[K, K]>();
+            // lsl$na10.__$state = Initialized;
+            lsl$na10.value = iteratorValue;
+            lsl$na10.done = iteratorDone;
+            result = lsl$na10 as any as LSL_IteratorResult<[K, K]>;
         }
         return result;
     }

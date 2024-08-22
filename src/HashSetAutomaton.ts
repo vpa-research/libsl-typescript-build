@@ -39,7 +39,7 @@ export class HashSetAutomaton<T> {
             if (!(this instanceof HashSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            result = this.storage.size() == 0;
+            result = this.storage.size() === 0;
         }
         return result;
     }
@@ -54,7 +54,7 @@ export class HashSetAutomaton<T> {
             if (!(this instanceof HashSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            if (this.storage.size() == 0) {
+            if (this.storage.size() === 0) {
                 result = false;
                 ;
             }
@@ -130,7 +130,7 @@ export class HashSetAutomaton<T> {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let storageSize: number = this.storage.size();
-            if (storageSize != 0) {
+            if (storageSize !== 0) {
                 let unseen: libsl.LSLMap<T, any> = this.storage.duplicate();
                 let i: number = 0;
                 for (i = 0; i < storageSize; i += 1) {
@@ -152,9 +152,7 @@ export class HashSetAutomaton<T> {
             if (!(this instanceof HashSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            libsl.constructor_called_by_user = false;
             let lsl$na1 = new LSL_MapIterator_tupleKK_Automaton<T>();
-            libsl.constructor_called_by_user = true;
             // lsl$na1.__$state = Initialized;
             lsl$na1.unseen = this.storage.duplicate();
             result = lsl$na1 as any as LSL_MapIterator_tupleKK<T>;
@@ -172,9 +170,7 @@ export class HashSetAutomaton<T> {
             if (!(this instanceof HashSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            libsl.constructor_called_by_user = false;
             let lsl$na2 = new LSL_MapIterator_K_Automaton<T>();
-            libsl.constructor_called_by_user = true;
             // lsl$na2.__$state = Initialized;
             lsl$na2.unseen = this.storage.duplicate();
             result = lsl$na2 as any as LSL_MapIterator_K<T>;
@@ -192,9 +188,7 @@ export class HashSetAutomaton<T> {
             if (!(this instanceof HashSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            libsl.constructor_called_by_user = false;
             let lsl$na3 = new LSL_MapIterator_K_Automaton<T>();
-            libsl.constructor_called_by_user = true;
             // lsl$na3.__$state = Initialized;
             lsl$na3.unseen = this.storage.duplicate();
             result = lsl$na3 as any as LSL_MapIterator_K<T>;

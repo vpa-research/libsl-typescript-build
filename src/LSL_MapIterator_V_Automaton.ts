@@ -25,20 +25,18 @@ export class LSL_MapIterator_V_Automaton<V> {
         /* body */ {
             let iteratorDone: boolean = true;
             let iteratorValue: V | undefined = undefined;
-            if (this.unseen.size() != 0) {
+            if (this.unseen.size() !== 0) {
                 let key: any = this.unseen.anyKey();
                 let value: V = this.unseen.get(key);
                 this.unseen.remove(key);
                 iteratorDone = false;
                 iteratorValue = value;
             }
-            libsl.constructor_called_by_user = false;
-            let lsl$na4 = new LSL_IteratorResultAutomaton<V>();
-            libsl.constructor_called_by_user = true;
-            // lsl$na4.__$state = Initialized;
-            lsl$na4.value = iteratorValue;
-            lsl$na4.done = iteratorDone;
-            result = lsl$na4 as any as LSL_IteratorResult<V>;
+            let lsl$na7 = new LSL_IteratorResultAutomaton<V>();
+            // lsl$na7.__$state = Initialized;
+            lsl$na7.value = iteratorValue;
+            lsl$na7.done = iteratorDone;
+            result = lsl$na7 as any as LSL_IteratorResult<V>;
         }
         return result;
     }

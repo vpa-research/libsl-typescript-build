@@ -25,19 +25,17 @@ export class LSL_MapIterator_K_Automaton<K> {
         /* body */ {
             let iteratorDone: boolean = true;
             let iteratorValue: K | undefined = undefined;
-            if (this.unseen.size() != 0) {
+            if (this.unseen.size() !== 0) {
                 let key: K = this.unseen.anyKey();
                 this.unseen.remove(key);
                 iteratorDone = false;
                 iteratorValue = key;
             }
-            libsl.constructor_called_by_user = false;
-            let lsl$na5 = new LSL_IteratorResultAutomaton<K>();
-            libsl.constructor_called_by_user = true;
-            // lsl$na5.__$state = Initialized;
-            lsl$na5.value = iteratorValue;
-            lsl$na5.done = iteratorDone;
-            result = lsl$na5 as any as LSL_IteratorResult<K>;
+            let lsl$na8 = new LSL_IteratorResultAutomaton<K>();
+            // lsl$na8.__$state = Initialized;
+            lsl$na8.value = iteratorValue;
+            lsl$na8.done = iteratorDone;
+            result = lsl$na8 as any as LSL_IteratorResult<K>;
         }
         return result;
     }

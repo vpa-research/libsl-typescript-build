@@ -102,9 +102,7 @@ export class QueueAutomaton<T> {
             if (!(this instanceof Queue)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            libsl.constructor_called_by_user = false;
             let lsl$na0 = new LSL_ListIteratorAutomaton<T>();
-            libsl.constructor_called_by_user = true;
             // lsl$na0.__$state = Initialized;
             lsl$na0.cursor = 0;
             lsl$na0.items = this.storage;
