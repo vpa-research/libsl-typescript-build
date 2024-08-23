@@ -76,7 +76,7 @@ export class QueueAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] QueueAutomaton::forEach(LSL_Queue<?::T>, Queue_ConsumerCallback<?::T>, Object) -> void
+     * [FUNCTION] QueueAutomaton::forEach(LSL_Queue<?::T>, Queue_Consumer<?::T>, Object) -> void
      * Source: ohos/util/Queue.main.lsl:97 */
     forEach(callbackFn: (value: T, index?: number, queue?: Queue<T>) => void, thisArg?: Object) {
         /* body */ {
