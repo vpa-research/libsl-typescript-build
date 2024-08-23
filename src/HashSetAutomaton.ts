@@ -152,10 +152,10 @@ export class HashSetAutomaton<T> {
             if (!(this instanceof HashSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let lsl$na1 = new LSL_MapIterator_tupleKK_Automaton<T>();
-            // lsl$na1.__$state = Initialized;
-            lsl$na1.unseen = this.storage.duplicate();
-            result = lsl$na1 as any as LSL_MapIterator_tupleKK<T>;
+            let lsl$na0 = new LSL_MapIterator_tupleKK_Automaton<T>();
+            // lsl$na0.__$state = Initialized;
+            lsl$na0.unseen = this.storage.duplicate();
+            result = lsl$na0 as any as LSL_MapIterator_tupleKK<T>;
         }
         return result;
     }
@@ -170,10 +170,10 @@ export class HashSetAutomaton<T> {
             if (!(this instanceof HashSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let lsl$na2 = new LSL_MapIterator_K_Automaton<T>();
-            // lsl$na2.__$state = Initialized;
-            lsl$na2.unseen = this.storage.duplicate();
-            result = lsl$na2 as any as LSL_MapIterator_K<T>;
+            let lsl$na1 = new LSL_MapIterator_K_Automaton<T>();
+            // lsl$na1.__$state = Initialized;
+            lsl$na1.unseen = this.storage.duplicate();
+            result = lsl$na1 as any as LSL_MapIterator_K<T>;
         }
         return result;
     }
@@ -188,10 +188,10 @@ export class HashSetAutomaton<T> {
             if (!(this instanceof HashSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let lsl$na3 = new LSL_MapIterator_K_Automaton<T>();
-            // lsl$na3.__$state = Initialized;
-            lsl$na3.unseen = this.storage.duplicate();
-            result = lsl$na3 as any as LSL_MapIterator_K<T>;
+            let lsl$na2 = new LSL_MapIterator_K_Automaton<T>();
+            // lsl$na2.__$state = Initialized;
+            lsl$na2.unseen = this.storage.duplicate();
+            result = lsl$na2 as any as LSL_MapIterator_K<T>;
         }
         return result;
     }

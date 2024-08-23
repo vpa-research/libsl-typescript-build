@@ -32,11 +32,11 @@ export class LSL_MapIterator_tupleVV_Automaton<V> {
                 iteratorDone = false;
                 iteratorValue = [ value, value ];
             }
-            let lsl$na11 = new LSL_IteratorResultAutomaton<[V, V]>();
-            // lsl$na11.__$state = Initialized;
-            lsl$na11.value = iteratorValue;
-            lsl$na11.done = iteratorDone;
-            result = lsl$na11 as any as LSL_IteratorResult<[V, V]>;
+            let lsl$na0 = new LSL_IteratorResultAutomaton<[V, V]>();
+            // lsl$na0.__$state = Initialized;
+            lsl$na0.value = iteratorValue;
+            lsl$na0.done = iteratorDone;
+            result = lsl$na0 as any as LSL_IteratorResult<[V, V]>;
         }
         return result;
     }

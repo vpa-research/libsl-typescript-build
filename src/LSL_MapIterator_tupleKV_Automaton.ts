@@ -32,11 +32,11 @@ export class LSL_MapIterator_tupleKV_Automaton<K, V> {
                 iteratorDone = false;
                 iteratorValue = [ key, value ];
             }
-            let lsl$na9 = new LSL_IteratorResultAutomaton<[K, V]>();
-            // lsl$na9.__$state = Initialized;
-            lsl$na9.value = iteratorValue;
-            lsl$na9.done = iteratorDone;
-            result = lsl$na9 as any as LSL_IteratorResult<[K, V]>;
+            let lsl$na0 = new LSL_IteratorResultAutomaton<[K, V]>();
+            // lsl$na0.__$state = Initialized;
+            lsl$na0.value = iteratorValue;
+            lsl$na0.done = iteratorDone;
+            result = lsl$na0 as any as LSL_IteratorResult<[K, V]>;
         }
         return result;
     }

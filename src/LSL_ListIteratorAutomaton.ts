@@ -35,11 +35,11 @@ export class LSL_ListIteratorAutomaton<T> {
                 value = this.items.get(pos);
                 isDone = true;
             }
-            let lsl$na12 = new LSL_IteratorResultAutomaton<T>();
-            // lsl$na12.__$state = Initialized;
-            lsl$na12.done = isDone;
-            lsl$na12.value = value;
-            result = lsl$na12 as any as LSL_IteratorResult<T>;
+            let lsl$na0 = new LSL_IteratorResultAutomaton<T>();
+            // lsl$na0.__$state = Initialized;
+            lsl$na0.done = isDone;
+            lsl$na0.value = value;
+            result = lsl$na0 as any as LSL_IteratorResult<T>;
         }
         return result;
     }

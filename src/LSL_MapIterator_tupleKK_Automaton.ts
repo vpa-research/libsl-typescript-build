@@ -31,11 +31,11 @@ export class LSL_MapIterator_tupleKK_Automaton<K> {
                 iteratorDone = false;
                 iteratorValue = [ key, key ];
             }
-            let lsl$na10 = new LSL_IteratorResultAutomaton<[K, K]>();
-            // lsl$na10.__$state = Initialized;
-            lsl$na10.value = iteratorValue;
-            lsl$na10.done = iteratorDone;
-            result = lsl$na10 as any as LSL_IteratorResult<[K, K]>;
+            let lsl$na0 = new LSL_IteratorResultAutomaton<[K, K]>();
+            // lsl$na0.__$state = Initialized;
+            lsl$na0.value = iteratorValue;
+            lsl$na0.done = iteratorDone;
+            result = lsl$na0 as any as LSL_IteratorResult<[K, K]>;
         }
         return result;
     }

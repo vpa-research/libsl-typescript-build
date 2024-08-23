@@ -342,12 +342,12 @@ export class ArrayListAutomaton<T> {
             let storageCopy: SymbolicList<T> = Engine.makeSymbolicList();
             this.storage.copy(storageCopy, fromIndex, 0, toIndex - fromIndex);
             libsl.constructor_called_by_user = false;
-            let lsl$na4 = new ArrayListAutomaton_<T>(
+            let lsl$na0 = new ArrayListAutomaton_<T>(
             );
             libsl.constructor_called_by_user = true;
-            // lsl$na4.__$state = Initialized;
-            lsl$na4.storage = storageCopy;
-            result = lsl$na4 as any as ArrayList<T>;
+            // lsl$na0.__$state = Initialized;
+            lsl$na0.storage = storageCopy;
+            result = lsl$na0 as any as ArrayList<T>;
         }
         return result;
     }
@@ -378,12 +378,12 @@ export class ArrayListAutomaton<T> {
             let storageCopy: SymbolicList<T> = Engine.makeSymbolicList();
             this.storage.copy(storageCopy, 0, 0, this.storage.size());
             libsl.constructor_called_by_user = false;
-            let lsl$na5 = new ArrayListAutomaton_<T>(
+            let lsl$na1 = new ArrayListAutomaton_<T>(
             );
             libsl.constructor_called_by_user = true;
-            // lsl$na5.__$state = Initialized;
-            lsl$na5.storage = storageCopy;
-            result = lsl$na5 as any as ArrayList<T>;
+            // lsl$na1.__$state = Initialized;
+            lsl$na1.storage = storageCopy;
+            result = lsl$na1 as any as ArrayList<T>;
         }
         return result;
     }
@@ -471,11 +471,11 @@ export class ArrayListAutomaton<T> {
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let lsl$na6 = new LSL_ListIteratorAutomaton<T>();
-            // lsl$na6.__$state = Initialized;
-            lsl$na6.cursor = 0;
-            lsl$na6.items = this.storage;
-            result = lsl$na6 as any as LSL_ListIterator<T>;
+            let lsl$na2 = new LSL_ListIteratorAutomaton<T>();
+            // lsl$na2.__$state = Initialized;
+            lsl$na2.cursor = 0;
+            lsl$na2.items = this.storage;
+            result = lsl$na2 as any as LSL_ListIterator<T>;
         }
         return result;
     }

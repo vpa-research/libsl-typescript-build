@@ -31,11 +31,11 @@ export class LSL_MapIterator_K_Automaton<K> {
                 iteratorDone = false;
                 iteratorValue = key;
             }
-            let lsl$na8 = new LSL_IteratorResultAutomaton<K>();
-            // lsl$na8.__$state = Initialized;
-            lsl$na8.value = iteratorValue;
-            lsl$na8.done = iteratorDone;
-            result = lsl$na8 as any as LSL_IteratorResult<K>;
+            let lsl$na0 = new LSL_IteratorResultAutomaton<K>();
+            // lsl$na0.__$state = Initialized;
+            lsl$na0.value = iteratorValue;
+            lsl$na0.done = iteratorDone;
+            result = lsl$na0 as any as LSL_IteratorResult<K>;
         }
         return result;
     }
