@@ -19,7 +19,7 @@ export class LSL_MapIterator_tupleKK_Automaton<K> {
 
     /**
      * [FUNCTION] LSL_MapIterator_tupleKK_Automaton::next(LSL_MapIterator_tupleKK<?::K>) -> IteratorResult<tuple<?::K, ?::K>>
-     * Source: libsl/LSL_MapIterator_tupleKK.main.lsl:35 */
+     * Source: libsl/LSL_MapIterator_tupleKK.main.lsl:36 */
     next(): IteratorResult<[K, K]> {
         let result: IteratorResult<[K, K]> = libsl.ANYTHING;
         /* body */ {
@@ -36,6 +36,17 @@ export class LSL_MapIterator_tupleKK_Automaton<K> {
             lsl$na0.value = iteratorValue;
             lsl$na0.done = iteratorDone;
             result = lsl$na0 as any as LSL_IteratorResult<[K, K]>;
+        }
+        return result;
+    }
+
+    /**
+     * [FUNCTION] LSL_MapIterator_tupleKK_Automaton::[Symbol.iterator](LSL_MapIterator_tupleKK<?::K>) -> IterableIterator<tuple<?::K, ?::K>>
+     * Source: libsl/LSL_MapIterator_tupleKK.main.lsl:57 */
+    [Symbol.iterator](): IterableIterator<[K, K]> {
+        let result: IterableIterator<[K, K]> = libsl.ANYTHING;
+        /* body */ {
+            result = this;
         }
         return result;
     }

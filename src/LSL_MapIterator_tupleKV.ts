@@ -11,4 +11,10 @@ export class LSL_MapIterator_tupleKV<K, V> {
         throw lsl$e;
     }
 
+    [Symbol.iterator](): IterableIterator<[K, V]> {
+        let lsl$e = new SyntaxError();
+        lsl$e.name = 'LinkingError';
+        throw lsl$e;
+    }
+
 }

@@ -19,7 +19,7 @@ export class LSL_MapIterator_V_Automaton<V> {
 
     /**
      * [FUNCTION] LSL_MapIterator_V_Automaton::next(LSL_MapIterator_V<?::V>) -> IteratorResult<?::V>
-     * Source: libsl/LSL_MapIterator_V.main.lsl:35 */
+     * Source: libsl/LSL_MapIterator_V.main.lsl:36 */
     next(): IteratorResult<V> {
         let result: IteratorResult<V> = libsl.ANYTHING;
         /* body */ {
@@ -37,6 +37,17 @@ export class LSL_MapIterator_V_Automaton<V> {
             lsl$na0.value = iteratorValue;
             lsl$na0.done = iteratorDone;
             result = lsl$na0 as any as LSL_IteratorResult<V>;
+        }
+        return result;
+    }
+
+    /**
+     * [FUNCTION] LSL_MapIterator_V_Automaton::[Symbol.iterator](LSL_MapIterator_V<?::V>) -> IterableIterator<?::V>
+     * Source: libsl/LSL_MapIterator_V.main.lsl:58 */
+    [Symbol.iterator](): IterableIterator<V> {
+        let result: IterableIterator<V> = libsl.ANYTHING;
+        /* body */ {
+            result = this;
         }
         return result;
     }

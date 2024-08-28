@@ -11,4 +11,10 @@ export class LSL_MapIterator_K<K> {
         throw lsl$e;
     }
 
+    [Symbol.iterator](): IterableIterator<K> {
+        let lsl$e = new SyntaxError();
+        lsl$e.name = 'LinkingError';
+        throw lsl$e;
+    }
+
 }

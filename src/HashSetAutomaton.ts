@@ -143,10 +143,10 @@ export class HashSetAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] HashSetAutomaton::entries(HashSet<?::T>) -> Iterator<tuple<?::T, ?::T>>
+     * [FUNCTION] HashSetAutomaton::entries(HashSet<?::T>) -> IterableIterator<tuple<?::T, ?::T>>
      * Source: ohos/util/HashSet.main.lsl:158 */
-    entries(): Iterator<[T, T]> {
-        let result: Iterator<[T, T]> = libsl.ANYTHING;
+    entries(): IterableIterator<[T, T]> {
+        let result: IterableIterator<[T, T]> = libsl.ANYTHING;
         /* body */ {
             let msg: string = "The entries method cannot be bound.";
             if (!(this instanceof HashSet)) {
@@ -161,10 +161,10 @@ export class HashSetAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] HashSetAutomaton::[Symbol.iterator](HashSet<?::T>) -> Iterator<?::T>
+     * [FUNCTION] HashSetAutomaton::[Symbol.iterator](HashSet<?::T>) -> IterableIterator<?::T>
      * Source: ohos/util/HashSet.main.lsl:169 */
-    [Symbol.iterator](): Iterator<T> {
-        let result: Iterator<T> = libsl.ANYTHING;
+    [Symbol.iterator](): IterableIterator<T> {
+        let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
             let msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof HashSet)) {
@@ -179,10 +179,10 @@ export class HashSetAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] HashSetAutomaton::values(HashSet<?::T>) -> Iterator<?::T>
+     * [FUNCTION] HashSetAutomaton::values(HashSet<?::T>) -> IterableIterator<?::T>
      * Source: ohos/util/HashSet.main.lsl:180 */
-    values(): Iterator<T> {
-        let result: Iterator<T> = libsl.ANYTHING;
+    values(): IterableIterator<T> {
+        let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
             let msg: string = "The values method cannot be bound.";
             if (!(this instanceof HashSet)) {

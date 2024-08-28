@@ -11,4 +11,10 @@ export class LSL_ListIterator<T> {
         throw lsl$e;
     }
 
+    [Symbol.iterator](): IterableIterator<T> {
+        let lsl$e = new SyntaxError();
+        lsl$e.name = 'LinkingError';
+        throw lsl$e;
+    }
+
 }
