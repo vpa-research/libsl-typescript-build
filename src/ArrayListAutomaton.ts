@@ -473,8 +473,8 @@ export class ArrayListAutomaton<T> {
             }
             let lsl$na2 = new LSL_ListIteratorAutomaton<T>();
             // lsl$na2.__$state = Initialized;
+            lsl$na2.container = this;
             lsl$na2.cursor = 0;
-            lsl$na2.items = this.storage;
             result = lsl$na2 as any as LSL_ListIterator<T>;
         }
         return result;

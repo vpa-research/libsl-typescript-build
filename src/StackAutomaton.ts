@@ -143,8 +143,8 @@ export class StackAutomaton<T> {
             }
             let lsl$na0 = new LSL_ListIteratorAutomaton<T>();
             // lsl$na0.__$state = Initialized;
+            lsl$na0.container = this;
             lsl$na0.cursor = 0;
-            lsl$na0.items = this.storage;
             result = lsl$na0 as any as LSL_ListIterator<T>;
         }
         return result;

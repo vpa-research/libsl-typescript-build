@@ -504,8 +504,8 @@ export class LinkedListAutomaton<T> {
             }
             let lsl$na1 = new LSL_ListIteratorAutomaton<T>();
             // lsl$na1.__$state = Initialized;
+            lsl$na1.container = this;
             lsl$na1.cursor = 0;
-            lsl$na1.items = this.storage;
             result = lsl$na1 as any as LSL_ListIterator<T>;
         }
         return result;
