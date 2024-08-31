@@ -105,7 +105,6 @@ export class LinkedListAutomaton<T> {
             result = index !== -1;
             if (result) {
                 this.storage.remove(index);
-                ;
             }
         }
         return result;
@@ -460,11 +459,9 @@ export class LinkedListAutomaton<T> {
             }
             if (this.storage.size() === 0) {
                 result = undefined;
-                ;
             }
             else {
                 result = this.storage.get(0);
-                ;
             }
         }
         return result;
@@ -482,11 +479,9 @@ export class LinkedListAutomaton<T> {
             }
             if (this.storage.size() === 0) {
                 result = undefined;
-                ;
             }
             else {
                 result = this.storage.get(this.storage.size());
-                ;
             }
         }
         return result;

@@ -74,11 +74,9 @@ export class StackAutomaton<T> {
             let size: number = this.storage.size();
             if (size === 0) {
                 result = undefined;
-                ;
             }
             else {
                 result = this.storage.get(size - 1);
-                ;
             }
         }
         return result;

@@ -117,7 +117,6 @@ export class ArrayListAutomaton<T> {
                             }
                         }
                     }
-                    ;
                 }
                 else {
                     for (i = start; i < outerLimit; i += 1) {
@@ -133,7 +132,6 @@ export class ArrayListAutomaton<T> {
                             }
                         }
                     }
-                    ;
                 }
             }
         }
@@ -255,7 +253,6 @@ export class ArrayListAutomaton<T> {
             result = index !== -1;
             if (result) {
                 this.storage.remove(index);
-                ;
             }
         }
         return result;

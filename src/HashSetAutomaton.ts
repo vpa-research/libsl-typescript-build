@@ -56,11 +56,9 @@ export class HashSetAutomaton<T> {
             }
             if (this.storage.size() === 0) {
                 result = false;
-                ;
             }
             else {
                 result = this.storage.hasKey(value);
-                ;
             }
         }
         return result;
@@ -78,7 +76,6 @@ export class HashSetAutomaton<T> {
             }
             if (this.storage.hasKey(value)) {
                 result = false;
-                ;
             }
             else {
                 this.storage.set(value, value);
@@ -101,7 +98,6 @@ export class HashSetAutomaton<T> {
             result = this.storage.hasKey(value);
             if (result) {
                 this.storage.remove(value);
-                ;
             }
         }
         return result;
