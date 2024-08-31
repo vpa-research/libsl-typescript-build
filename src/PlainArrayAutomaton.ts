@@ -376,7 +376,8 @@ export class PlainArrayAutomaton<T> {
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            libsl.todo()}
+            libsl.todo();
+        }
         return result;
     }
 
