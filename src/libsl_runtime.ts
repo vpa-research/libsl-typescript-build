@@ -1,4 +1,4 @@
-// ???
+/// NOTE: this is part of a set of hand-written runtime support libraries for `typescript` language target
 
 import { Engine, SymbolicIdentityMap, SymbolicList, SymbolicMap } from "@org.usvm.api";
 
@@ -25,7 +25,7 @@ export namespace libsl {
     export const UNDEFINED: any = undefined;
 
     // WARNING: This solution is suitable ONLY for single-threaded execution.
-    // For multi-threading envirounments this should be completely re-considered.
+    // For multi-threaded envirounments this should be completely re-considered.
     export var constructor_called_by_user: boolean = true;
 
     // note: adapted from c++ sources, see ContainerError::BusinessError
@@ -686,7 +686,7 @@ export namespace libsl {
 
         abstract anyKey(): CK;
 
-        abstract get(key: CK): CV | null;
+        abstract get(key: CK): CV;
 
         abstract set(key: CK, value: CV | null): void;
 
@@ -713,7 +713,7 @@ export namespace libsl {
             return this.map.anyKey();
         }
 
-        public get(key: K): V | null {
+        public get(key: K): V {
             Engine.assume(this.map !== null);
             return this.map.get(key);
         }
