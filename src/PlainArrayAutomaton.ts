@@ -367,10 +367,10 @@ export class PlainArrayAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] PlainArrayAutomaton::[Symbol.iterator](LSL_PlainArray<?::T>) -> Iterator<?::T>
+     * [FUNCTION] PlainArrayAutomaton::[Symbol.iterator](LSL_PlainArray<?::T>) -> IterableIterator<tuple<number, ?::T>>
      * Source: ohos/util/PlainArray.main.lsl:364 */
-    [Symbol.iterator](): Iterator<T> {
-        let result: Iterator<T> = libsl.ANYTHING;
+    [Symbol.iterator](): IterableIterator<[number, T]> {
+        let result: IterableIterator<[number, T]> = libsl.ANYTHING;
         /* body */ {
             let msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof PlainArray)) {

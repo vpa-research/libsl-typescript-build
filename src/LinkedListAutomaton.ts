@@ -488,10 +488,10 @@ export class LinkedListAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] LinkedListAutomaton::[Symbol.iterator](LSL_LinkedList<?::T>) -> Iterator<?::T>
+     * [FUNCTION] LinkedListAutomaton::[Symbol.iterator](LSL_LinkedList<?::T>) -> IterableIterator<?::T>
      * Source: ohos/util/LinkedList.main.lsl:429 */
-    [Symbol.iterator](): Iterator<T> {
-        let result: Iterator<T> = libsl.ANYTHING;
+    [Symbol.iterator](): IterableIterator<T> {
+        let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
             let msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof LinkedList)) {

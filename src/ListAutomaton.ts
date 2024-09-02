@@ -476,10 +476,10 @@ export class ListAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] ListAutomaton::[Symbol.iterator](LSL_List<?::T>) -> Iterator<?::T>
+     * [FUNCTION] ListAutomaton::[Symbol.iterator](LSL_List<?::T>) -> IterableIterator<?::T>
      * Source: ohos/util/List.main.lsl:458 */
-    [Symbol.iterator](): Iterator<T> {
-        let result: Iterator<T> = libsl.ANYTHING;
+    [Symbol.iterator](): IterableIterator<T> {
+        let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
             let msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof List)) {

@@ -93,10 +93,10 @@ export class QueueAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] QueueAutomaton::[Symbol.iterator](LSL_Queue<?::T>) -> Iterator<?::T>
+     * [FUNCTION] QueueAutomaton::[Symbol.iterator](LSL_Queue<?::T>) -> IterableIterator<?::T>
      * Source: ohos/util/Queue.main.lsl:116 */
-    [Symbol.iterator](): Iterator<T> {
-        let result: Iterator<T> = libsl.ANYTHING;
+    [Symbol.iterator](): IterableIterator<T> {
+        let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
             let msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof Queue)) {

@@ -130,10 +130,10 @@ export class StackAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] StackAutomaton::[Symbol.iterator](LSL_Stack<?::T>) -> Iterator<?::T>
+     * [FUNCTION] StackAutomaton::[Symbol.iterator](LSL_Stack<?::T>) -> IterableIterator<?::T>
      * Source: ohos/util/Stack.main.lsl:143 */
-    [Symbol.iterator](): Iterator<T> {
-        let result: Iterator<T> = libsl.ANYTHING;
+    [Symbol.iterator](): IterableIterator<T> {
+        let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
             let msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof Stack)) {
