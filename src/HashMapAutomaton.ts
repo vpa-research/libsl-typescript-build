@@ -306,4 +306,15 @@ export class HashMapAutomaton<K, V> {
         return result;
     }
 
+    /**
+     * [FUNCTION] HashMapAutomaton::length(LSL_HashMap<?::K, ?::V>) -> number
+     * Source: ohos/util/HashMap.main.lsl:310 */
+    get length(): number {
+        let result: number = 0;
+        /* body */ {
+            result = this.storage.size();
+        }
+        return result;
+    }
+
 }
