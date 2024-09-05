@@ -274,24 +274,28 @@ export class PlainArrayAutomaton<T> {
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let iBegin: number = (index + size) - 1;
-            let iEnd: number = index - 1;
-            result = size;
-            let i: number = 0;
-            for (i = iBegin; i > iEnd; i += -1) {
-                this.keysStorage.remove(i);
+            if ((index < 0) || (this.keysStorage.size() < (index + size))) {
             }
-            for (i = iBegin; i > iEnd; i += -1) {
-                this.valuesStorage.remove(i);
+            else {
+                let iBegin: number = (index + size) - 1;
+                let iEnd: number = index - 1;
+                result = size;
+                let i: number = 0;
+                for (i = iBegin; i > iEnd; i += -1) {
+                    this.keysStorage.remove(i);
+                }
+                for (i = iBegin; i > iEnd; i += -1) {
+                    this.valuesStorage.remove(i);
+                }
+                Engine.assume(this.keysStorage.size() === this.valuesStorage.size());
             }
-            Engine.assume(this.keysStorage.size() === this.valuesStorage.size());
         }
         return result;
     }
 
     /**
      * [FUNCTION] PlainArrayAutomaton::setValueAt(LSL_PlainArray<?::T>, number, ?::T) -> void
-     * Source: ohos/util/PlainArray.main.lsl:290 */
+     * Source: ohos/util/PlainArray.main.lsl:295 */
     setValueAt(index: number, value: T) {
         /* body */ {
             let msg: string = "The setValueAt method cannot be bound.";
@@ -307,7 +311,7 @@ export class PlainArrayAutomaton<T> {
 
     /**
      * [FUNCTION] PlainArrayAutomaton::toString(LSL_PlainArray<?::T>) -> String
-     * Source: ohos/util/PlainArray.main.lsl:302 */
+     * Source: ohos/util/PlainArray.main.lsl:307 */
     toString(): String {
         let result: String = '';
         /* body */ {
@@ -336,7 +340,7 @@ export class PlainArrayAutomaton<T> {
 
     /**
      * [FUNCTION] PlainArrayAutomaton::clear(LSL_PlainArray<?::T>) -> void
-     * Source: ohos/util/PlainArray.main.lsl:334 */
+     * Source: ohos/util/PlainArray.main.lsl:339 */
     clear() {
         /* body */ {
             let msg: string = "The clear method cannot be bound.";
@@ -351,7 +355,7 @@ export class PlainArrayAutomaton<T> {
 
     /**
      * [FUNCTION] PlainArrayAutomaton::forEach(LSL_PlainArray<?::T>, PlainArray_Consumer<?::T>, Object) -> void
-     * Source: ohos/util/PlainArray.main.lsl:345 */
+     * Source: ohos/util/PlainArray.main.lsl:350 */
     forEach(callbackFn: (t: T, index?: number, arr?: PlainArray<T>) => void, thisArg?: Object) {
         /* body */ {
             let msg: string = "The forEach method cannot be bound.";
@@ -368,7 +372,7 @@ export class PlainArrayAutomaton<T> {
 
     /**
      * [FUNCTION] PlainArrayAutomaton::[Symbol.iterator](LSL_PlainArray<?::T>) -> IterableIterator<tuple<number, ?::T>>
-     * Source: ohos/util/PlainArray.main.lsl:364 */
+     * Source: ohos/util/PlainArray.main.lsl:369 */
     [Symbol.iterator](): IterableIterator<[number, T]> {
         let result: IterableIterator<[number, T]> = libsl.ANYTHING;
         /* body */ {
@@ -383,7 +387,7 @@ export class PlainArrayAutomaton<T> {
 
     /**
      * [FUNCTION] PlainArrayAutomaton::length(LSL_PlainArray<?::T>) -> number
-     * Source: ohos/util/PlainArray.main.lsl:375 */
+     * Source: ohos/util/PlainArray.main.lsl:380 */
     get length(): number {
         let result: number = 0;
         /* body */ {

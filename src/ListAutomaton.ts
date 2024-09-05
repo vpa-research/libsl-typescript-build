@@ -206,7 +206,6 @@ export class ListAutomaton<T> {
             result = -1;
             let size: number = this.storage.size();
             if (size !== 0) {
-                Engine.assume(size > 0);
                 let items: SymbolicList<T> = this.storage;
                 let i: number = 0;
                 for (i = size - 1; i > -1; i += -1) {
@@ -223,7 +222,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::getIndexOf(LSL_List<?::T>, ?::T) -> number
-     * Source: ohos/util/List.main.lsl:256 */
+     * Source: ohos/util/List.main.lsl:253 */
     getIndexOf(element: T): number {
         let result: number = 0;
         /* body */ {
@@ -238,7 +237,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::equal(LSL_List<?::T>, Object) -> boolean
-     * Source: ohos/util/List.main.lsl:265 */
+     * Source: ohos/util/List.main.lsl:262 */
     equal(o: Object): boolean {
         let result: boolean = false;
         /* body */ {
@@ -269,7 +268,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::removeByIndex(LSL_List<?::T>, number) -> ?::T
-     * Source: ohos/util/List.main.lsl:294 */
+     * Source: ohos/util/List.main.lsl:291 */
     removeByIndex(index: number): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
@@ -285,7 +284,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::remove(LSL_List<?::T>, ?::T) -> boolean
-     * Source: ohos/util/List.main.lsl:304 */
+     * Source: ohos/util/List.main.lsl:301 */
     remove(element: T): boolean {
         let result: boolean = false;
         /* body */ {
@@ -300,15 +299,16 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::replaceAllElements(LSL_List<?::T>, List_Function<?::T>, Object) -> void
-     * Source: ohos/util/List.main.lsl:313 */
+     * Source: ohos/util/List.main.lsl:310 */
     replaceAllElements(callbackFn: (t: T, index?: number, list?: List<T>) => T, thisArg?: Object) {
         /* body */ {
             let msg: string = "The replaceAllElements method cannot be bound.";
             if (!(this instanceof List)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
+            let size: number = this.storage.size();
             let i: number = 0;
-            for (i = 0; i < this.storage.size(); i += 1) {
+            for (i = 0; i < size; i += 1) {
                 let item: T = this.storage.get(i);
                 let cur: T = callbackFn.call(thisArg, item, i, this);
                 this.storage.set(i, cur);
@@ -318,7 +318,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::forEach(LSL_List<?::T>, List_Consumer<?::T>, Object) -> void
-     * Source: ohos/util/List.main.lsl:333 */
+     * Source: ohos/util/List.main.lsl:331 */
     forEach(callbackFn: (t: T, index?: number, list?: List<T>) => void, thisArg?: Object) {
         /* body */ {
             let msg: string = "The forEach method cannot be bound.";
@@ -335,7 +335,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::sort(LSL_List<?::T>, List_Comparator<?::T>) -> void
-     * Source: ohos/util/List.main.lsl:354 */
+     * Source: ohos/util/List.main.lsl:352 */
     sort(comparator: (a: T, b: T) => number) {
         /* body */ {
             let msg: string = "The sort method cannot be bound.";
@@ -348,7 +348,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::getSubList(LSL_List<?::T>, number, number) -> List<?::T>
-     * Source: ohos/util/List.main.lsl:363 */
+     * Source: ohos/util/List.main.lsl:361 */
     getSubList(fromIndex: number, toIndex: number): List<T> {
         let result: List<T> = libsl.ANYTHING;
         /* body */ {
@@ -372,7 +372,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::clear(LSL_List<?::T>) -> void
-     * Source: ohos/util/List.main.lsl:378 */
+     * Source: ohos/util/List.main.lsl:376 */
     clear() {
         /* body */ {
             let msg: string = "The clear method cannot be bound.";
@@ -385,7 +385,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::set(LSL_List<?::T>, number, ?::T) -> ?::T
-     * Source: ohos/util/List.main.lsl:387 */
+     * Source: ohos/util/List.main.lsl:385 */
     set(index: number, element: T): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
@@ -402,7 +402,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::convertToArray(LSL_List<?::T>) -> array<?::T>
-     * Source: ohos/util/List.main.lsl:400 */
+     * Source: ohos/util/List.main.lsl:398 */
     convertToArray(): Array<T> {
         let result: Array<T> = libsl.ANYTHING;
         /* body */ {
@@ -410,10 +410,11 @@ export class ListAutomaton<T> {
             if (!(this instanceof List)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            result = new Array<T>(this.storage.size());
+            let size: number = this.storage.size();
+            Engine.assume(size >= 0);
+            result = new Array<T>(size);
             let i: number = 0;
-            let count: number = this.storage.size();
-            for (i = 0; i < count; i += 1) {
+            for (i = 0; i < size; i += 1) {
                 result[i] = this.storage.get(i);
             }
         }
@@ -422,7 +423,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::isEmpty(LSL_List<?::T>) -> boolean
-     * Source: ohos/util/List.main.lsl:421 */
+     * Source: ohos/util/List.main.lsl:420 */
     isEmpty(): boolean {
         let result: boolean = false;
         /* body */ {
@@ -437,7 +438,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::getFirst(LSL_List<?::T>) -> ?::T | undefined
-     * Source: ohos/util/List.main.lsl:430 */
+     * Source: ohos/util/List.main.lsl:429 */
     getFirst(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
@@ -457,7 +458,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::getLast(LSL_List<?::T>) -> ?::T | undefined
-     * Source: ohos/util/List.main.lsl:444 */
+     * Source: ohos/util/List.main.lsl:443 */
     getLast(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
@@ -477,7 +478,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::[Symbol.iterator](LSL_List<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/List.main.lsl:458 */
+     * Source: ohos/util/List.main.lsl:457 */
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -496,7 +497,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::length(LSL_List<?::T>) -> number
-     * Source: ohos/util/List.main.lsl:472 */
+     * Source: ohos/util/List.main.lsl:471 */
     get length(): number {
         let result: number = 0;
         /* body */ {

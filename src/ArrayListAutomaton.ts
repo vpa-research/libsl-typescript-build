@@ -209,7 +209,6 @@ export class ArrayListAutomaton<T> {
             result = -1;
             let size: number = this.storage.size();
             if (size !== 0) {
-                Engine.assume(size > 0);
                 let items: SymbolicList<T> = this.storage;
                 let i: number = 0;
                 for (i = size - 1; i > -1; i += -1) {
@@ -226,7 +225,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::removeByIndex(LSL_ArrayList<?::T>, number) -> ?::T
-     * Source: ohos/util/ArrayList.main.lsl:290 */
+     * Source: ohos/util/ArrayList.main.lsl:287 */
     removeByIndex(index: number): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
@@ -241,7 +240,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::remove(LSL_ArrayList<?::T>, ?::T) -> boolean
-     * Source: ohos/util/ArrayList.main.lsl:299 */
+     * Source: ohos/util/ArrayList.main.lsl:296 */
     remove(element: T): boolean {
         let result: boolean = false;
         /* body */ {
@@ -260,7 +259,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::removeByRange(LSL_ArrayList<?::T>, number, number) -> void
-     * Source: ohos/util/ArrayList.main.lsl:311 */
+     * Source: ohos/util/ArrayList.main.lsl:308 */
     removeByRange(fromIndex: number, toIndex: number) {
         /* body */ {
             let msg: string = "The removeByRange method cannot be bound.";
@@ -277,7 +276,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::replaceAllElements(LSL_ArrayList<?::T>, ArrayList_Function<?::T>, Object) -> void
-     * Source: ohos/util/ArrayList.main.lsl:330 */
+     * Source: ohos/util/ArrayList.main.lsl:327 */
     replaceAllElements(callbackFn: (t: T, index?: number, arrlist?: ArrayList<T>) => T,
             thisArg?: Object) {
         /* body */ {
@@ -285,8 +284,9 @@ export class ArrayListAutomaton<T> {
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
+            let size: number = this.storage.size();
             let i: number = 0;
-            for (i = 0; i < this.storage.size(); i += 1) {
+            for (i = 0; i < size; i += 1) {
                 let item: T = this.storage.get(i);
                 let newItem: T = callbackFn.call(thisArg, item, i, this);
                 this.storage.set(i, newItem);
@@ -296,7 +296,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::forEach(LSL_ArrayList<?::T>, ArrayList_Consumer<?::T>, Object) -> void
-     * Source: ohos/util/ArrayList.main.lsl:352 */
+     * Source: ohos/util/ArrayList.main.lsl:350 */
     forEach(callbackFn: (t: T, index?: number, arrlist?: ArrayList<T>) => void, thisArg?: Object) {
         /* body */ {
             let msg: string = "The forEach method cannot be bound.";
@@ -304,17 +304,16 @@ export class ArrayListAutomaton<T> {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let i: number = 0;
-            while (i < this.storage.size()) {
+            for (i = 0; i < this.storage.size(); i += 1) {
                 let item: T = this.storage.get(i);
                 callbackFn.call(thisArg, item, i, this);
-                i += 1;
             }
         }
     }
 
     /**
      * [FUNCTION] ArrayListAutomaton::sort(LSL_ArrayList<?::T>, ArrayList_Comparator<?::T>) -> void
-     * Source: ohos/util/ArrayList.main.lsl:374 */
+     * Source: ohos/util/ArrayList.main.lsl:370 */
     sort(comparator?: (a: T, b: T) => number) {
         /* body */ {
             let msg: string = "The sort method cannot be bound.";
@@ -327,7 +326,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::subArrayList(LSL_ArrayList<?::T>, number, number) -> LSL_ArrayList<?::T>
-     * Source: ohos/util/ArrayList.main.lsl:384 */
+     * Source: ohos/util/ArrayList.main.lsl:380 */
     subArrayList(fromIndex: number, toIndex: number): ArrayList<T> {
         let result: ArrayList<T> = libsl.ANYTHING;
         /* body */ {
@@ -351,7 +350,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::clear(LSL_ArrayList<?::T>) -> void
-     * Source: ohos/util/ArrayList.main.lsl:399 */
+     * Source: ohos/util/ArrayList.main.lsl:395 */
     clear() {
         /* body */ {
             let msg: string = "The clear method cannot be bound.";
@@ -364,7 +363,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::clone(LSL_ArrayList<?::T>) -> LSL_ArrayList<?::T>
-     * Source: ohos/util/ArrayList.main.lsl:408 */
+     * Source: ohos/util/ArrayList.main.lsl:404 */
     clone(): ArrayList<T> {
         let result: ArrayList<T> = libsl.ANYTHING;
         /* body */ {
@@ -387,7 +386,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::getCapacity(LSL_ArrayList<?::T>) -> number
-     * Source: ohos/util/ArrayList.main.lsl:422 */
+     * Source: ohos/util/ArrayList.main.lsl:418 */
     getCapacity(): number {
         let result: number = 0;
         /* body */ {
@@ -402,7 +401,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::convertToArray(LSL_ArrayList<?::T>) -> array<?::T>
-     * Source: ohos/util/ArrayList.main.lsl:431 */
+     * Source: ohos/util/ArrayList.main.lsl:427 */
     convertToArray(): Array<T> {
         let result: Array<T> = libsl.ANYTHING;
         /* body */ {
@@ -410,9 +409,11 @@ export class ArrayListAutomaton<T> {
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            result = new Array<T>(this.storage.size());
+            let size: number = this.storage.size();
+            Engine.assume(size >= 0);
+            result = new Array<T>(size);
             let i: number = 0;
-            for (i = 0; i < this.storage.size(); i += 1) {
+            for (i = 0; i < size; i += 1) {
                 result[i] = this.storage.get(i);
             }
         }
@@ -421,7 +422,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::isEmpty(LSL_ArrayList<?::T>) -> boolean
-     * Source: ohos/util/ArrayList.main.lsl:451 */
+     * Source: ohos/util/ArrayList.main.lsl:449 */
     isEmpty(): boolean {
         let result: boolean = false;
         /* body */ {
@@ -436,7 +437,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::increaseCapacityTo(LSL_ArrayList<?::T>, number) -> void
-     * Source: ohos/util/ArrayList.main.lsl:460 */
+     * Source: ohos/util/ArrayList.main.lsl:458 */
     increaseCapacityTo(newCapacity: number) {
         /* body */ {
             let msg: string = "The increaseCapacityTo method cannot be bound.";
@@ -448,7 +449,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::trimToCurrentLength(LSL_ArrayList<?::T>) -> void
-     * Source: ohos/util/ArrayList.main.lsl:469 */
+     * Source: ohos/util/ArrayList.main.lsl:467 */
     trimToCurrentLength() {
         /* body */ {
             let msg: string = "The trimToCurrentLength method cannot be bound.";
@@ -460,7 +461,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::[Symbol.iterator](LSL_ArrayList<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/ArrayList.main.lsl:478 */
+     * Source: ohos/util/ArrayList.main.lsl:476 */
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -479,7 +480,7 @@ export class ArrayListAutomaton<T> {
 
     /**
      * [FUNCTION] ArrayListAutomaton::length(LSL_ArrayList<?::T>) -> number
-     * Source: ohos/util/ArrayList.main.lsl:493 */
+     * Source: ohos/util/ArrayList.main.lsl:491 */
     get length(): number {
         let result: number = 0;
         /* body */ {

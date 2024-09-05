@@ -13,6 +13,7 @@ import {LSL_MapIterator_tupleKV_Automaton} from './LSL_MapIterator_tupleKV_Autom
 import {libsl} from './libsl_runtime';
 import {HashMap} from '@ohos.util.HashMap';
 import {Approximate} from '@org.jacodb.approximation.annotation';
+import {Engine} from '@org.usvm.api';
 
 
 /**
@@ -80,6 +81,7 @@ export class HashMapAutomaton<K, V> {
             result = false;
             let storageSize: number = this.storage.size();
             if (storageSize !== 0) {
+                Engine.assume(storageSize > 0);
                 let unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
                 while (storageSize !== 0) {
                     let curKey: K = unseen.anyKey();
@@ -98,7 +100,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::get(LSL_HashMap<?::K, ?::V>, ?::K) -> ?::V
-     * Source: ohos/util/HashMap.main.lsl:134 */
+     * Source: ohos/util/HashMap.main.lsl:136 */
     get(key: K): V {
         let result: V = libsl.ANYTHING;
         /* body */ {
@@ -118,7 +120,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::setAll(LSL_HashMap<?::K, ?::V>, LSL_HashMap<?::K, ?::V>) -> void
-     * Source: ohos/util/HashMap.main.lsl:147 */
+     * Source: ohos/util/HashMap.main.lsl:149 */
     setAll(map: HashMap<K, V>) {
         /* body */ {
             let msg: string = "The setAll method cannot be bound.";
@@ -128,6 +130,7 @@ export class HashMapAutomaton<K, V> {
             let otherMapStorage: libsl.LSLMap<K, V> = (map as any as HashMapAutomaton_<K, V>).storage;
             let otherSize: number = otherMapStorage.size();
             if (otherSize !== 0) {
+                Engine.assume(otherSize > 0);
                 let unseenOther: libsl.LSLMap<K, V> = otherMapStorage.duplicate();
                 while (otherSize !== 0) {
                     let key: K = unseenOther.anyKey();
@@ -142,7 +145,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::set(LSL_HashMap<?::K, ?::V>, ?::K, ?::V) -> Object | undefined
-     * Source: ohos/util/HashMap.main.lsl:177 */
+     * Source: ohos/util/HashMap.main.lsl:181 */
     set(key: K, value: V): Object | undefined {
         let result: Object | undefined = libsl.ANYTHING;
         /* body */ {
@@ -158,7 +161,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::remove(LSL_HashMap<?::K, ?::V>, ?::K) -> ?::V
-     * Source: ohos/util/HashMap.main.lsl:187 */
+     * Source: ohos/util/HashMap.main.lsl:191 */
     remove(key: K): V {
         let result: V = libsl.ANYTHING;
         /* body */ {
@@ -179,7 +182,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::clear(LSL_HashMap<?::K, ?::V>) -> void
-     * Source: ohos/util/HashMap.main.lsl:206 */
+     * Source: ohos/util/HashMap.main.lsl:210 */
     clear() {
         /* body */ {
             let msg: string = "The clear method cannot be bound.";
@@ -192,7 +195,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::keys(LSL_HashMap<?::K, ?::V>) -> IterableIterator<?::K>
-     * Source: ohos/util/HashMap.main.lsl:215 */
+     * Source: ohos/util/HashMap.main.lsl:219 */
     keys(): IterableIterator<K> {
         let result: IterableIterator<K> = libsl.ANYTHING;
         /* body */ {
@@ -210,7 +213,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::values(LSL_HashMap<?::K, ?::V>) -> IterableIterator<?::V>
-     * Source: ohos/util/HashMap.main.lsl:226 */
+     * Source: ohos/util/HashMap.main.lsl:230 */
     values(): IterableIterator<V> {
         let result: IterableIterator<V> = libsl.ANYTHING;
         /* body */ {
@@ -228,7 +231,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::replace(LSL_HashMap<?::K, ?::V>, ?::K, ?::V) -> boolean
-     * Source: ohos/util/HashMap.main.lsl:237 */
+     * Source: ohos/util/HashMap.main.lsl:241 */
     replace(key: K, newValue: V): boolean {
         let result: boolean = false;
         /* body */ {
@@ -249,7 +252,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::forEach(LSL_HashMap<?::K, ?::V>, HashMap_Callback<?::K, ?::V>, Object) -> void
-     * Source: ohos/util/HashMap.main.lsl:254 */
+     * Source: ohos/util/HashMap.main.lsl:258 */
     forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) {
         /* body */ {
             let msg: string = "The forEach method cannot be bound.";
@@ -258,6 +261,7 @@ export class HashMapAutomaton<K, V> {
             }
             let storageSize: number = this.storage.size();
             if (storageSize !== 0) {
+                Engine.assume(storageSize > 0);
                 let unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
                 while (storageSize !== 0) {
                     let key: K = unseen.anyKey();
@@ -272,7 +276,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::entries(LSL_HashMap<?::K, ?::V>) -> IterableIterator<tuple<?::K, ?::V>>
-     * Source: ohos/util/HashMap.main.lsl:286 */
+     * Source: ohos/util/HashMap.main.lsl:292 */
     entries(): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
@@ -290,7 +294,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::[Symbol.iterator](LSL_HashMap<?::K, ?::V>) -> IterableIterator<tuple<?::K, ?::V>>
-     * Source: ohos/util/HashMap.main.lsl:297 */
+     * Source: ohos/util/HashMap.main.lsl:303 */
     [Symbol.iterator](): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
@@ -308,7 +312,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::length(LSL_HashMap<?::K, ?::V>) -> number
-     * Source: ohos/util/HashMap.main.lsl:310 */
+     * Source: ohos/util/HashMap.main.lsl:316 */
     get length(): number {
         let result: number = 0;
         /* body */ {

@@ -119,7 +119,6 @@ export class LinkedListAutomaton<T> {
             result = false;
             let size: number = this.storage.size();
             if (size !== 0) {
-                Engine.assume(size > 0);
                 let items: SymbolicList<T> = this.storage;
                 let i: number = 0;
                 for (i = size - 1; i > -1; i += -1) {
@@ -137,7 +136,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::add(LSL_LinkedList<?::T>, ?::T) -> boolean
-     * Source: ohos/util/LinkedList.main.lsl:165 */
+     * Source: ohos/util/LinkedList.main.lsl:163 */
     add(element: T): boolean {
         let result: boolean = false;
         /* body */ {
@@ -153,7 +152,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::addFirst(LSL_LinkedList<?::T>, ?::T) -> void
-     * Source: ohos/util/LinkedList.main.lsl:175 */
+     * Source: ohos/util/LinkedList.main.lsl:173 */
     addFirst(element: T) {
         /* body */ {
             let msg: string = "The addFirst method cannot be bound.";
@@ -166,7 +165,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::insert(LSL_LinkedList<?::T>, number, ?::T) -> void
-     * Source: ohos/util/LinkedList.main.lsl:184 */
+     * Source: ohos/util/LinkedList.main.lsl:182 */
     insert(index: number, element: T) {
         /* body */ {
             let msg: string = "The insert method cannot be bound.";
@@ -179,7 +178,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::has(LSL_LinkedList<?::T>, ?::T) -> boolean
-     * Source: ohos/util/LinkedList.main.lsl:193 */
+     * Source: ohos/util/LinkedList.main.lsl:191 */
     has(element: T): boolean {
         let result: boolean = false;
         /* body */ {
@@ -194,7 +193,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::get(LSL_LinkedList<?::T>, number) -> ?::T
-     * Source: ohos/util/LinkedList.main.lsl:202 */
+     * Source: ohos/util/LinkedList.main.lsl:200 */
     get(index: number): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
@@ -209,7 +208,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::getLastIndexOf(LSL_LinkedList<?::T>, ?::T) -> number
-     * Source: ohos/util/LinkedList.main.lsl:213 */
+     * Source: ohos/util/LinkedList.main.lsl:211 */
     getLastIndexOf(element: T): number {
         let result: number = 0;
         /* body */ {
@@ -220,7 +219,6 @@ export class LinkedListAutomaton<T> {
             result = -1;
             let size: number = this.storage.size();
             if (size !== 0) {
-                Engine.assume(size > 0);
                 let items: SymbolicList<T> = this.storage;
                 let i: number = 0;
                 for (i = size - 1; i > -1; i += -1) {
@@ -237,7 +235,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::getIndexOf(LSL_LinkedList<?::T>, ?::T) -> number
-     * Source: ohos/util/LinkedList.main.lsl:245 */
+     * Source: ohos/util/LinkedList.main.lsl:241 */
     getIndexOf(element: T): number {
         let result: number = 0;
         /* body */ {
@@ -252,7 +250,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::removeByIndex(LSL_LinkedList<?::T>, number) -> ?::T
-     * Source: ohos/util/LinkedList.main.lsl:254 */
+     * Source: ohos/util/LinkedList.main.lsl:250 */
     removeByIndex(index: number): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
@@ -268,7 +266,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::removeFirst(LSL_LinkedList<?::T>) -> ?::T
-     * Source: ohos/util/LinkedList.main.lsl:264 */
+     * Source: ohos/util/LinkedList.main.lsl:260 */
     removeFirst(): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
@@ -286,7 +284,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::removeLast(LSL_LinkedList<?::T>) -> ?::T
-     * Source: ohos/util/LinkedList.main.lsl:276 */
+     * Source: ohos/util/LinkedList.main.lsl:272 */
     removeLast(): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
@@ -304,7 +302,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::remove(LSL_LinkedList<?::T>, ?::T) -> boolean
-     * Source: ohos/util/LinkedList.main.lsl:288 */
+     * Source: ohos/util/LinkedList.main.lsl:284 */
     remove(element: T): boolean {
         let result: boolean = false;
         /* body */ {
@@ -319,7 +317,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::removeFirstFound(LSL_LinkedList<?::T>, ?::T) -> boolean
-     * Source: ohos/util/LinkedList.main.lsl:297 */
+     * Source: ohos/util/LinkedList.main.lsl:293 */
     removeFirstFound(element: T): boolean {
         let result: boolean = false;
         /* body */ {
@@ -340,7 +338,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::removeLastFound(LSL_LinkedList<?::T>, ?::T) -> boolean
-     * Source: ohos/util/LinkedList.main.lsl:311 */
+     * Source: ohos/util/LinkedList.main.lsl:307 */
     removeLastFound(element: T): boolean {
         let result: boolean = false;
         /* body */ {
@@ -361,7 +359,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::clone(LSL_LinkedList<?::T>) -> LSL_LinkedList<?::T>
-     * Source: ohos/util/LinkedList.main.lsl:325 */
+     * Source: ohos/util/LinkedList.main.lsl:321 */
     clone(): LinkedList<T> {
         let result: LinkedList<T> = libsl.ANYTHING;
         /* body */ {
@@ -384,7 +382,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::forEach(LSL_LinkedList<?::T>, LinkedList_Consumer<?::T>, Object) -> void
-     * Source: ohos/util/LinkedList.main.lsl:339 */
+     * Source: ohos/util/LinkedList.main.lsl:335 */
     forEach(callbackFn: (t: T, index?: number, arrlist?: LinkedList<T>) => void, thisArg?: Object) {
         /* body */ {
             let msg: string = "The forEach method cannot be bound.";
@@ -400,7 +398,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::clear(LSL_LinkedList<?::T>) -> void
-     * Source: ohos/util/LinkedList.main.lsl:362 */
+     * Source: ohos/util/LinkedList.main.lsl:358 */
     clear() {
         /* body */ {
             let msg: string = "The clear method cannot be bound.";
@@ -413,7 +411,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::set(LSL_LinkedList<?::T>, number, ?::T) -> ?::T
-     * Source: ohos/util/LinkedList.main.lsl:371 */
+     * Source: ohos/util/LinkedList.main.lsl:367 */
     set(index: number, element: T): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
@@ -430,7 +428,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::convertToArray(LSL_LinkedList<?::T>) -> array<?::T>
-     * Source: ohos/util/LinkedList.main.lsl:385 */
+     * Source: ohos/util/LinkedList.main.lsl:380 */
     convertToArray(): Array<T> {
         let result: Array<T> = libsl.ANYTHING;
         /* body */ {
@@ -439,8 +437,9 @@ export class LinkedListAutomaton<T> {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             result = new Array<T>(this.storage.size());
+            let size: number = this.storage.size();
             let i: number = 0;
-            for (i = 0; i < this.storage.size(); i += 1) {
+            for (i = 0; i < size; i += 1) {
                 result[i] = this.storage.get(i);
             }
         }
@@ -449,7 +448,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::getFirst(LSL_LinkedList<?::T>) -> ?::T | undefined
-     * Source: ohos/util/LinkedList.main.lsl:405 */
+     * Source: ohos/util/LinkedList.main.lsl:401 */
     getFirst(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
@@ -469,7 +468,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::getLast(LSL_LinkedList<?::T>) -> ?::T | undefined
-     * Source: ohos/util/LinkedList.main.lsl:417 */
+     * Source: ohos/util/LinkedList.main.lsl:413 */
     getLast(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
@@ -489,7 +488,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::[Symbol.iterator](LSL_LinkedList<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/LinkedList.main.lsl:429 */
+     * Source: ohos/util/LinkedList.main.lsl:425 */
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -508,7 +507,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::length(LSL_LinkedList<?::T>) -> number
-     * Source: ohos/util/LinkedList.main.lsl:443 */
+     * Source: ohos/util/LinkedList.main.lsl:439 */
     get length(): number {
         let result: number = 0;
         /* body */ {

@@ -10,6 +10,7 @@ import {LSL_MapIterator_tupleKK_Automaton} from './LSL_MapIterator_tupleKK_Autom
 import {libsl} from './libsl_runtime';
 import {HashSet} from '@ohos.util.HashSet';
 import {Approximate} from '@org.jacodb.approximation.annotation';
+import {Engine} from '@org.usvm.api';
 
 
 /**
@@ -127,12 +128,13 @@ export class HashSetAutomaton<T> {
             }
             let storageSize: number = this.storage.size();
             if (storageSize !== 0) {
+                Engine.assume(storageSize > 0);
                 let unseen: libsl.LSLMap<T, any> = this.storage.duplicate();
-                let i: number = 0;
-                for (i = 0; i < storageSize; i += 1) {
+                while (storageSize !== 0) {
                     let value: T = unseen.anyKey();
                     callbackFn.call(thisArg, value, value, this);
                     unseen.remove(value);
+                    storageSize -= 1;
                 }
             }
         }
@@ -140,7 +142,7 @@ export class HashSetAutomaton<T> {
 
     /**
      * [FUNCTION] HashSetAutomaton::entries(HashSet<?::T>) -> IterableIterator<tuple<?::T, ?::T>>
-     * Source: ohos/util/HashSet.main.lsl:158 */
+     * Source: ohos/util/HashSet.main.lsl:164 */
     entries(): IterableIterator<[T, T]> {
         let result: IterableIterator<[T, T]> = libsl.ANYTHING;
         /* body */ {
@@ -158,7 +160,7 @@ export class HashSetAutomaton<T> {
 
     /**
      * [FUNCTION] HashSetAutomaton::[Symbol.iterator](HashSet<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/HashSet.main.lsl:169 */
+     * Source: ohos/util/HashSet.main.lsl:175 */
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -176,7 +178,7 @@ export class HashSetAutomaton<T> {
 
     /**
      * [FUNCTION] HashSetAutomaton::values(HashSet<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/HashSet.main.lsl:180 */
+     * Source: ohos/util/HashSet.main.lsl:186 */
     values(): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -194,7 +196,7 @@ export class HashSetAutomaton<T> {
 
     /**
      * [FUNCTION] HashSetAutomaton::length(HashSet<?::T>) -> number
-     * Source: ohos/util/HashSet.main.lsl:193 */
+     * Source: ohos/util/HashSet.main.lsl:199 */
     get length(): number {
         let result: number = 0;
         /* body */ {
