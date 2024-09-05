@@ -506,4 +506,15 @@ export class LinkedListAutomaton<T> {
         return result;
     }
 
+    /**
+     * [FUNCTION] LinkedListAutomaton::length(LSL_LinkedList<?::T>) -> number
+     * Source: ohos/util/LinkedList.main.lsl:443 */
+    get length(): number {
+        let result: number = 0;
+        /* body */ {
+            result = this.storage.size();
+        }
+        return result;
+    }
+
 }

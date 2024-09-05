@@ -494,4 +494,15 @@ export class ListAutomaton<T> {
         return result;
     }
 
+    /**
+     * [FUNCTION] ListAutomaton::length(LSL_List<?::T>) -> number
+     * Source: ohos/util/List.main.lsl:472 */
+    get length(): number {
+        let result: number = 0;
+        /* body */ {
+            result = this.storage.size();
+        }
+        return result;
+    }
+
 }

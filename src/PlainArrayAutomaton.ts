@@ -381,4 +381,15 @@ export class PlainArrayAutomaton<T> {
         return result;
     }
 
+    /**
+     * [FUNCTION] PlainArrayAutomaton::length(LSL_PlainArray<?::T>) -> number
+     * Source: ohos/util/PlainArray.main.lsl:375 */
+    get length(): number {
+        let result: number = 0;
+        /* body */ {
+            result = this.keysStorage.size();
+        }
+        return result;
+    }
+
 }

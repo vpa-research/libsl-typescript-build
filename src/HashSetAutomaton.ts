@@ -192,4 +192,15 @@ export class HashSetAutomaton<T> {
         return result;
     }
 
+    /**
+     * [FUNCTION] HashSetAutomaton::length(HashSet<?::T>) -> number
+     * Source: ohos/util/HashSet.main.lsl:193 */
+    get length(): number {
+        let result: number = 0;
+        /* body */ {
+            result = this.storage.size();
+        }
+        return result;
+    }
+
 }

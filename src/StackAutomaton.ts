@@ -148,4 +148,15 @@ export class StackAutomaton<T> {
         return result;
     }
 
+    /**
+     * [FUNCTION] StackAutomaton::length(LSL_Stack<?::T>) -> number
+     * Source: ohos/util/Stack.main.lsl:157 */
+    get length(): number {
+        let result: number = 0;
+        /* body */ {
+            result = this.storage.size();
+        }
+        return result;
+    }
+
 }

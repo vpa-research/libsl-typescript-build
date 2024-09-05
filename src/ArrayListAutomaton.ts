@@ -477,4 +477,15 @@ export class ArrayListAutomaton<T> {
         return result;
     }
 
+    /**
+     * [FUNCTION] ArrayListAutomaton::length(LSL_ArrayList<?::T>) -> number
+     * Source: ohos/util/ArrayList.main.lsl:493 */
+    get length(): number {
+        let result: number = 0;
+        /* body */ {
+            result = this.storage.size();
+        }
+        return result;
+    }
+
 }

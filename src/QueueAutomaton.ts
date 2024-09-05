@@ -111,4 +111,15 @@ export class QueueAutomaton<T> {
         return result;
     }
 
+    /**
+     * [FUNCTION] QueueAutomaton::length(LSL_Queue<?::T>) -> number
+     * Source: ohos/util/Queue.main.lsl:130 */
+    get length(): number {
+        let result: number = 0;
+        /* body */ {
+            result = this.storage.size();
+        }
+        return result;
+    }
+
 }
