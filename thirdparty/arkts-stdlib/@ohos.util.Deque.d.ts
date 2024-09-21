@@ -1,6 +1,6 @@
 // hand-written
 
-export class Deque<E> {
+export class Deque<T> {
 
     [Symbol.iterator](): IterableIterator<T>;
 

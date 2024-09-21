@@ -1,6 +1,6 @@
 // hand-written
 
-export class List<E> {
+export class List<T> {
 
     [Symbol.iterator](): IterableIterator<T>;
 

@@ -1,6 +1,6 @@
 // hand-written
 
-export class LinkedList<E> {
+export class LinkedList<T> {
 
     [Symbol.iterator](): IterableIterator<T>;
 

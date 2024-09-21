@@ -1,6 +1,6 @@
 // hand-written
 
-export class PlainArray<E> {
+export class PlainArray<T> {
 
     [Symbol.iterator](): IterableIterator<[number, T]>;
 

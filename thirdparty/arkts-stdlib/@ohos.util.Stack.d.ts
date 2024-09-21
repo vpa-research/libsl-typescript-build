@@ -1,6 +1,6 @@
 // hand-written
 
-export class Stack<E> {
+export class Stack<T> {
 
     [Symbol.iterator](): IterableIterator<T>;
 

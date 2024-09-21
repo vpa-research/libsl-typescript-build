@@ -37,4 +37,16 @@ describe("Queue", () => {
         expect(x).toBe(value);
     });
 
+
+    test('[Symbol.iterator]', () => {
+        let obj: Queue<string> = new QueueAutomaton();
+        let value = "test-value";
+
+        let iter = obj[Symbol.iterator]();
+        obj.add(value);
+        let x = iter.next().value;
+
+        expect(x).toBe(value);
+    });
+
 });

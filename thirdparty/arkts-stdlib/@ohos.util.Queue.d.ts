@@ -1,6 +1,6 @@
 // hand-written
 
-export class Queue<E> {
+export class Queue<T> {
 
     [Symbol.iterator](): IterableIterator<T>;
 
