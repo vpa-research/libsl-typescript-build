@@ -96,39 +96,39 @@ class EngimeImpl {
     }
 
     public static makeSymbolicArray<T>(clazz: any, size: number): Array<T> {
-        return new Array(size);
+        return new Array(size).fill(null as T);
     }
 
     public static makeSymbolicBooleanArray(size: number): Array<boolean> {
-        return new Array(size);
+        return new Array(size).fill(false);
     }
 
     public static makeSymbolicByteArray(size: number): Array<number> {
-        return new Array(size);
+        return new Array(size).fill(0);
     }
 
     public static makeSymbolicCharArray(size: number): Array<number> {
-        return new Array(size);
+        return new Array(size).fill(0);
     }
 
     public static makeSymbolicShortArray(size: number): Array<number> {
-        return new Array(size);
+        return new Array(size).fill(0);
     }
 
     public static makeSymbolicIntArray(size: number): Array<number> {
-        return new Array(size);
+        return new Array(size).fill(0);
     }
 
     public static makeSymbolicLongArray(size: number): Array<number> {
-        return new Array(size);
+        return new Array(size).fill(0);
     }
 
     public static makeSymbolicFloatArray(size: number): Array<number> {
-        return new Array(size);
+        return new Array(size).fill(0);
     }
 
     public static makeSymbolicDoubleArray(size: number): Array<number> {
-        return new Array(size);
+        return new Array(size).fill(0);
     }
 
     public static makeSymbolicList<T>(): SymbolicList<T> {
