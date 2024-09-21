@@ -2,7 +2,7 @@
   "name": "libsl-typescript-build",
   "version": "0.0.1",
   "description": "",
-  "main": "__build_check.js",
+  "main": "src/libsl_runtime.js",
   "scripts": {
     "test": "jest"
   },

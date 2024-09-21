@@ -212,11 +212,24 @@ class SymbolicMapImpl<K, V> {
 }
 
 
-// actual set-up
+function emptyClassMock(namePrefix: string) {
+    return class {
+
+        static [Symbol.hasInstance](other: any): boolean {
+            // example: QueueAutomaton == Queue
+            return other.constructor.name.startsWith(namePrefix);
+        }
+
+    };
+}
+
+
+// actual set-up: virtual machine API
 
 jest.mock("@org.usvm.api", () => ({
     Engine: EngimeImpl,
 }), { virtual: true });
+
 
 jest.mock("@org.jacodb.approximation.annotation", () => ({
     Approximate: (clazz: NonNullable<any>) => {
@@ -225,3 +238,18 @@ jest.mock("@org.jacodb.approximation.annotation", () => ({
         }
     },
 }), { virtual: true });
+
+
+// actual set-up: stdlib
+
+jest.mock("@ohos.util.ArrayList",   () => ({ ArrayList:     emptyClassMock("ArrayList")     }), { virtual: true });
+jest.mock("@ohos.util.Deque",       () => ({ Deque:         emptyClassMock("Deque")         }), { virtual: true });
+jest.mock("@ohos.util.HashMap",     () => ({ HashMap:       emptyClassMock("HashMap")       }), { virtual: true });
+jest.mock("@ohos.util.HashSet",     () => ({ HashSet:       emptyClassMock("HashSet")       }), { virtual: true });
+jest.mock("@ohos.util.LinkedList",  () => ({ LinkedList:    emptyClassMock("LinkedList")    }), { virtual: true });
+jest.mock("@ohos.util.List",        () => ({ List:          emptyClassMock("List")          }), { virtual: true });
+jest.mock("@ohos.util.PlainArray",  () => ({ PlainArray:    emptyClassMock("PlainArray")    }), { virtual: true });
+jest.mock("@ohos.util.Queue",       () => ({ Queue:         emptyClassMock("Queue")         }), { virtual: true });
+jest.mock("@ohos.util.Stack",       () => ({ Stack:         emptyClassMock("Stack")         }), { virtual: true });
+jest.mock("@ohos.util.TreeMap",     () => ({ TreeMap:       emptyClassMock("TreeMap")       }), { virtual: true });
+jest.mock("@ohos.util.TreeSet",     () => ({ TreeSet:       emptyClassMock("TreeSet")       }), { virtual: true });

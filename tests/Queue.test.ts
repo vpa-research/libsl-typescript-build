@@ -1,34 +1,39 @@
-// preparations
-
-jest.mock("@ohos.util.Queue", () => ({
-    Queue: class {
-        static [Symbol.hasInstance](other: any): boolean {
-            let name: string = other.constructor.name;
-            return name.startsWith("Queue");
-        }
-    }
-}), { virtual: true });
-
-
-// actual import
-
 import { Queue } from "@ohos.util.Queue";
 import { QueueAutomaton } from "../src/QueueAutomaton";
 
 
 // test set itself
 
-describe("queue", () => {
-    test('initialization', () => {
-        let x: Queue<string> = new QueueAutomaton();
+describe("Queue", () => {
 
-        expect(x).not.toBeNull();
+    test('<ctor>', () => {
+        let obj: Queue<string> = new QueueAutomaton();
+
+        expect(obj).not.toBeNull();
+        expect(obj.length).toBe(0);
     });
 
-    test('default size', () => {
-        let x: Queue<string> = new QueueAutomaton();
 
-        expect(x.length).toBe(0);
+    test('add', () => {
+        let obj: Queue<string> = new QueueAutomaton();
+        let value = "test-value";
+
+        obj.add(value);
+
+        expect(obj.length).toBe(1);
+        expect((obj as QueueAutomaton<string>).storage.get(0)).toBe(value);
     });
+
+
+    test('pop', () => {
+        let obj: Queue<string> = new QueueAutomaton();
+        let value = "test-value";
+
+        obj.add(value);
+        let x = obj.pop();
+
+        expect(obj.length).toBe(0);
+        expect(x).toBe(value);
+    });
+
 });
-
