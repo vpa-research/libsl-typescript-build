@@ -10,7 +10,7 @@ export class Queue<E> {
 
     getFirst(): T;
 
-    length: number;
+    readonly length: number;
 
     pop(): T;
 

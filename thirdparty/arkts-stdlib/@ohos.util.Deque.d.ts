@@ -16,7 +16,7 @@ export class Deque<E> {
 
     insertFront(element: T);
 
-    length: number;
+    readonly length: number;
 
     popFirst(): T | undefined;
 

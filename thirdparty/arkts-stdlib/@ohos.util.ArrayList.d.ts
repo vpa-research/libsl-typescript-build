@@ -28,7 +28,7 @@ export class ArrayList<E> {
 
     isEmpty(): boolean;
 
-    length: number;
+    readonly length: number;
 
     remove(element: T): boolean;
 
