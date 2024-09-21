@@ -172,9 +172,10 @@ class SymbolicListImpl<E> {
         this.items.splice(index, 1);
     }
 
-    public copy(dst: SymbolicListImpl<E>, srcPos: number, dstPos: number, len: number): void {
+    public copy(dst: SymbolicList<E>, srcPos: number, dstPos: number, len: number): void {
+        let other = dst as SymbolicListImpl<E>;
         for (let i = 0; i < len; i++)
-            dst.items[dstPos + i] = this.items[srcPos + i];
+            other.items[dstPos + i] = this.items[srcPos + i];
     }
 }
 
