@@ -18,8 +18,9 @@ describe("Queue", () => {
         let obj: Queue<string> = new QueueAutomaton();
         let value = "test-value";
 
-        obj.add(value);
+        let x = obj.add(value);
 
+        expect(x).toBe(true);
         expect(obj.length).toBe(1);
         expect((obj as QueueAutomaton<string>).storage.get(0)).toBe(value);
     });
