@@ -13,18 +13,17 @@ describe("Queue", () => {
 
     test('<ctor>', () => {
         type MyClass<T> = QueueAutomaton<T>;
-        let MyClass = QueueAutomaton as typeof QueueAutomaton & (() => MyClass<any>)
+        let MyClass = QueueAutomaton as typeof QueueAutomaton & (() => MyClass<any>);
 
-        let obj: Queue<string> = new MyClass<string>();
+        let obj: Queue<string> = new MyClass();
 
-        expect(obj).not.toBeNull();
         expect(obj.length).toBe(0);
 
         try {
-            let x: Queue<string> = MyClass();
-            fail();
+            let invalid: Queue<string> = MyClass();
 
-            expect(x.length).toBe(0); // just here to keep 'x' from being optimized-out
+            fail();
+            expect(invalid).not.toBeNull(); // just here to keep it from being optimized-out
         } catch (e) {
             // ok
         }
