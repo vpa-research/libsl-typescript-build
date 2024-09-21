@@ -6,11 +6,28 @@ import { QueueAutomaton } from "../src/QueueAutomaton";
 
 describe("Queue", () => {
 
+    test.skip('disabled-test-just-for-reference', () => {
+        expect(1).toBe(0);
+    });
+
+
     test('<ctor>', () => {
-        let obj: Queue<string> = new QueueAutomaton();
+        type MyClass<T> = QueueAutomaton<T>;
+        let MyClass = QueueAutomaton as typeof QueueAutomaton & (() => MyClass<any>)
+
+        let obj: Queue<string> = new MyClass<string>();
 
         expect(obj).not.toBeNull();
         expect(obj.length).toBe(0);
+
+        try {
+            let x: Queue<string> = MyClass();
+            fail();
+
+            expect(x.length).toBe(0); // just here to keep 'x' from being optimized-out
+        } catch (e) {
+            // ok
+        }
     });
 
 
@@ -42,11 +59,16 @@ describe("Queue", () => {
         let obj: Queue<string> = new QueueAutomaton();
         let value = "test-value";
 
+        // JS Array has this behavior
         let iter = obj[Symbol.iterator]();
         obj.add(value);
-        let x = iter.next().value;
+        let x = iter.next();
+        let y = iter.next();
 
-        expect(x).toBe(value);
+        expect(x.done).toBeFalsy();
+        expect(x.value).toBe(value);
+        expect(y.done).toBe(true);
+        expect(y.value).toBeUndefined();
     });
 
 });
