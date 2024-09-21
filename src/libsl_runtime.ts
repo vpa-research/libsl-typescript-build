@@ -21,7 +21,7 @@ declare var AggregateError: AggregateErrorConstructor;
 
 export namespace libsl {
 
-    export const ANYTHING: any = {};
+    export const ANYTHING: any = null;
     export const UNDEFINED: any = undefined;
 
     // WARNING: This solution is suitable ONLY for single-threaded execution.
