@@ -24,7 +24,7 @@ describe("Queue", () => {
             let invalid: Queue<string> = MyClass();
 
             errors = 0;
-            expect(invalid).not.toBeNull(); // just here to keep it from being optimized-out
+            expect(invalid); // just here to keep it from being optimized-out
         } catch (e) {
             // ok
             errors = 1;
