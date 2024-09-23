@@ -19,17 +19,17 @@ describe("Queue", () => {
 
         expect(obj.length).toBe(0);
 
-        let errors = 0;
+        let failures = 0;
         try {
             let invalid: Queue<string> = MyClass();
 
-            errors = 0;
+            failures += 2;
             expect(invalid); // just here to keep it from being optimized-out
         } catch (e) {
             // ok
-            errors = 1;
+            failures += 1;
         }
-        expect(errors).toBe(1);
+        expect(failures).toBe(1);
     });
 
 
