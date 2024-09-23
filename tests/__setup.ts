@@ -181,18 +181,18 @@ class SymbolicListImpl<E> {
 
 
 class SymbolicMapImpl<K, V> {
-    private map: Map<K | null, V | null> = new Map();
+    private map: Map<any, any> = new Map();
 
     public size(): number {
         return this.map.size;
     }
 
     public get(key: K | null): V {
-        return this.map.get(key) as V;
+        return this.map.get(key);
     }
 
     public anyKey(): K {
-        return this.map.keys().next().value as K;
+        return this.map.keys().next().value;
     }
 
     public set(key: K | null, value: V | null): void {
