@@ -25,7 +25,7 @@ describe("Stack", () => {
     });
 
 
-    test('add', () => {
+    test('push', () => {
         let obj: Stack<string> = new StackAutomaton();
         let value = "test-value";
 
