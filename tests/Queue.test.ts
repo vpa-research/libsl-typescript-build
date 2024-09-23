@@ -7,7 +7,7 @@ import { QueueAutomaton } from "../src/QueueAutomaton";
 describe("Queue", () => {
 
     test.skip('disabled-test-just-for-reference', () => {
-        expect(1).toBe(0);
+        // nothing, this is just a reminder of how to use Jest testing framework
     });
 
 
