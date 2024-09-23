@@ -46,11 +46,11 @@ describe("Queue", () => {
         let obj: Queue<string> = new QueueAutomaton();
         let value = "test-value";
 
-        obj.add(value);
+        (obj as QueueAutomaton<string>).storage.insert(0, value);
         let x = obj.pop();
 
-        expect(obj.length).toBe(0);
         expect(x).toBe(value);
+        expect(obj.length).toBe(0);
     });
 
 

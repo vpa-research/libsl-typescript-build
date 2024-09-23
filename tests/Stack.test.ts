@@ -41,11 +41,11 @@ describe("Stack", () => {
         let obj: Stack<string> = new StackAutomaton();
         let value = "test-value";
 
-        obj.push(value);
+        (obj as StackAutomaton<string>).storage.insert(0, value);
         let x = obj.pop();
 
-        expect(obj.length).toBe(0);
         expect(x).toBe(value);
+        expect(obj.length).toBe(0);
     });
 
 
