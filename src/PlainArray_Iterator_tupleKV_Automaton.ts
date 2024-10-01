@@ -33,6 +33,7 @@ export class PlainArray_Iterator_tupleKV_Automaton<K, V> {
             let pos: number = this.cursor;
             if (pos < this.keys.size()) {
                 Engine.assume(pos >= 0);
+                Engine.assume(pos < this.values.size());
                 iteratorValue = [ this.keys.get(pos), this.values.get(pos) ];
                 iteratorDone = false;
                 this.cursor = pos + 1;
@@ -48,7 +49,7 @@ export class PlainArray_Iterator_tupleKV_Automaton<K, V> {
 
     /**
      * [FUNCTION] PlainArray_Iterator_tupleKV_Automaton::[Symbol.iterator](PlainArray_Iterator_tupleKV<?::K, ?::V>) -> IterableIterator<tuple<?::K, ?::V>>
-     * Source: ohos/util/PlainArray.Iterator_tupleKV.lsl:63 */
+     * Source: ohos/util/PlainArray.Iterator_tupleKV.lsl:64 */
     [Symbol.iterator](): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
