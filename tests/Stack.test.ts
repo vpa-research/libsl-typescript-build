@@ -6,7 +6,7 @@ import { StackAutomaton } from "../src/StackAutomaton";
 
 describe("Stack", () => {
 
-    test('<ctor>', () => {
+    test('<init>', () => {
         type MyClass<T> = StackAutomaton<T>;
         let MyClass = StackAutomaton as typeof StackAutomaton & (() => MyClass<any>);
 

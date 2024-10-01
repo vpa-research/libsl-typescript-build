@@ -11,7 +11,7 @@ describe("Queue", () => {
     });
 
 
-    test('<ctor>', () => {
+    test('<init>', () => {
         type MyClass<T> = QueueAutomaton<T>;
         let MyClass = QueueAutomaton as typeof QueueAutomaton & (() => MyClass<any>);
 
