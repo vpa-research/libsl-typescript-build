@@ -38,13 +38,26 @@ describe("HashSet", () => {
     });
 
 
-    test.skip('isEmpty', () => {
-        fail("TODO");
+    test('isEmpty', () => {
+        let obj: HashSet<string> = new HashSetAutomaton();
+        let value = "test-value";
+
+        expect(obj.isEmpty()).toBe(true);
+
+        (obj as HashSetAutomaton<string>).storage.set(value, value);
+
+        expect(obj.isEmpty()).toBe(false);
     });
 
 
-    test.skip('has', () => {
-        fail("TODO");
+    test('has', () => {
+        let obj: HashSet<string> = new HashSetAutomaton();
+        let value = "test-value";
+
+        (obj as HashSetAutomaton<string>).storage.set(value, value);
+        let x = obj.has(value);
+
+        expect(x).toBe(true);
     });
 
 
@@ -72,13 +85,30 @@ describe("HashSet", () => {
     });
 
 
-    test.skip('clear', () => {
-        fail("TODO");
+    test('clear', () => {
+        let obj: HashSet<string> = new HashSetAutomaton();
+        let value = "test-value";
+
+        (obj as HashSetAutomaton<string>).storage.set(value, value);
+        obj.clear();
+
+        expect(obj.length).toBe(0);
     });
 
 
-    test.skip('forEach', () => {
-        fail("TODO");
+    test('forEach', () => {
+        let obj: HashSet<string> = new HashSetAutomaton();
+        let values = ["A", "B", "C"];
+        let results: (string | undefined)[] = [];
+
+        obj.add(values[0]);
+        obj.add(values[1]);
+        obj.add(values[2]);
+
+        obj.forEach((value) => results.push(value));
+
+        expect(results).toStrictEqual(values);
+        expect(obj.length).toBe(values.length);
     });
 
 

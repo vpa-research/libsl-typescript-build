@@ -38,18 +38,38 @@ describe("TreeMap", () => {
     });
 
 
-    test.skip('isEmpty', () => {
-        fail("TODO");
+    test('isEmpty', () => {
+        let obj: TreeMap<string, string> = new TreeMapAutomaton((a, b) => undefined);
+        let key = "test-key";
+        let value = "test-value";
+
+        expect(obj.isEmpty()).toBe(true);
+
+        (obj as TreeMapAutomaton<string, string>).storage.set(key, value);
+
+        expect(obj.isEmpty()).toBe(false);
     });
 
 
-    test.skip('hasKey', () => {
-        fail("TODO");
+    test('hasKey', () => {
+        let obj: TreeMap<string, string> = new TreeMapAutomaton((a, b) => undefined);
+        let key = "test-key";
+        let value = "test-value";
+
+        (obj as TreeMapAutomaton<string, string>).storage.set(key, value);
+
+        expect(obj.hasKey(key)).toBe(true);
     });
 
 
-    test.skip('hasValue', () => {
-        fail("TODO");
+    test('hasValue', () => {
+        let obj: TreeMap<string, string> = new TreeMapAutomaton((a, b) => undefined);
+        let key = "test-key";
+        let value = "test-value";
+
+        (obj as TreeMapAutomaton<string, string>).storage.set(key, value);
+
+        expect(obj.hasValue(value)).toBe(true);
     });
 
 
@@ -92,8 +112,19 @@ describe("TreeMap", () => {
     });
 
 
-    test.skip('setAll', () => {
-        fail("TODO");
+    test('setAll', () => {
+        let a: TreeMap<string, string> = new TreeMapAutomaton((a, b) => undefined);
+        a.set("1", "a");
+        a.set("2", "a");
+
+        let b: TreeMap<string, string> = new TreeMapAutomaton((a, b) => undefined);
+        b.set("1", "b");
+        b.set("3", "b");
+
+        a.setAll(b);
+
+        expect(a.length).toBe(3);
+        expect((a as TreeMapAutomaton<string, string>).storage.toString()).toBe("{1=b, 2=a, 3=b}");
     });
 
 
@@ -153,8 +184,18 @@ describe("TreeMap", () => {
     });
 
 
-    test.skip('replace', () => {
-        fail("TODO");
+    test('replace', () => {
+        let obj: TreeMap<string, string> = new TreeMapAutomaton((a, b) => undefined);
+        let key = "test-key";
+        let value = "test-value";
+        let value2 = "test-value2";
+
+        (obj as TreeMapAutomaton<string, string>).storage.set(key, value);
+        let x = obj.replace(key, value2);
+
+        expect(x).toBe(true);
+        expect(obj.length).toBe(1);
+        expect(obj.get(key)).toBe(value2);
     });
 
 
@@ -204,8 +245,17 @@ describe("TreeMap", () => {
     });
 
 
-    test.skip('forEach', () => {
-        fail("TODO");
+    test('forEach', () => {
+        let obj: TreeMap<string, string> = new TreeMapAutomaton((a, b) => undefined);
+        let key = "test-key";
+        let value = "test-value";
+        let result: any = null;
+
+        (obj as TreeMapAutomaton<string, string>).storage.set(key, value);
+        obj.forEach((v, k) => result = [k, v]);
+
+        expect(result).toStrictEqual([key, value]);
+        expect(obj.length).toBe(1);
     });
 
 

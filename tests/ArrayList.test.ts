@@ -132,13 +132,35 @@ describe("ArrayList", () => {
     });
 
 
-    test.skip('forEach', () => {
-        fail("TODO");
+    test('forEach', () => {
+        let obj: ArrayList<string> = new ArrayListAutomaton();
+        let values = ["test-value1", "test-value2", "test-value3"];
+        let results: string[] = [];
+
+        obj.add(values[0]);
+        obj.add(values[1]);
+        obj.add(values[2]);
+
+        obj.forEach((value) => results.push(value));
+
+        expect(results).toStrictEqual(values);
     });
 
 
-    test.skip('sort', () => {
-        fail("TODO");
+    test('sort', () => {
+        let obj: ArrayList<number> = new ArrayListAutomaton();
+        let values = [3, 1, 2];
+        let results: number[] = [];
+
+        obj.add(values[0]);
+        obj.add(values[1]);
+        obj.add(values[2]);
+
+        obj.sort((a, b) => b - a);
+
+        obj.forEach((value) => results.push(value));
+
+        expect(results).toStrictEqual(values.sort((a, b) => b - a));
     });
 
 

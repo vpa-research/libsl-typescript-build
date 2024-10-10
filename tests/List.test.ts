@@ -113,8 +113,20 @@ describe("List", () => {
     });
 
 
-    test.skip('sort', () => {
-        fail("TODO");
+    test('sort', () => {
+        let obj: List<number> = new ListAutomaton();
+        let values = [3, 1, 2];
+        let results: number[] = [];
+
+        obj.add(values[0]);
+        obj.add(values[1]);
+        obj.add(values[2]);
+
+        obj.sort((a, b) => b - a);
+
+        obj.forEach((value) => results.push(value));
+
+        expect(results).toStrictEqual(values.sort((a, b) => b - a));
     });
 
 

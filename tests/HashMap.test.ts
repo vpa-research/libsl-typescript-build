@@ -38,28 +38,66 @@ describe("HashMap", () => {
     });
 
 
-    test.skip('isEmpty', () => {
-        fail("TODO");
+    test('isEmpty', () => {
+        let obj: HashMap<string, string> = new HashMapAutomaton();
+        let key = "test-key";
+        let value = "test-value";
+
+        expect(obj.isEmpty()).toBe(true);
+
+        (obj as HashMapAutomaton<string, string>).storage.set(key, value);
+
+        expect(obj.isEmpty()).toBe(false);
     });
 
 
-    test.skip('hasKey', () => {
-        fail("TODO");
+    test('hasKey', () => {
+        let obj: HashMap<string, string> = new HashMapAutomaton();
+        let key = "test-key";
+        let value = "test-value";
+
+        (obj as HashMapAutomaton<string, string>).storage.set(key, value);
+
+        expect(obj.hasKey(key)).toBe(true);
     });
 
 
-    test.skip('hasValue', () => {
-        fail("TODO");
+    test('hasValue', () => {
+        let obj: HashMap<string, string> = new HashMapAutomaton();
+        let key = "test-key";
+        let value = "test-value";
+
+        (obj as HashMapAutomaton<string, string>).storage.set(key, value);
+
+        expect(obj.hasValue(value)).toBe(true);
     });
 
 
-    test.skip('get', () => {
-        fail("TODO");
+    test('get', () => {
+        let obj: HashMap<string, string> = new HashMapAutomaton();
+        let key = "test-key";
+        let value = "test-value";
+
+        (obj as HashMapAutomaton<string, string>).storage.set(key, value);
+
+        expect(obj.get(key)).toBe(value);
+        expect(obj.get(value)).toBeUndefined();
     });
 
 
-    test.skip('setAll', () => {
-        fail("TODO");
+    test('setAll', () => {
+        let a: HashMap<string, string> = new HashMapAutomaton();
+        a.set("1", "a");
+        a.set("2", "a");
+
+        let b: HashMap<string, string> = new HashMapAutomaton();
+        b.set("1", "b");
+        b.set("3", "b");
+
+        a.setAll(b);
+
+        expect(a.length).toBe(3);
+        expect((a as HashMapAutomaton<string, string>).storage.toString()).toBe("{1=b, 2=a, 3=b}");
     });
 
 
@@ -76,16 +114,25 @@ describe("HashMap", () => {
     });
 
 
-    test.skip('remove', () => {
-        fail("TODO");
+    test('remove', () => {
+        let obj: HashMap<string, string> = new HashMapAutomaton();
+        let key = "test-key";
+        let value = "test-value";
+
+        (obj as HashMapAutomaton<string, string>).storage.set(key, value);
+        let x = obj.remove(key);
+
+        expect(x).toBe(value);
+        expect(obj.length).toBe(0);
     });
 
 
     test('clear', () => {
         let obj: HashMap<string, string> = new HashMapAutomaton();
+        let key = "test-key";
         let value = "test-value";
 
-        (obj as HashMapAutomaton<string, string>).storage.set("0", value);
+        (obj as HashMapAutomaton<string, string>).storage.set(key, value);
         obj.clear();
 
         expect(obj.length).toBe(0);
@@ -128,13 +175,32 @@ describe("HashMap", () => {
     });
 
 
-    test.skip('replace', () => {
-        fail("TODO");
+    test('replace', () => {
+        let obj: HashMap<string, string> = new HashMapAutomaton();
+        let key = "test-key";
+        let value = "test-value";
+        let value2 = "test-value2";
+
+        (obj as HashMapAutomaton<string, string>).storage.set(key, value);
+        let x = obj.replace(key, value2);
+
+        expect(x).toBe(true);
+        expect(obj.length).toBe(1);
+        expect(obj.get(key)).toBe(value2);
     });
 
 
-    test.skip('forEach', () => {
-        fail("TODO");
+    test('forEach', () => {
+        let obj: HashMap<string, string> = new HashMapAutomaton();
+        let key = "test-key";
+        let value = "test-value";
+        let result: any = null;
+
+        (obj as HashMapAutomaton<string, string>).storage.set(key, value);
+        obj.forEach((v, k) => result = [k, v]);
+
+        expect(result).toStrictEqual([key, value]);
+        expect(obj.length).toBe(1);
     });
 
 
