@@ -62,23 +62,45 @@ describe("Stack", () => {
     });
 
 
-    test.skip('pop', () => {
-        fail("TODO");
+    test('peek', () => {
+        let obj: Stack<string> = new StackAutomaton();
+        let value = "test-value";
+
+        expect(obj.peek()).toBeUndefined();
+
+        (obj as StackAutomaton<string>).storage.insert(0, value);
+
+        expect(obj.peek()).toBe(value);
+        expect(obj.length).toBe(1);
     });
 
 
-    test.skip('peek', () => {
-        fail("TODO");
+    test('locate', () => {
+        let obj: Stack<string> = new StackAutomaton();
+        let values = ["A", "B", "C"];
+
+        obj.push(values[0]);
+        obj.push(values[1]);
+        obj.push(values[2]);
+
+        let x = obj.locate(values[1]);
+
+        expect(x).toBe(1);
     });
 
 
-    test.skip('locate', () => {
-        fail("TODO");
-    });
+    test('forEach', () => {
+        let obj: Stack<string> = new StackAutomaton();
+        let values = ["A", "B", "C"];
+        let results: string[] = [];
 
+        obj.push(values[0]);
+        obj.push(values[1]);
+        obj.push(values[2]);
 
-    test.skip('forEach', () => {
-        fail("TODO");
+        obj.forEach((value) => results.push(value));
+
+        expect(results).toStrictEqual(values);
     });
 
 

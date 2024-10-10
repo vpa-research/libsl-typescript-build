@@ -38,23 +38,48 @@ describe("TreeSet", () => {
     });
 
 
-    test.skip('isEmpty', () => {
-        fail("TODO");
+    test('isEmpty', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        expect(obj.isEmpty()).toBe(true);
+
+        (obj as TreeSetAutomaton<string>).storage.set(value, value);
+
+        expect(obj.isEmpty()).toBe(false);
     });
 
 
-    test.skip('has', () => {
-        fail("TODO");
+    test('has', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        (obj as TreeSetAutomaton<string>).storage.set(value, value);
+        let x = obj.has(value);
+
+        expect(x).toBe(true);
     });
 
 
-    test.skip('getFirstValue', () => {
-        fail("TODO");
+    test('getFirstValue', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        (obj as TreeSetAutomaton<string>).storage.set(value, value);
+        let x = obj.getFirstValue();
+
+        expect(x).toBe(value);
     });
 
 
-    test.skip('getLastValue', () => {
-        fail("TODO");
+    test('getLastValue', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        (obj as TreeSetAutomaton<string>).storage.set(value, value);
+        let x = obj.getLastValue();
+
+        expect(x).toBe(value);
     });
 
 
@@ -82,38 +107,94 @@ describe("TreeSet", () => {
     });
 
 
-    test.skip('getLowerValue', () => {
-        fail("TODO");
+    test('getLowerValue', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        (obj as TreeSetAutomaton<string>).storage.set(value, value);
+        let x = obj.getLowerValue();
+
+        expect(x).toBe(value);
+        // NOTE: not applicable to the model
     });
 
 
-    test.skip('getHigherValue', () => {
-        fail("TODO");
+    test('getHigherValue', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        (obj as TreeSetAutomaton<string>).storage.set(value, value);
+        let x = obj.getHigherValue();
+
+        expect(x).toBe(value);
+        // NOTE: not applicable to the model
     });
 
 
-    test.skip('popFirst', () => {
-        fail("TODO");
+    test('popFirst', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        (obj as TreeSetAutomaton<string>).storage.set(value, value);
+        let x = obj.popFirst();
+
+        expect(x).toBe(value);
+        expect(obj.length).toBe(0);
     });
 
 
-    test.skip('popLast', () => {
-        fail("TODO");
+    test('popLast', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        (obj as TreeSetAutomaton<string>).storage.set(value, value);
+        let x = obj.popLast();
+
+        expect(x).toBe(value);
+        expect(obj.length).toBe(0);
     });
 
 
-    test.skip('clear', () => {
-        fail("TODO");
+    test('clear', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        (obj as TreeSetAutomaton<string>).storage.set(value, value);
+        obj.clear();
+
+        expect(obj.length).toBe(0);
     });
 
 
-    test.skip('values', () => {
-        fail("TODO");
+    test('values', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let value = "test-value";
+
+        obj.add(value);
+        let iter = obj.values();
+        let x = iter.next();
+        let y = iter.next();
+
+        expect(x.done).toBeFalsy();
+        expect(x.value).toBe(value);
+        expect(y.done).toBe(true);
+        expect(y.value).toBeUndefined();
     });
 
 
-    test.skip('forEach', () => {
-        fail("TODO");
+    test('forEach', () => {
+        let obj: TreeSet<string> = new TreeSetAutomaton((a, b) => undefined);
+        let values = ["A", "B", "C"];
+        let results: (string | undefined)[] = [];
+
+        obj.add(values[0]);
+        obj.add(values[1]);
+        obj.add(values[2]);
+
+        obj.forEach((value) => results.push(value));
+
+        expect(results).toStrictEqual(values);
+        expect(obj.length).toBe(values.length);
     });
 
 
