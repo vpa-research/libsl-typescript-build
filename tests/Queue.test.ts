@@ -42,6 +42,19 @@ describe("Queue", () => {
         expect(x).toBe(true);
         expect(obj.length).toBe(1);
         expect((obj as QueueAutomaton<string>).storage.get(0)).toBe(value);
+
+        let failures = 0;
+        try {
+            let func = obj.add;
+            let unused = func.apply(new Object(), [value]);
+
+            failures += 2;
+            expect(unused); // just here to keep it from being optimized-out
+        } catch(e) {
+            // ok
+            failures += 1;
+        }
+        expect(failures).toBe(1);
     });
 
 
@@ -54,6 +67,16 @@ describe("Queue", () => {
 
         expect(x).toBe(value);
         expect(obj.length).toBe(0);
+    });
+
+
+    test.skip('getFirst', () => {
+        fail("TODO");
+    });
+
+
+    test.skip('forEach', () => {
+        fail("TODO");
     });
 
 
@@ -71,6 +94,22 @@ describe("Queue", () => {
         expect(x.value).toBe(value);
         expect(y.done).toBe(true);
         expect(y.value).toBeUndefined();
+    });
+
+
+    test('length', () => {
+        let obj: Queue<string> = new QueueAutomaton();
+
+        expect(obj.length).toBe(0);
+
+        obj.add("123");
+        obj.add("456");
+
+        expect(obj.length).toBe(2);
+
+        obj.pop();
+
+        expect(obj.length).toBe(1);
     });
 
 });

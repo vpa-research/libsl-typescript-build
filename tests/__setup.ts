@@ -177,6 +177,10 @@ class SymbolicListImpl<E> {
         for (let i = 0; i < len; i++)
             other.items[dstPos + i] = this.items[srcPos + i];
     }
+
+    public toString(): string {
+        return "[" + this.items.join(", ") + "]";
+    }
 }
 
 
@@ -209,6 +213,22 @@ class SymbolicMapImpl<K, V> {
 
     public merge(other: SymbolicMap<K, V>): void {
         (other as SymbolicMapImpl<K, V>).map.forEach((v, k) => this.map.set(k, v));
+    }
+
+    public toString(): string {
+        let result = "{";
+
+        let isFirst = true;
+        this.map.forEach((v, k) => {
+            if (isFirst)
+                isFirst = false;
+            else
+                result += ", ";
+
+            result += k + "=" + v;
+        });
+
+        return result + "}";
     }
 }
 

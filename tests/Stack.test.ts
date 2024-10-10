@@ -52,6 +52,26 @@ describe("Stack", () => {
     });
 
 
+    test.skip('pop', () => {
+        fail("TODO");
+    });
+
+
+    test.skip('peek', () => {
+        fail("TODO");
+    });
+
+
+    test.skip('locate', () => {
+        fail("TODO");
+    });
+
+
+    test.skip('forEach', () => {
+        fail("TODO");
+    });
+
+
     test('[Symbol.iterator]', () => {
         let obj: Stack<string> = new StackAutomaton();
         let value = "test-value";
@@ -66,6 +86,22 @@ describe("Stack", () => {
         expect(x.value).toBe(value);
         expect(y.done).toBe(true);
         expect(y.value).toBeUndefined();
+    });
+
+
+    test('length', () => {
+        let obj: Stack<string> = new StackAutomaton();
+
+        expect(obj.length).toBe(0);
+
+        obj.push("123");
+        obj.push("456");
+
+        expect(obj.length).toBe(2);
+
+        obj.pop();
+
+        expect(obj.length).toBe(1);
     });
 
 });

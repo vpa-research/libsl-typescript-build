@@ -560,7 +560,7 @@ export namespace libsl {
         if (a instanceof Array)
             return equals_array_array(a, b);
 
-        return a.equals(b);
+        return a == b;
     }
 
     export function equals_array_array(a: Array<any> | null, b: Array<any> | null): boolean {
