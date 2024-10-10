@@ -1,10 +1,20 @@
 import { LinkedList } from "@ohos.util.LinkedList";
 import { LinkedListAutomaton } from "../src/LinkedListAutomaton";
+import { libsl } from "../src/libsl_runtime";
 
 
 // test set itself
 
 describe("LinkedList", () => {
+
+    afterEach(() => {
+        try {
+            expect(libsl.constructor_called_by_user).toBe(true);
+        } finally {
+            libsl.constructor_called_by_user = true;
+        }
+    });
+
 
     test('<init>', () => {
         type MyClass<T> = LinkedListAutomaton<T>;

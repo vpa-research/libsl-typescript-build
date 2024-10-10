@@ -1,10 +1,20 @@
 import { List } from "@ohos.util.List";
 import { ListAutomaton } from "../src/ListAutomaton";
+import { libsl } from "../src/libsl_runtime";
 
 
 // test set itself
 
 describe("List", () => {
+
+    afterEach(() => {
+        try {
+            expect(libsl.constructor_called_by_user).toBe(true);
+        } finally {
+            libsl.constructor_called_by_user = true;
+        }
+    });
+
 
     test('<init>', () => {
         type MyClass<T> = ListAutomaton<T>;

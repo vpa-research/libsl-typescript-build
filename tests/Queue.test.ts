@@ -1,5 +1,6 @@
 import { Queue } from "@ohos.util.Queue";
 import { QueueAutomaton } from "../src/QueueAutomaton";
+import { libsl } from "../src/libsl_runtime";
 
 
 // test set itself
@@ -8,6 +9,15 @@ describe("Queue", () => {
 
     test.skip('disabled-test-just-for-reference', () => {
         // nothing, this is just a reminder of how to use Jest testing framework
+    });
+
+
+    afterEach(() => {
+        try {
+            expect(libsl.constructor_called_by_user).toBe(true);
+        } finally {
+            libsl.constructor_called_by_user = true;
+        }
     });
 
 
@@ -70,13 +80,30 @@ describe("Queue", () => {
     });
 
 
-    test.skip('getFirst', () => {
-        fail("TODO");
+    test('getFirst', () => {
+        let obj: Queue<string> = new QueueAutomaton();
+        let value = "test-value";
+
+        (obj as QueueAutomaton<string>).storage.insert(0, value);
+        let x = obj.getFirst();
+
+        expect(x).toBe(value);
+        expect(obj.length).toBe(1);
     });
 
 
-    test.skip('forEach', () => {
-        fail("TODO");
+    test('forEach', () => {
+        let obj: Queue<string> = new QueueAutomaton();
+        let value = "test-value";
+
+        (obj as QueueAutomaton<string>).storage.insert(0, value);
+        let forEachValue: string | null = null;
+        obj.forEach((item) => {
+            forEachValue = item;
+        });
+
+        expect(forEachValue).toBe(value);
+        expect(obj.length).toBe(1);
     });
 
 

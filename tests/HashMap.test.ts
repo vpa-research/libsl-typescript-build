@@ -1,10 +1,20 @@
 import { HashMap } from "@ohos.util.HashMap";
 import { HashMapAutomaton } from "../src/HashMapAutomaton";
+import { libsl } from "../src/libsl_runtime";
 
 
 // test set itself
 
 describe("HashMap", () => {
+
+    afterEach(() => {
+        try {
+            expect(libsl.constructor_called_by_user).toBe(true);
+        } finally {
+            libsl.constructor_called_by_user = true;
+        }
+    });
+
 
     test('<init>', () => {
         type MyClass<K, V> = HashMapAutomaton<K, V>;

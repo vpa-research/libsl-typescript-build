@@ -1,10 +1,20 @@
 import { Deque } from "@ohos.util.Deque";
 import { DequeAutomaton } from "../src/DequeAutomaton";
+import { libsl } from "../src/libsl_runtime";
 
 
 // test set itself
 
 describe("Deque", () => {
+
+    afterEach(() => {
+        try {
+            expect(libsl.constructor_called_by_user).toBe(true);
+        } finally {
+            libsl.constructor_called_by_user = true;
+        }
+    });
+
 
     test('<init>', () => {
         type MyClass<T> = DequeAutomaton<T>;
@@ -50,8 +60,14 @@ describe("Deque", () => {
     });
 
 
-    test.skip('has', () => {
-        fail("TODO");
+    test('has', () => {
+        let obj: Deque<string> = new DequeAutomaton();
+        let value = "test-value";
+
+        obj.insertEnd(value);
+
+        expect(obj.has(value)).toBe(true);
+        expect(obj.has("non-existent-value")).toBe(false);
     });
 
 
@@ -79,18 +95,38 @@ describe("Deque", () => {
     });
 
 
-    test.skip('forEach', () => {
-        fail("TODO");
+    test('forEach', () => {
+        let obj: Deque<string> = new DequeAutomaton();
+        let values = ["test-value1", "test-value2", "test-value3"];
+        let results: string[] = [];
+
+        obj.insertEnd(values[0]);
+        obj.insertEnd(values[1]);
+        obj.insertEnd(values[2]);
+
+        obj.forEach((value) => results.push(value));
+
+        expect(results).toStrictEqual(values);
     });
 
 
-    test.skip('getFirst', () => {
-        fail("TODO");
+    test('getFirst', () => {
+        let obj: Deque<string> = new DequeAutomaton();
+        let value = "test-value";
+
+        obj.insertEnd(value);
+
+        expect(obj.getFirst()).toBe(value);
     });
 
 
-    test.skip('getLast', () => {
-        fail("TODO");
+    test('getLast', () => {
+        let obj: Deque<string> = new DequeAutomaton();
+        let value = "test-value";
+
+        obj.insertEnd(value);
+
+        expect(obj.getLast()).toBe(value);
     });
 
 

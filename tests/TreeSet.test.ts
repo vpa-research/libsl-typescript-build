@@ -1,10 +1,20 @@
 import { TreeSet } from "@ohos.util.TreeSet";
 import { TreeSetAutomaton } from "../src/TreeSetAutomaton";
+import { libsl } from "../src/libsl_runtime";
 
 
 // test set itself
 
 describe("TreeSet", () => {
+
+    afterEach(() => {
+        try {
+            expect(libsl.constructor_called_by_user).toBe(true);
+        } finally {
+            libsl.constructor_called_by_user = true;
+        }
+    });
+
 
     test('<init>', () => {
         type MyClass<T> = TreeSetAutomaton<T>;

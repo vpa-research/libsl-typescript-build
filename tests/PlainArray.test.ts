@@ -1,10 +1,20 @@
 import { PlainArray } from "@ohos.util.PlainArray";
 import { PlainArrayAutomaton } from "../src/PlainArrayAutomaton";
+import { libsl } from "../src/libsl_runtime";
 
 
 // test set itself
 
 describe("PlainArray", () => {
+
+    afterEach(() => {
+        try {
+            expect(libsl.constructor_called_by_user).toBe(true);
+        } finally {
+            libsl.constructor_called_by_user = true;
+        }
+    });
+
 
     test('<init>', () => {
         type MyClass<T> = PlainArrayAutomaton<T>;

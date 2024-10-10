@@ -1,10 +1,20 @@
 import { Stack } from "@ohos.util.Stack";
 import { StackAutomaton } from "../src/StackAutomaton";
+import { libsl } from "../src/libsl_runtime";
 
 
 // test set itself
 
 describe("Stack", () => {
+
+    afterEach(() => {
+        try {
+            expect(libsl.constructor_called_by_user).toBe(true);
+        } finally {
+            libsl.constructor_called_by_user = true;
+        }
+    });
+
 
     test('<init>', () => {
         type MyClass<T> = StackAutomaton<T>;
