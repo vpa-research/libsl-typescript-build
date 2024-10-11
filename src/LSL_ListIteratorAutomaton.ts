@@ -29,13 +29,13 @@ export class LSL_ListIteratorAutomaton<T> {
         /* body */ {
             let items: SymbolicList<T> = (this.container as any as lsl$concepts.LSL_ListContainer<T>).storage;
             let pos: number = this.cursor;
-            let isDone: boolean = false;
+            let isDone: boolean = true;
             let value: T | undefined = undefined;
             if (pos < items.size()) {
                 Engine.assume(pos >= 0);
                 this.cursor = pos + 1;
                 value = items.get(pos);
-                isDone = true;
+                isDone = false;
             }
             let lsl$na0 = new LSL_IteratorResultAutomaton<T>();
             // lsl$na0.__$state = Initialized;

@@ -249,7 +249,7 @@ export class ListAutomaton<T> {
                 result = true;
             }
             else {
-                if ((o !== null && o !== undefined && Object.getPrototypeOf(o) === List.prototype)) {
+                if (o instanceof List) {
                     let otherStorage: SymbolicList<T> = (o as any as ListAutomaton_<T>).storage;
                     if (this.storage.size() === otherStorage.size()) {
                         result = libsl.equals_list_list(this.storage, otherStorage);
@@ -458,7 +458,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::getLast(LSL_List<?::T>) -> ?::T | undefined
-     * Source: ohos/util/List.main.lsl:443 */
+     * Source: ohos/util/List.main.lsl:441 */
     getLast(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
@@ -466,11 +466,12 @@ export class ListAutomaton<T> {
             if (!(this instanceof List)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            if (this.storage.size() === 0) {
+            let index: number = this.storage.size() - 1;
+            if (index === -1) {
                 result = undefined;
             }
             else {
-                result = this.storage.get(this.storage.size());
+                result = this.storage.get(index);
             }
         }
         return result;
@@ -478,7 +479,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::[Symbol.iterator](LSL_List<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/List.main.lsl:457 */
+     * Source: ohos/util/List.main.lsl:454 */
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -497,7 +498,7 @@ export class ListAutomaton<T> {
 
     /**
      * [FUNCTION] ListAutomaton::length(LSL_List<?::T>) -> number
-     * Source: ohos/util/List.main.lsl:471 */
+     * Source: ohos/util/List.main.lsl:468 */
     get length(): number {
         let result: number = 0;
         /* body */ {
