@@ -39,7 +39,7 @@ describe("PlainArray", () => {
 
 
     test('isEmpty', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
 
         expect(obj.isEmpty()).toBe(true);
 
@@ -49,7 +49,7 @@ describe("PlainArray", () => {
 
 
     test('has', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
 
         obj.add(1, "test-value");
         expect(obj.has(1)).toBe(true);
@@ -60,7 +60,7 @@ describe("PlainArray", () => {
 
 
     test('get', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
 
         obj.add(1, "test-value");
         expect(obj.get(1)).toBe("test-value");
@@ -71,7 +71,7 @@ describe("PlainArray", () => {
 
 
     test('getIndexOfKey', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
 
         obj.add(1, "test-value");
         obj.add(2, "another-value");
@@ -84,7 +84,7 @@ describe("PlainArray", () => {
 
 
     test('getIndexOfValue', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
         let value: string = "test-value";
 
         obj.add(1, value);
@@ -98,7 +98,7 @@ describe("PlainArray", () => {
 
 
     test('getKeyAt', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
 
         obj.add(1, "test-value");
         obj.add(2, "another-value");
@@ -112,7 +112,7 @@ describe("PlainArray", () => {
 
 
     test('getValueAt', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
 
         obj.add(1, "test-value");
         expect(obj.getValueAt(0)).toBe("test-value");
@@ -123,7 +123,7 @@ describe("PlainArray", () => {
 
 
     test('clone', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
         obj.add(1, "test-value");
         obj.add(2, "another-value");
 
@@ -180,7 +180,7 @@ describe("PlainArray", () => {
 
 
     test('removeRangeFrom', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
 
         obj.add(1, "A");
         obj.add(2, "B");
@@ -214,7 +214,7 @@ describe("PlainArray", () => {
 
 
     test('toString', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
         obj.add(1, "test-value");
         obj.add(2, "another-value");
 
@@ -224,7 +224,7 @@ describe("PlainArray", () => {
 
 
     test('clear', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
         obj.add(1, "test-value");
         obj.add(2, "another-value");
 
@@ -237,7 +237,7 @@ describe("PlainArray", () => {
 
 
     test('forEach', () => {
-        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
         obj.add(1, "test-value");
         obj.add(2, "another-value");
         let result: string[] = [];
