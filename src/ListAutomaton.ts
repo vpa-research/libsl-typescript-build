@@ -249,7 +249,7 @@ export class ListAutomaton<T> {
                 result = true;
             }
             else {
-                if (o instanceof List) {
+                if ((o !== null && o !== undefined && Object.getPrototypeOf(o) === ListAutomaton_.prototype)) {
                     let otherStorage: SymbolicList<T> = (o as any as ListAutomaton_<T>).storage;
                     if (this.storage.size() === otherStorage.size()) {
                         result = libsl.equals_list_list(this.storage, otherStorage);
