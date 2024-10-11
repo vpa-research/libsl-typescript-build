@@ -89,6 +89,14 @@ export class ArrayList<T> {
         throw new TypeError();
     }
 
+    get(index: number): T {
+        throw new TypeError();
+    }
+
+    set(index: number, value: T) {
+        throw new TypeError();
+    }
+
     [Symbol.iterator](): IterableIterator<T> {
         throw new TypeError();
     }

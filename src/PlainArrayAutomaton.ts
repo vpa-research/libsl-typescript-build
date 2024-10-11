@@ -366,15 +366,16 @@ export class PlainArrayAutomaton<T> {
             }
             let i: number = 0;
             for (i = 0; i < this.keysStorage.size(); i += 1) {
+                let index: number = this.keysStorage.get(i);
                 let item: T = this.valuesStorage.get(i);
-                callbackFn.call(thisArg, item, i, this);
+                callbackFn.call(thisArg, item, index, this);
             }
         }
     }
 
     /**
      * [FUNCTION] PlainArrayAutomaton::[Symbol.iterator](LSL_PlainArray<?::T>) -> IterableIterator<tuple<number, ?::T>>
-     * Source: ohos/util/PlainArray.main.lsl:369 */
+     * Source: ohos/util/PlainArray.main.lsl:370 */
     [Symbol.iterator](): IterableIterator<[number, T]> {
         let result: IterableIterator<[number, T]> = libsl.ANYTHING;
         /* body */ {
@@ -394,7 +395,7 @@ export class PlainArrayAutomaton<T> {
 
     /**
      * [FUNCTION] PlainArrayAutomaton::length(LSL_PlainArray<?::T>) -> number
-     * Source: ohos/util/PlainArray.main.lsl:384 */
+     * Source: ohos/util/PlainArray.main.lsl:385 */
     get length(): number {
         let result: number = 0;
         /* body */ {

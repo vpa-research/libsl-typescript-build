@@ -476,11 +476,12 @@ export class LinkedListAutomaton<T> {
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            if (this.storage.size() === 0) {
+            let index: number = this.storage.size() - 1;
+            if (index === -1) {
                 result = undefined;
             }
             else {
-                result = this.storage.get(this.storage.size());
+                result = this.storage.get(index);
             }
         }
         return result;
@@ -488,7 +489,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::[Symbol.iterator](LSL_LinkedList<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/LinkedList.main.lsl:425 */
+     * Source: ohos/util/LinkedList.main.lsl:426 */
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -507,7 +508,7 @@ export class LinkedListAutomaton<T> {
 
     /**
      * [FUNCTION] LinkedListAutomaton::length(LSL_LinkedList<?::T>) -> number
-     * Source: ohos/util/LinkedList.main.lsl:439 */
+     * Source: ohos/util/LinkedList.main.lsl:440 */
     get length(): number {
         let result: number = 0;
         /* body */ {
