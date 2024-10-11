@@ -50,46 +50,91 @@ describe("LinkedList", () => {
     });
 
 
-    test.skip('addFirst', () => {
-        fail("TODO");
+    test('addFirst', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+
+        obj.addFirst(value);
+
+        expect(obj.length).toBe(1);
+        expect((obj as LinkedListAutomaton<string>).storage.get(0)).toBe(value);
     });
 
 
-    test.skip('insert', () => {
-        fail("TODO");
+    test('insert', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+
+        obj.insert(0, value);
+
+        expect(obj.length).toBe(1);
+        expect((obj as LinkedListAutomaton<string>).storage.get(0)).toBe(value);
     });
 
 
-    test.skip('has', () => {
-        fail("TODO");
+    test('has', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+        obj.add(value);
+
+        let x = obj.has(value);
+
+        expect(x).toBe(true);
     });
 
 
-    test.skip('get', () => {
-        fail("TODO");
+    test('get', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+        (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+
+        let x = obj.get(0);
+
+        expect(x).toBe(value);
     });
 
 
-    test.skip('getLastIndexOf', () => {
-        fail("TODO");
+    test('getLastIndexOf', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let target = "A";
+        let values = ["A", "B", "A"];
+        values.forEach((v, i) => (obj as LinkedListAutomaton<string>).storage.insert(i, v));
+
+        let x = obj.getLastIndexOf(target);
+
+        expect(x).toBe(2);
     });
 
 
-    test.skip('getIndexOf', () => {
-        fail("TODO");
+    test('getIndexOf', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let target = "A";
+        let values = ["A", "B", "A"];
+        values.forEach((v, i) => (obj as LinkedListAutomaton<string>).storage.insert(i, v));
+
+        let x = obj.getIndexOf(target);
+
+        expect(x).toBe(0);
     });
 
 
-    test.skip('removeByIndex', () => {
-        fail("TODO");
+    test('removeByIndex', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+        (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+
+        let x = obj.removeByIndex(0);
+
+        expect(x).toBe(value);
+        expect(obj.length).toBe(0);
     });
 
 
     test('removeFirst', () => {
         let obj: LinkedList<string> = new LinkedListAutomaton();
         let value = "test-value";
-
         (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+
         let x = obj.removeFirst();
 
         expect(x).toBe(value);
@@ -100,8 +145,8 @@ describe("LinkedList", () => {
     test('removeLast', () => {
         let obj: LinkedList<string> = new LinkedListAutomaton();
         let value = "test-value";
-
         (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+
         let x = obj.removeLast();
 
         expect(x).toBe(value);
@@ -109,53 +154,122 @@ describe("LinkedList", () => {
     });
 
 
-    test.skip('remove', () => {
-        fail("TODO");
+    test('remove', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+        (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+
+        let x = obj.remove(value);
+
+        expect(x).toBe(true);
+        expect(obj.length).toBe(0);
     });
 
 
-    test.skip('removeFirstFound', () => {
-        fail("TODO");
+    test('removeFirstFound', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+        (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+
+        let x = obj.removeFirstFound(value);
+
+        expect(x).toBe(true);
+        expect(obj.length).toBe(0);
     });
 
 
-    test.skip('removeLastFound', () => {
-        fail("TODO");
+    test('removeLastFound', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+        (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+
+        let x = obj.removeLastFound(value);
+
+        expect(x).toBe(true);
+        expect(obj.length).toBe(0);
     });
 
 
-    test.skip('clone', () => {
-        fail("TODO");
+    test('clone', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+
+        (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+        let clone = obj.clone();
+
+        expect(clone.length).toBe(1);
+        expect(clone.get(0)).toBe(value);
     });
 
 
-    test.skip('forEach', () => {
-        fail("TODO");
+    test('forEach', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let values = ["test-value1", "test-value2", "test-value3"];
+        let results: string[] = [];
+
+        obj.add(values[0]);
+        obj.add(values[1]);
+        obj.add(values[2]);
+
+        obj.forEach((value) => results.push(value));
+
+        expect(results).toStrictEqual(values);
     });
 
 
-    test.skip('clear', () => {
-        fail("TODO");
+    test('clear', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+
+        (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+        obj.clear();
+
+        expect(obj.length).toBe(0);
     });
 
 
-    test.skip('set', () => {
-        fail("TODO");
+    test('set', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value_old = "test-value-A";
+        let value_new = "test-value-B";
+        (obj as LinkedListAutomaton<string>).storage.insert(0, value_old);
+
+        obj.set(0, value_new);
+
+        expect((obj as LinkedListAutomaton<string>).storage.get(0)).toBe(value_new);
     });
 
 
-    test.skip('convertToArray', () => {
-        fail("TODO");
+    test('convertToArray', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let value = "test-value";
+
+        (obj as LinkedListAutomaton<string>).storage.insert(0, value);
+        let x = obj.convertToArray();
+
+        expect(x).toStrictEqual([value]);
     });
 
 
-    test.skip('getFirst', () => {
-        fail("TODO");
+    test('getFirst', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let values = ["A", "B"];
+        values.forEach((v, i) => (obj as LinkedListAutomaton<string>).storage.insert(i, v));
+
+        let x = obj.getFirst();
+
+        expect(x).toBe(values[0]);
     });
 
 
-    test.skip('getLast', () => {
-        fail("TODO");
+    test('getLast', () => {
+        let obj: LinkedList<string> = new LinkedListAutomaton();
+        let values = ["A", "B"];
+        values.forEach((v, i) => (obj as LinkedListAutomaton<string>).storage.insert(i, v));
+
+        let x = obj.getLast();
+
+        expect(x).toBe(values[1]);
     });
 
 

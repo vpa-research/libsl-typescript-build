@@ -122,13 +122,30 @@ describe("ArrayList", () => {
     });
 
 
-    test.skip('removeByRange', () => {
-        fail("TODO");
+    test('removeByRange', () => {
+        let obj: ArrayList<string> = new ArrayListAutomaton();
+        let values = ["A", "B", "C"];
+        values.forEach((value, index) => (obj as ArrayListAutomaton<string>).storage.insert(index, value));
+
+        let start = 1;
+        let end = 2;
+        obj.removeByRange(start, end);
+
+        expect(obj.length).toBe(2);
+        expect((obj as ArrayListAutomaton<string>).storage.toString()).toBe("[A, C]");
     });
 
 
-    test.skip('replaceAllElements', () => {
-        fail("TODO");
+    test('replaceAllElements', () => {
+        let obj: ArrayList<string> = new ArrayListAutomaton();
+        let oldValue = "old-value";
+        let newValue = "new-value";
+
+        obj.add(oldValue);
+        obj.replaceAllElements((x: any) => newValue, undefined);
+
+        expect(obj.length).toBe(1);
+        expect((obj as ArrayListAutomaton<string>).storage.get(0)).toBe(newValue);
     });
 
 
@@ -164,8 +181,16 @@ describe("ArrayList", () => {
     });
 
 
-    test.skip('subArrayList', () => {
-        fail("TODO");
+    test('subArrayList', () => {
+        let obj: ArrayList<string> = new ArrayListAutomaton();
+        let values = ["A", "B", "C", "D", "E"];
+        values.forEach((v: string) => obj.add(v));
+
+        let subList = obj.subArrayList(1, 3);
+
+        expect(subList.length).toBe(2);
+        expect(subList.get(0)).toBe("B");
+        expect(subList.get(1)).toBe("C");
     });
 
 
@@ -180,8 +205,15 @@ describe("ArrayList", () => {
     });
 
 
-    test.skip('clone', () => {
-        fail("TODO");
+    test('clone', () => {
+        let obj: ArrayList<string> = new ArrayListAutomaton();
+        let value = "test-value";
+
+        (obj as ArrayListAutomaton<string>).storage.insert(0, value);
+        let clone = obj.clone();
+
+        expect(clone.length).toBe(1);
+        expect(clone.get(0)).toBe(value);
     });
 
 
@@ -241,6 +273,29 @@ describe("ArrayList", () => {
         obj.trimToCurrentLength();
 
         // NOTE: not applicable to the model
+    });
+
+
+    test('get', () => {
+        let obj: ArrayList<string> = new ArrayListAutomaton();
+        let value = "test-value";
+        (obj as ArrayListAutomaton<string>).storage.insert(0, value);
+
+        let x = obj.get(0);
+
+        expect(x).toBe(value);
+    });
+
+
+    test('set', () => {
+        let obj: ArrayList<string> = new ArrayListAutomaton();
+        let value_old = "test-value-A";
+        let value_new = "test-value-B";
+        (obj as ArrayListAutomaton<string>).storage.insert(0, value_old);
+
+        obj.set(0, value_new);
+
+        expect((obj as ArrayListAutomaton<string>).storage.get(0)).toBe(value_new);
     });
 
 

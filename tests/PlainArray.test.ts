@@ -38,43 +38,103 @@ describe("PlainArray", () => {
     });
 
 
-    test.skip('isEmpty', () => {
-        fail("TODO");
+    test('isEmpty', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+
+        expect(obj.isEmpty()).toBe(true);
+
+        obj.add(1, "test-value");
+        expect(obj.isEmpty()).toBe(false);
     });
 
 
-    test.skip('has', () => {
-        fail("TODO");
+    test('has', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+
+        obj.add(1, "test-value");
+        expect(obj.has(1)).toBe(true);
+
+        obj.remove(1);
+        expect(obj.has(1)).toBe(false);
     });
 
 
-    test.skip('get', () => {
-        fail("TODO");
+    test('get', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+
+        obj.add(1, "test-value");
+        expect(obj.get(1)).toBe("test-value");
+
+        obj.remove(1);
+        expect(obj.get(1)).toBeUndefined();
     });
 
 
-    test.skip('getIndexOfKey', () => {
-        fail("TODO");
+    test('getIndexOfKey', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+
+        obj.add(1, "test-value");
+        obj.add(2, "another-value");
+        expect(obj.getIndexOfKey(1)).toBe(0);
+        expect(obj.getIndexOfKey(2)).toBe(1);
+
+        obj.remove(1);
+        expect(obj.getIndexOfKey(1)).toBe(-1);
     });
 
 
-    test.skip('getIndexOfValue', () => {
-        fail("TODO");
+    test('getIndexOfValue', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        let value: string = "test-value";
+
+        obj.add(1, value);
+        let index: number = obj.getIndexOfValue(value);
+        expect(index).toBe(0);
+
+        obj.remove(1);
+        let newIndex: number = obj.getIndexOfValue(value);
+        expect(newIndex).toBe(-1);
     });
 
 
-    test.skip('getKeyAt', () => {
-        fail("TODO");
+    test('getKeyAt', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+
+        obj.add(1, "test-value");
+        obj.add(2, "another-value");
+
+        expect(obj.getKeyAt(0)).toBe(1);
+        expect(obj.getKeyAt(1)).toBe(2);
+
+        obj.remove(1);
+        expect(obj.getKeyAt(0)).toBe(2);
     });
 
 
-    test.skip('getValueAt', () => {
-        fail("TODO");
+    test('getValueAt', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+
+        obj.add(1, "test-value");
+        expect(obj.getValueAt(0)).toBe("test-value");
+
+        obj.remove(1);
+        expect(obj.getValueAt(0)).toBeUndefined();
     });
 
 
-    test.skip('clone', () => {
-        fail("TODO");
+    test('clone', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        obj.add(1, "test-value");
+        obj.add(2, "another-value");
+
+        let clone = obj.clone();
+
+        expect(clone.length).toBe(2);
+        expect(clone.get(1)).toBe("test-value");
+        expect(clone.get(2)).toBe("another-value");
+
+        obj.remove(1);
+        expect(clone.get(1)).toBe("test-value");
     });
 
 
@@ -119,28 +179,72 @@ describe("PlainArray", () => {
     });
 
 
-    test.skip('removeRangeFrom', () => {
-        fail("TODO");
+    test('removeRangeFrom', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+
+        obj.add(1, "A");
+        obj.add(2, "B");
+        obj.add(3, "C");
+        obj.add(4, "D");
+        obj.add(5, "E");
+
+        obj.removeRangeFrom(2, 3);
+
+        expect(obj.getIndexOfKey(3)).toBe(-1);
+        expect(obj.getIndexOfKey(4)).toBe(-1);
+        expect(obj.getIndexOfKey(5)).toBe(-1);
+        expect(obj.length).toBe(2);
+        expect(obj.get(1)).toBe("A");
+        expect(obj.get(2)).toBe("B");
     });
 
 
-    test.skip('setValueAt', () => {
-        fail("TODO");
+    test('setValueAt', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton();
+        let key = 5;
+        let value_old = "test-value";
+        let value_new = "new-value";
+
+        obj.add(key, value_old);
+        obj.setValueAt(0, value_new);
+
+        expect(obj.length).toBe(1);
+        expect((obj as PlainArrayAutomaton<string>).valuesStorage.get(0)).toBe(value_new);
     });
 
 
-    test.skip('toString', () => {
-        fail("TODO");
+    test('toString', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        obj.add(1, "test-value");
+        obj.add(2, "another-value");
+
+        let expectedString: string = "1:test-value,2:another-value";
+        expect(obj.toString()).toBe(expectedString);
     });
 
 
-    test.skip('clear', () => {
-        fail("TODO");
+    test('clear', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        obj.add(1, "test-value");
+        obj.add(2, "another-value");
+
+        obj.clear();
+
+        expect(obj.length).toBe(0);
+        expect(obj.get(1)).toBeUndefined();
+        expect(obj.get(2)).toBeUndefined();
     });
 
 
-    test.skip('forEach', () => {
-        fail("TODO");
+    test('forEach', () => {
+        let obj: PlainArray<string> = new PlainArrayAutomaton<string>();
+        obj.add(1, "test-value");
+        obj.add(2, "another-value");
+        let result: string[] = [];
+
+        obj.forEach((v, k) => result.push(`${k}: ${v}`));
+
+        expect(result).toEqual(["1: test-value", "2: another-value"]);
     });
 
 
