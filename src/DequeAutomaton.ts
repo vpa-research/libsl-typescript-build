@@ -33,7 +33,7 @@ export class DequeAutomaton<T> {
      * Source: ohos/util/Deque.main.lsl:73 */
     insertFront(element: T) {
         /* body */ {
-            let msg: string = "The insertFront method cannot be bound.";
+            const msg: string = "The insertFront method cannot be bound.";
             if (!(this instanceof Deque)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -46,7 +46,7 @@ export class DequeAutomaton<T> {
      * Source: ohos/util/Deque.main.lsl:82 */
     insertEnd(element: T) {
         /* body */ {
-            let msg: string = "The insertEnd method cannot be bound.";
+            const msg: string = "The insertEnd method cannot be bound.";
             if (!(this instanceof Deque)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -60,7 +60,7 @@ export class DequeAutomaton<T> {
     has(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The has method cannot be bound.";
+            const msg: string = "The has method cannot be bound.";
             if (!(this instanceof Deque)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -75,7 +75,7 @@ export class DequeAutomaton<T> {
     popFirst(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The popFirst method cannot be bound.";
+            const msg: string = "The popFirst method cannot be bound.";
             if (!(this instanceof Deque)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -96,11 +96,11 @@ export class DequeAutomaton<T> {
     popLast(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The popLast method cannot be bound.";
+            const msg: string = "The popLast method cannot be bound.";
             if (!(this instanceof Deque)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let lastIndex: number = this.storage.size() - 1;
+            const lastIndex: number = this.storage.size() - 1;
             if (lastIndex === -1) {
                 result = undefined;
             }
@@ -117,13 +117,13 @@ export class DequeAutomaton<T> {
      * Source: ohos/util/Deque.main.lsl:135 */
     forEach(callbackFn: (value: T, index?: number, queue?: Deque<T>) => void, thisArg?: Object) {
         /* body */ {
-            let msg: string = "The forEach method cannot be bound.";
+            const msg: string = "The forEach method cannot be bound.";
             if (!(this instanceof Deque)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let i: number = 0;
             for (i = 0; i < this.storage.size(); i += 1) {
-                let item: T = this.storage.get(i);
+                const item: T = this.storage.get(i);
                 callbackFn.call(thisArg, item, i, this);
             }
         }
@@ -135,7 +135,7 @@ export class DequeAutomaton<T> {
     getFirst(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getFirst method cannot be bound.";
+            const msg: string = "The getFirst method cannot be bound.";
             if (!(this instanceof Deque)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -155,11 +155,11 @@ export class DequeAutomaton<T> {
     getLast(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getLast method cannot be bound.";
+            const msg: string = "The getLast method cannot be bound.";
             if (!(this instanceof Deque)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let index: number = this.storage.size() - 1;
+            const index: number = this.storage.size() - 1;
             if (index === -1) {
                 result = undefined;
             }
@@ -176,7 +176,7 @@ export class DequeAutomaton<T> {
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The Symbol.iterator method cannot be bound.";
+            const msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof Deque)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

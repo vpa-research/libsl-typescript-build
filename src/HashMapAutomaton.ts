@@ -39,7 +39,7 @@ export class HashMapAutomaton<K, V> {
     isEmpty(): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The isEmpty method cannot be bound.";
+            const msg: string = "The isEmpty method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -54,7 +54,7 @@ export class HashMapAutomaton<K, V> {
     hasKey(key: K): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The hasKey method cannot be bound.";
+            const msg: string = "The hasKey method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -74,7 +74,7 @@ export class HashMapAutomaton<K, V> {
     hasValue(value: V): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The hasValue method cannot be bound.";
+            const msg: string = "The hasValue method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -82,10 +82,10 @@ export class HashMapAutomaton<K, V> {
             let storageSize: number = this.storage.size();
             if (storageSize !== 0) {
                 Engine.assume(storageSize > 0);
-                let unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
+                const unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
                 while (storageSize !== 0) {
-                    let curKey: K = unseen.anyKey();
-                    let curValue: V = this.storage.get(curKey);
+                    const curKey: K = unseen.anyKey();
+                    const curValue: V = this.storage.get(curKey);
                     if (libsl.equals_any_any(curValue, value)) {
                         result = true;
                         break;
@@ -104,7 +104,7 @@ export class HashMapAutomaton<K, V> {
     get(key: K): V {
         let result: V = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The get method cannot be bound.";
+            const msg: string = "The get method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -123,18 +123,18 @@ export class HashMapAutomaton<K, V> {
      * Source: ohos/util/HashMap.main.lsl:149 */
     setAll(map: HashMap<K, V>) {
         /* body */ {
-            let msg: string = "The setAll method cannot be bound.";
+            const msg: string = "The setAll method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let otherMapStorage: libsl.LSLMap<K, V> = (map as any as HashMapAutomaton_<K, V>).storage;
+            const otherMapStorage: libsl.LSLMap<K, V> = (map as any as HashMapAutomaton_<K, V>).storage;
             let otherSize: number = otherMapStorage.size();
             if (otherSize !== 0) {
                 Engine.assume(otherSize > 0);
-                let unseenOther: libsl.LSLMap<K, V> = otherMapStorage.duplicate();
+                const unseenOther: libsl.LSLMap<K, V> = otherMapStorage.duplicate();
                 while (otherSize !== 0) {
-                    let key: K = unseenOther.anyKey();
-                    let value: V = unseenOther.get(key);
+                    const key: K = unseenOther.anyKey();
+                    const value: V = unseenOther.get(key);
                     this.storage.set(key, value);
                     unseenOther.remove(key);
                     otherSize -= 1;
@@ -149,7 +149,7 @@ export class HashMapAutomaton<K, V> {
     set(key: K, value: V): Object {
         let result: Object = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The set method cannot be bound.";
+            const msg: string = "The set method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -165,7 +165,7 @@ export class HashMapAutomaton<K, V> {
     remove(key: K): V {
         let result: V = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The remove method cannot be bound.";
+            const msg: string = "The remove method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -185,7 +185,7 @@ export class HashMapAutomaton<K, V> {
      * Source: ohos/util/HashMap.main.lsl:210 */
     clear() {
         /* body */ {
-            let msg: string = "The clear method cannot be bound.";
+            const msg: string = "The clear method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -199,7 +199,7 @@ export class HashMapAutomaton<K, V> {
     keys(): IterableIterator<K> {
         let result: IterableIterator<K> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The keys method cannot be bound.";
+            const msg: string = "The keys method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -217,7 +217,7 @@ export class HashMapAutomaton<K, V> {
     values(): IterableIterator<V> {
         let result: IterableIterator<V> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The values method cannot be bound.";
+            const msg: string = "The values method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -235,7 +235,7 @@ export class HashMapAutomaton<K, V> {
     replace(key: K, newValue: V): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The replace method cannot be bound.";
+            const msg: string = "The replace method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -255,19 +255,19 @@ export class HashMapAutomaton<K, V> {
      * Source: ohos/util/HashMap.main.lsl:258 */
     forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) {
         /* body */ {
-            let msg: string = "The forEach method cannot be bound.";
+            const msg: string = "The forEach method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let storageSize: number = this.storage.size();
             if (storageSize > 0) {
-                let unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
+                const unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
                 storageSize = unseen.size();
                 Engine.assume(storageSize > 0);
                 let i: number = 0;
                 for (i = 0; i < storageSize; i += 1) {
-                    let key: K = unseen.anyKey();
-                    let value: V = this.storage.get(key);
+                    const key: K = unseen.anyKey();
+                    const value: V = this.storage.get(key);
                     callbackFn.call(thisArg, value, key, this);
                     unseen.remove(key);
                 }
@@ -281,7 +281,7 @@ export class HashMapAutomaton<K, V> {
     entries(): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The entries method cannot be bound.";
+            const msg: string = "The entries method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -299,7 +299,7 @@ export class HashMapAutomaton<K, V> {
     [Symbol.iterator](): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The Symbol.iterator method cannot be bound.";
+            const msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof HashMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

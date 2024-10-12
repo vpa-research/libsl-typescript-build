@@ -38,7 +38,7 @@ export class PlainArrayAutomaton<T> {
     isEmpty(): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The isEmpty method cannot be bound.";
+            const msg: string = "The isEmpty method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -53,11 +53,11 @@ export class PlainArrayAutomaton<T> {
     has(key: number): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The has method cannot be bound.";
+            const msg: string = "The has method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let size: number = this.keysStorage.size();
+            const size: number = this.keysStorage.size();
             if (size === 0) {
                 result = false;
             }
@@ -74,17 +74,17 @@ export class PlainArrayAutomaton<T> {
     get(key: number): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The get method cannot be bound.";
+            const msg: string = "The get method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let size: number = this.keysStorage.size();
+            const size: number = this.keysStorage.size();
             if (size === 0) {
                 result = undefined;
             }
             else {
                 Engine.assume(size > 0);
-                let index: number = libsl.ListActions.find(this.keysStorage, key, 0, size);
+                const index: number = libsl.ListActions.find(this.keysStorage, key, 0, size);
                 result = this.valuesStorage.get(index);
             }
         }
@@ -97,11 +97,11 @@ export class PlainArrayAutomaton<T> {
     getIndexOfKey(key: number): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The getIndexOfKey method cannot be bound.";
+            const msg: string = "The getIndexOfKey method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let size: number = this.keysStorage.size();
+            const size: number = this.keysStorage.size();
             if (size === 0) {
                 result = -1;
             }
@@ -118,11 +118,11 @@ export class PlainArrayAutomaton<T> {
     getIndexOfValue(value: T): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The getIndexOfValue method cannot be bound.";
+            const msg: string = "The getIndexOfValue method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let size: number = this.valuesStorage.size();
+            const size: number = this.valuesStorage.size();
             if (size === 0) {
                 result = -1;
             }
@@ -139,7 +139,7 @@ export class PlainArrayAutomaton<T> {
     getKeyAt(index: number): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The getKeyAt method cannot be bound.";
+            const msg: string = "The getKeyAt method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -159,7 +159,7 @@ export class PlainArrayAutomaton<T> {
     getValueAt(index: number): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getValueAt method cannot be bound.";
+            const msg: string = "The getValueAt method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -179,13 +179,13 @@ export class PlainArrayAutomaton<T> {
     clone(): PlainArray<T> {
         let result: PlainArray<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The clone method cannot be bound.";
+            const msg: string = "The clone method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let keysStorageCopy: SymbolicList<number> = Engine.makeSymbolicList();
+            const keysStorageCopy: SymbolicList<number> = Engine.makeSymbolicList();
             this.keysStorage.copy(keysStorageCopy, 0, 0, this.keysStorage.size());
-            let valuesStorageCopy: SymbolicList<T> = Engine.makeSymbolicList();
+            const valuesStorageCopy: SymbolicList<T> = Engine.makeSymbolicList();
             this.valuesStorage.copy(valuesStorageCopy, 0, 0, this.valuesStorage.size());
             libsl.constructor_called_by_user = false;
             let lsl$na0 = new PlainArrayAutomaton_<T>(
@@ -204,11 +204,11 @@ export class PlainArrayAutomaton<T> {
      * Source: ohos/util/PlainArray.main.lsl:195 */
     add(key: number, value: T) {
         /* body */ {
-            let msg: string = "The add method cannot be bound.";
+            const msg: string = "The add method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let size: number = this.keysStorage.size();
+            const size: number = this.keysStorage.size();
             Engine.assume(size === this.valuesStorage.size());
             this.keysStorage.insert(size, key);
             this.valuesStorage.insert(size, value);
@@ -221,16 +221,16 @@ export class PlainArrayAutomaton<T> {
     remove(key: number): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The remove method cannot be bound.";
+            const msg: string = "The remove method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let size: number = this.keysStorage.size();
+            const size: number = this.keysStorage.size();
             if (size === 0) {
                 result = undefined;
             }
             else {
-                let index: number = libsl.ListActions.find(this.keysStorage, key, 0, size);
+                const index: number = libsl.ListActions.find(this.keysStorage, key, 0, size);
                 if (index === -1) {
                     result = undefined;
                 }
@@ -250,7 +250,7 @@ export class PlainArrayAutomaton<T> {
     removeAt(index: number): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The removeAt method cannot be bound.";
+            const msg: string = "The removeAt method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -272,15 +272,15 @@ export class PlainArrayAutomaton<T> {
     removeRangeFrom(index: number, size: number): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The removeRangeFrom method cannot be bound.";
+            const msg: string = "The removeRangeFrom method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             if ((index < 0) || (this.keysStorage.size() < (index + size))) {
             }
             else {
-                let iBegin: number = (index + size) - 1;
-                let iEnd: number = index - 1;
+                const iBegin: number = (index + size) - 1;
+                const iEnd: number = index - 1;
                 result = size;
                 let i: number = 0;
                 for (i = iBegin; i > iEnd; i += -1) {
@@ -300,7 +300,7 @@ export class PlainArrayAutomaton<T> {
      * Source: ohos/util/PlainArray.main.lsl:295 */
     setValueAt(index: number, value: T) {
         /* body */ {
-            let msg: string = "The setValueAt method cannot be bound.";
+            const msg: string = "The setValueAt method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -317,20 +317,20 @@ export class PlainArrayAutomaton<T> {
     toString(): String {
         let result: String = '';
         /* body */ {
-            let msg: string = "The toString method cannot be bound.";
+            const msg: string = "The toString method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             result = "";
-            let size: number = this.keysStorage.size();
+            const size: number = this.keysStorage.size();
             if (size !== 0) {
                 let i: number = 0;
                 for (i = 0; i < size; i += 1) {
                     if (i > 0) {
                         result = result + ",";
                     }
-                    let key: number = this.keysStorage.get(i);
-                    let value: T = this.valuesStorage.get(i);
+                    const key: number = this.keysStorage.get(i);
+                    const value: T = this.valuesStorage.get(i);
                     result = result + libsl.toString_any(key);
                     result = result + ":";
                     result = result + libsl.toString_any(value);
@@ -345,7 +345,7 @@ export class PlainArrayAutomaton<T> {
      * Source: ohos/util/PlainArray.main.lsl:339 */
     clear() {
         /* body */ {
-            let msg: string = "The clear method cannot be bound.";
+            const msg: string = "The clear method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -360,14 +360,14 @@ export class PlainArrayAutomaton<T> {
      * Source: ohos/util/PlainArray.main.lsl:350 */
     forEach(callbackFn: (t: T, index?: number, arr?: PlainArray<T>) => void, thisArg?: Object) {
         /* body */ {
-            let msg: string = "The forEach method cannot be bound.";
+            const msg: string = "The forEach method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let i: number = 0;
             for (i = 0; i < this.keysStorage.size(); i += 1) {
-                let index: number = this.keysStorage.get(i);
-                let item: T = this.valuesStorage.get(i);
+                const index: number = this.keysStorage.get(i);
+                const item: T = this.valuesStorage.get(i);
                 callbackFn.call(thisArg, item, index, this);
             }
         }
@@ -379,7 +379,7 @@ export class PlainArrayAutomaton<T> {
     [Symbol.iterator](): IterableIterator<[number, T]> {
         let result: IterableIterator<[number, T]> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The Symbol.iterator method cannot be bound.";
+            const msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof PlainArray)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

@@ -34,7 +34,7 @@ export class StackAutomaton<T> {
     push(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The push method cannot be bound.";
+            const msg: string = "The push method cannot be bound.";
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -50,11 +50,11 @@ export class StackAutomaton<T> {
     pop(): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The pop method cannot be bound.";
+            const msg: string = "The pop method cannot be bound.";
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let pos: number = this.storage.size() - 1;
+            const pos: number = this.storage.size() - 1;
             result = this.storage.get(pos);
             this.storage.remove(pos);
         }
@@ -67,11 +67,11 @@ export class StackAutomaton<T> {
     peek(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The peek method cannot be bound.";
+            const msg: string = "The peek method cannot be bound.";
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let size: number = this.storage.size();
+            const size: number = this.storage.size();
             if (size === 0) {
                 result = undefined;
             }
@@ -88,7 +88,7 @@ export class StackAutomaton<T> {
     locate(element: T): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The locate method cannot be bound.";
+            const msg: string = "The locate method cannot be bound.";
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -102,13 +102,13 @@ export class StackAutomaton<T> {
      * Source: ohos/util/Stack.main.lsl:115 */
     forEach(callbackFn: (value: T, index?: number, queue?: Stack<T>) => void, thisArg?: Object) {
         /* body */ {
-            let msg: string = "The forEach method cannot be bound.";
+            const msg: string = "The forEach method cannot be bound.";
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let i: number = 0;
             for (i = 0; i < this.storage.size(); i += 1) {
-                let item: T = this.storage.get(i);
+                const item: T = this.storage.get(i);
                 callbackFn.call(thisArg, item, i, this);
             }
         }
@@ -120,7 +120,7 @@ export class StackAutomaton<T> {
     isEmpty(): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The isEmpty method cannot be bound.";
+            const msg: string = "The isEmpty method cannot be bound.";
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -135,7 +135,7 @@ export class StackAutomaton<T> {
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The Symbol.iterator method cannot be bound.";
+            const msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

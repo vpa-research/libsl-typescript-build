@@ -99,7 +99,7 @@ export class ArrayListAutomaton<T> {
             if (start < end) {
                 Engine.assume(start >= 0);
                 Engine.assume(end > 0);
-                let outerLimit: number = end - 1;
+                const outerLimit: number = end - 1;
                 let innerLimit: number = 0;
                 let i: number = 0;
                 let j: number = 0;
@@ -107,10 +107,10 @@ export class ArrayListAutomaton<T> {
                     for (i = start; i < outerLimit; i += 1) {
                         innerLimit = (end - i) - 1;
                         for (j = start; j < innerLimit; j += 1) {
-                            let idxA: number = j;
-                            let idxB: number = j + 1;
-                            let a: T = this.storage.get(idxA);
-                            let b: T = this.storage.get(idxB);
+                            const idxA: number = j;
+                            const idxB: number = j + 1;
+                            const a: T = this.storage.get(idxA);
+                            const b: T = this.storage.get(idxB);
                             if (libsl.toString_any(a) > libsl.toString_any(b)) {
                                 this.storage.set(idxA, b);
                                 this.storage.set(idxB, a);
@@ -122,10 +122,10 @@ export class ArrayListAutomaton<T> {
                     for (i = start; i < outerLimit; i += 1) {
                         innerLimit = (end - i) - 1;
                         for (j = start; j < innerLimit; j += 1) {
-                            let idxA: number = j;
-                            let idxB: number = j + 1;
-                            let a: T = this.storage.get(idxA);
-                            let b: T = this.storage.get(idxB);
+                            const idxA: number = j;
+                            const idxB: number = j + 1;
+                            const a: T = this.storage.get(idxA);
+                            const b: T = this.storage.get(idxB);
                             if (c(a, b) > 0) {
                                 this.storage.set(idxA, b);
                                 this.storage.set(idxB, a);
@@ -143,7 +143,7 @@ export class ArrayListAutomaton<T> {
     add(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The add method cannot be bound.";
+            const msg: string = "The add method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -158,7 +158,7 @@ export class ArrayListAutomaton<T> {
      * Source: ohos/util/ArrayList.main.lsl:231 */
     insert(element: T, index: number) {
         /* body */ {
-            let msg: string = "The insert method cannot be bound.";
+            const msg: string = "The insert method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -172,7 +172,7 @@ export class ArrayListAutomaton<T> {
     has(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The has method cannot be bound.";
+            const msg: string = "The has method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -187,7 +187,7 @@ export class ArrayListAutomaton<T> {
     getIndexOf(element: T): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The getIndexOf method cannot be bound.";
+            const msg: string = "The getIndexOf method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -202,17 +202,17 @@ export class ArrayListAutomaton<T> {
     getLastIndexOf(element: T): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The getLastIndexOf method cannot be bound.";
+            const msg: string = "The getLastIndexOf method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             result = -1;
-            let size: number = this.storage.size();
+            const size: number = this.storage.size();
             if (size !== 0) {
-                let items: SymbolicList<T> = this.storage;
+                const items: SymbolicList<T> = this.storage;
                 let i: number = 0;
                 for (i = size - 1; i > -1; i += -1) {
-                    let currentElement: T = items.get(i);
+                    const currentElement: T = items.get(i);
                     if (libsl.equals_any_any(element, currentElement)) {
                         result = i;
                         break;
@@ -229,7 +229,7 @@ export class ArrayListAutomaton<T> {
     removeByIndex(index: number): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The removeByIndex method cannot be bound.";
+            const msg: string = "The removeByIndex method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -244,11 +244,11 @@ export class ArrayListAutomaton<T> {
     remove(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The remove method cannot be bound.";
+            const msg: string = "The remove method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let index: number = libsl.ListActions.find(this.storage, element, 0, this.storage.size());
+            const index: number = libsl.ListActions.find(this.storage, element, 0, this.storage.size());
             result = index !== -1;
             if (result) {
                 this.storage.remove(index);
@@ -262,7 +262,7 @@ export class ArrayListAutomaton<T> {
      * Source: ohos/util/ArrayList.main.lsl:310 */
     removeByRange(fromIndex: number, toIndex: number) {
         /* body */ {
-            let msg: string = "The removeByRange method cannot be bound.";
+            const msg: string = "The removeByRange method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -280,15 +280,15 @@ export class ArrayListAutomaton<T> {
     replaceAllElements(callbackFn: (t: T, index?: number, arrlist?: ArrayList<T>) => T,
             thisArg?: Object) {
         /* body */ {
-            let msg: string = "The replaceAllElements method cannot be bound.";
+            const msg: string = "The replaceAllElements method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let size: number = this.storage.size();
+            const size: number = this.storage.size();
             let i: number = 0;
             for (i = 0; i < size; i += 1) {
-                let item: T = this.storage.get(i);
-                let newItem: T = callbackFn.call(thisArg, item, i, this);
+                const item: T = this.storage.get(i);
+                const newItem: T = callbackFn.call(thisArg, item, i, this);
                 this.storage.set(i, newItem);
             }
         }
@@ -299,13 +299,13 @@ export class ArrayListAutomaton<T> {
      * Source: ohos/util/ArrayList.main.lsl:352 */
     forEach(callbackFn: (t: T, index?: number, arrlist?: ArrayList<T>) => void, thisArg?: Object) {
         /* body */ {
-            let msg: string = "The forEach method cannot be bound.";
+            const msg: string = "The forEach method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let i: number = 0;
             for (i = 0; i < this.storage.size(); i += 1) {
-                let item: T = this.storage.get(i);
+                const item: T = this.storage.get(i);
                 callbackFn.call(thisArg, item, i, this);
             }
         }
@@ -316,7 +316,7 @@ export class ArrayListAutomaton<T> {
      * Source: ohos/util/ArrayList.main.lsl:372 */
     sort(comparator?: (a: T, b: T) => number) {
         /* body */ {
-            let msg: string = "The sort method cannot be bound.";
+            const msg: string = "The sort method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -330,12 +330,12 @@ export class ArrayListAutomaton<T> {
     subArrayList(fromIndex: number, toIndex: number): ArrayList<T> {
         let result: ArrayList<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The subArrayList method cannot be bound.";
+            const msg: string = "The subArrayList method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             this._checkValidRange(fromIndex, toIndex, this.storage.size());
-            let storageCopy: SymbolicList<T> = Engine.makeSymbolicList();
+            const storageCopy: SymbolicList<T> = Engine.makeSymbolicList();
             this.storage.copy(storageCopy, fromIndex, 0, toIndex - fromIndex);
             libsl.constructor_called_by_user = false;
             let lsl$na0 = new ArrayListAutomaton_<T>(
@@ -353,7 +353,7 @@ export class ArrayListAutomaton<T> {
      * Source: ohos/util/ArrayList.main.lsl:397 */
     clear() {
         /* body */ {
-            let msg: string = "The clear method cannot be bound.";
+            const msg: string = "The clear method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -367,11 +367,11 @@ export class ArrayListAutomaton<T> {
     clone(): ArrayList<T> {
         let result: ArrayList<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The clone method cannot be bound.";
+            const msg: string = "The clone method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let storageCopy: SymbolicList<T> = Engine.makeSymbolicList();
+            const storageCopy: SymbolicList<T> = Engine.makeSymbolicList();
             this.storage.copy(storageCopy, 0, 0, this.storage.size());
             libsl.constructor_called_by_user = false;
             let lsl$na1 = new ArrayListAutomaton_<T>(
@@ -390,7 +390,7 @@ export class ArrayListAutomaton<T> {
     getCapacity(): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The getCapacity method cannot be bound.";
+            const msg: string = "The getCapacity method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -405,11 +405,11 @@ export class ArrayListAutomaton<T> {
     convertToArray(): Array<T> {
         let result: Array<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The convertToArray method cannot be bound.";
+            const msg: string = "The convertToArray method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let size: number = this.storage.size();
+            const size: number = this.storage.size();
             Engine.assume(size >= 0);
             result = new Array<T>(size);
             let i: number = 0;
@@ -426,7 +426,7 @@ export class ArrayListAutomaton<T> {
     isEmpty(): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The isEmpty method cannot be bound.";
+            const msg: string = "The isEmpty method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -440,7 +440,7 @@ export class ArrayListAutomaton<T> {
      * Source: ohos/util/ArrayList.main.lsl:460 */
     increaseCapacityTo(newCapacity: number) {
         /* body */ {
-            let msg: string = "The increaseCapacityTo method cannot be bound.";
+            const msg: string = "The increaseCapacityTo method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -452,7 +452,7 @@ export class ArrayListAutomaton<T> {
      * Source: ohos/util/ArrayList.main.lsl:469 */
     trimToCurrentLength() {
         /* body */ {
-            let msg: string = "The trimToCurrentLength method cannot be bound.";
+            const msg: string = "The trimToCurrentLength method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -465,7 +465,7 @@ export class ArrayListAutomaton<T> {
     get(index: number): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The get method cannot be bound.";
+            const msg: string = "The get method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -480,7 +480,7 @@ export class ArrayListAutomaton<T> {
      * Source: ohos/util/ArrayList.main.lsl:488 */
     set(index: number, value: T) {
         /* body */ {
-            let msg: string = "The get method cannot be bound.";
+            const msg: string = "The get method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -495,7 +495,7 @@ export class ArrayListAutomaton<T> {
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The Symbol.iterator method cannot be bound.";
+            const msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

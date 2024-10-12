@@ -34,7 +34,7 @@ export class QueueAutomaton<T> {
     add(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The add method cannot be bound.";
+            const msg: string = "The add method cannot be bound.";
             if (!(this instanceof Queue)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -50,7 +50,7 @@ export class QueueAutomaton<T> {
     pop(): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The pop method cannot be bound.";
+            const msg: string = "The pop method cannot be bound.";
             if (!(this instanceof Queue)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -66,7 +66,7 @@ export class QueueAutomaton<T> {
     getFirst(): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getFirst method cannot be bound.";
+            const msg: string = "The getFirst method cannot be bound.";
             if (!(this instanceof Queue)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -80,13 +80,13 @@ export class QueueAutomaton<T> {
      * Source: ohos/util/Queue.main.lsl:97 */
     forEach(callbackFn: (value: T, index?: number, queue?: Queue<T>) => void, thisArg?: Object) {
         /* body */ {
-            let msg: string = "The forEach method cannot be bound.";
+            const msg: string = "The forEach method cannot be bound.";
             if (!(this instanceof Queue)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let i: number = 0;
             for (i = 0; i < this.storage.size(); i += 1) {
-                let item: T = this.storage.get(i);
+                const item: T = this.storage.get(i);
                 callbackFn.call(thisArg, item, i, this);
             }
         }
@@ -98,7 +98,7 @@ export class QueueAutomaton<T> {
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The Symbol.iterator method cannot be bound.";
+            const msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof Queue)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

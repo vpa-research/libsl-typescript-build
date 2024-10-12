@@ -26,8 +26,8 @@ export class LSL_MapIterator_tupleVV_Automaton<V> {
             let iteratorDone: boolean = true;
             let iteratorValue: [V, V] | undefined = undefined;
             if (this.unseen.size() !== 0) {
-                let key: any = this.unseen.anyKey();
-                let value: V = this.unseen.get(key);
+                const key: any = this.unseen.anyKey();
+                const value: V = this.unseen.get(key);
                 this.unseen.remove(key);
                 iteratorDone = false;
                 iteratorValue = [ value, value ];

@@ -39,7 +39,7 @@ export class TreeMapAutomaton<K, V> {
     isEmpty(): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The isEmpty method cannot be bound.";
+            const msg: string = "The isEmpty method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -54,7 +54,7 @@ export class TreeMapAutomaton<K, V> {
     hasKey(key: K): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The hasKey method cannot be bound.";
+            const msg: string = "The hasKey method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -74,17 +74,17 @@ export class TreeMapAutomaton<K, V> {
     hasValue(value: V): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The hasValue method cannot be bound.";
+            const msg: string = "The hasValue method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             result = false;
             let storageSize: number = this.storage.size();
             if (storageSize !== 0) {
-                let unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
+                const unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
                 while (storageSize !== 0) {
-                    let curKey: K = unseen.anyKey();
-                    let curValue: V = this.storage.get(curKey);
+                    const curKey: K = unseen.anyKey();
+                    const curValue: V = this.storage.get(curKey);
                     if (libsl.equals_any_any(curValue, value)) {
                         result = true;
                         break;
@@ -103,7 +103,7 @@ export class TreeMapAutomaton<K, V> {
     get(key: K): V | undefined {
         let result: V | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The get method cannot be bound.";
+            const msg: string = "The get method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -123,7 +123,7 @@ export class TreeMapAutomaton<K, V> {
     getFirstKey(): K | undefined {
         let result: K | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getFirstKey method cannot be bound.";
+            const msg: string = "The getFirstKey method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -143,7 +143,7 @@ export class TreeMapAutomaton<K, V> {
     getLastKey(): K | undefined {
         let result: K | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getLastKey method cannot be bound.";
+            const msg: string = "The getLastKey method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -162,18 +162,18 @@ export class TreeMapAutomaton<K, V> {
      * Source: ohos/util/TreeMap.main.lsl:174 */
     setAll(map: TreeMap<K, V>) {
         /* body */ {
-            let msg: string = "The setAll method cannot be bound.";
+            const msg: string = "The setAll method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let otherMapStorage: libsl.LSLMap<K, V> = (map as any as TreeMapAutomaton_<K, V>).storage;
+            const otherMapStorage: libsl.LSLMap<K, V> = (map as any as TreeMapAutomaton_<K, V>).storage;
             let otherSize: number = otherMapStorage.size();
             if (otherSize !== 0) {
                 Engine.assume(otherSize > 0);
-                let unseenOther: libsl.LSLMap<K, V> = otherMapStorage.duplicate();
+                const unseenOther: libsl.LSLMap<K, V> = otherMapStorage.duplicate();
                 while (otherSize !== 0) {
-                    let key: K = unseenOther.anyKey();
-                    let value: V = unseenOther.get(key);
+                    const key: K = unseenOther.anyKey();
+                    const value: V = unseenOther.get(key);
                     this.storage.set(key, value);
                     unseenOther.remove(key);
                     otherSize -= 1;
@@ -188,7 +188,7 @@ export class TreeMapAutomaton<K, V> {
     set(key: K, value: V): Object {
         let result: Object = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The set method cannot be bound.";
+            const msg: string = "The set method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -204,7 +204,7 @@ export class TreeMapAutomaton<K, V> {
     remove(key: K): V | undefined {
         let result: V | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The remove method cannot be bound.";
+            const msg: string = "The remove method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -225,7 +225,7 @@ export class TreeMapAutomaton<K, V> {
     getLowerKey(key: K): K | undefined {
         let result: K | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getLowerKey method cannot be bound.";
+            const msg: string = "The getLowerKey method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -245,7 +245,7 @@ export class TreeMapAutomaton<K, V> {
     getHigherKey(key: K): K | undefined {
         let result: K | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getLowerKey method cannot be bound.";
+            const msg: string = "The getLowerKey method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -265,7 +265,7 @@ export class TreeMapAutomaton<K, V> {
     replace(key: K, newValue: V): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The replace method cannot be bound.";
+            const msg: string = "The replace method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -282,7 +282,7 @@ export class TreeMapAutomaton<K, V> {
      * Source: ohos/util/TreeMap.main.lsl:274 */
     clear() {
         /* body */ {
-            let msg: string = "The clear method cannot be bound.";
+            const msg: string = "The clear method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -296,7 +296,7 @@ export class TreeMapAutomaton<K, V> {
     keys(): IterableIterator<K> {
         let result: IterableIterator<K> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The keys method cannot be bound.";
+            const msg: string = "The keys method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -314,7 +314,7 @@ export class TreeMapAutomaton<K, V> {
     values(): IterableIterator<V> {
         let result: IterableIterator<V> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The values method cannot be bound.";
+            const msg: string = "The values method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -331,19 +331,19 @@ export class TreeMapAutomaton<K, V> {
      * Source: ohos/util/TreeMap.main.lsl:305 */
     forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object) {
         /* body */ {
-            let msg: string = "The forEach method cannot be bound.";
+            const msg: string = "The forEach method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let storageSize: number = this.storage.size();
             if (storageSize > 0) {
-                let unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
+                const unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
                 storageSize = unseen.size();
                 Engine.assume(storageSize > 0);
                 let i: number = 0;
                 for (i = 0; i < storageSize; i += 1) {
-                    let key: K = unseen.anyKey();
-                    let value: V = this.storage.get(key);
+                    const key: K = unseen.anyKey();
+                    const value: V = this.storage.get(key);
                     callbackFn.call(thisArg, value, key, this);
                     unseen.remove(key);
                 }
@@ -357,7 +357,7 @@ export class TreeMapAutomaton<K, V> {
     entries(): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The entries method cannot be bound.";
+            const msg: string = "The entries method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -375,7 +375,7 @@ export class TreeMapAutomaton<K, V> {
     [Symbol.iterator](): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The Symbol.iterator method cannot be bound.";
+            const msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

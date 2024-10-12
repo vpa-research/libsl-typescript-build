@@ -101,7 +101,7 @@ export class LinkedListAutomaton<T> {
     private _unlinkByFirstEqualsObject(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let index: number = libsl.ListActions.find(this.storage, element, 0, this.storage.size());
+            const index: number = libsl.ListActions.find(this.storage, element, 0, this.storage.size());
             result = index !== -1;
             if (result) {
                 this.storage.remove(index);
@@ -117,12 +117,12 @@ export class LinkedListAutomaton<T> {
         let result: boolean = false;
         /* body */ {
             result = false;
-            let size: number = this.storage.size();
+            const size: number = this.storage.size();
             if (size !== 0) {
-                let items: SymbolicList<T> = this.storage;
+                const items: SymbolicList<T> = this.storage;
                 let i: number = 0;
                 for (i = size - 1; i > -1; i += -1) {
-                    let currentElement: T = items.get(i);
+                    const currentElement: T = items.get(i);
                     if (libsl.equals_any_any(element, currentElement)) {
                         result = true;
                         this.storage.remove(i);
@@ -140,7 +140,7 @@ export class LinkedListAutomaton<T> {
     add(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The add method cannot be bound.";
+            const msg: string = "The add method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -155,7 +155,7 @@ export class LinkedListAutomaton<T> {
      * Source: ohos/util/LinkedList.main.lsl:173 */
     addFirst(element: T) {
         /* body */ {
-            let msg: string = "The addFirst method cannot be bound.";
+            const msg: string = "The addFirst method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -168,7 +168,7 @@ export class LinkedListAutomaton<T> {
      * Source: ohos/util/LinkedList.main.lsl:182 */
     insert(index: number, element: T) {
         /* body */ {
-            let msg: string = "The insert method cannot be bound.";
+            const msg: string = "The insert method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -182,7 +182,7 @@ export class LinkedListAutomaton<T> {
     has(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The has method cannot be bound.";
+            const msg: string = "The has method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -197,7 +197,7 @@ export class LinkedListAutomaton<T> {
     get(index: number): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The get method cannot be bound.";
+            const msg: string = "The get method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -212,17 +212,17 @@ export class LinkedListAutomaton<T> {
     getLastIndexOf(element: T): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The getLastIndexOf method cannot be bound.";
+            const msg: string = "The getLastIndexOf method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             result = -1;
-            let size: number = this.storage.size();
+            const size: number = this.storage.size();
             if (size !== 0) {
-                let items: SymbolicList<T> = this.storage;
+                const items: SymbolicList<T> = this.storage;
                 let i: number = 0;
                 for (i = size - 1; i > -1; i += -1) {
-                    let currentElement: T = items.get(i);
+                    const currentElement: T = items.get(i);
                     if (libsl.equals_any_any(element, currentElement)) {
                         result = i;
                         break;
@@ -239,7 +239,7 @@ export class LinkedListAutomaton<T> {
     getIndexOf(element: T): number {
         let result: number = 0;
         /* body */ {
-            let msg: string = "The getIndexOf method cannot be bound.";
+            const msg: string = "The getIndexOf method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -254,7 +254,7 @@ export class LinkedListAutomaton<T> {
     removeByIndex(index: number): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The removeByIndex method cannot be bound.";
+            const msg: string = "The removeByIndex method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -270,7 +270,7 @@ export class LinkedListAutomaton<T> {
     removeFirst(): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The removeFirst method cannot be bound.";
+            const msg: string = "The removeFirst method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -288,7 +288,7 @@ export class LinkedListAutomaton<T> {
     removeLast(): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The removeLast method cannot be bound.";
+            const msg: string = "The removeLast method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -306,7 +306,7 @@ export class LinkedListAutomaton<T> {
     remove(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The remove method cannot be bound.";
+            const msg: string = "The remove method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -321,7 +321,7 @@ export class LinkedListAutomaton<T> {
     removeFirstFound(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The removeFirstFound method cannot be bound.";
+            const msg: string = "The removeFirstFound method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -342,7 +342,7 @@ export class LinkedListAutomaton<T> {
     removeLastFound(element: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The removeLastFound method cannot be bound.";
+            const msg: string = "The removeLastFound method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -363,11 +363,11 @@ export class LinkedListAutomaton<T> {
     clone(): LinkedList<T> {
         let result: LinkedList<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The clone method cannot be bound.";
+            const msg: string = "The clone method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let storageCopy: SymbolicList<T> = Engine.makeSymbolicList();
+            const storageCopy: SymbolicList<T> = Engine.makeSymbolicList();
             this.storage.copy(storageCopy, 0, 0, this.storage.size());
             libsl.constructor_called_by_user = false;
             let lsl$na0 = new LinkedListAutomaton_<T>(
@@ -385,7 +385,7 @@ export class LinkedListAutomaton<T> {
      * Source: ohos/util/LinkedList.main.lsl:335 */
     forEach(callbackFn: (t: T, index?: number, arrlist?: LinkedList<T>) => void, thisArg?: Object) {
         /* body */ {
-            let msg: string = "The forEach method cannot be bound.";
+            const msg: string = "The forEach method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -401,7 +401,7 @@ export class LinkedListAutomaton<T> {
      * Source: ohos/util/LinkedList.main.lsl:358 */
     clear() {
         /* body */ {
-            let msg: string = "The clear method cannot be bound.";
+            const msg: string = "The clear method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -415,7 +415,7 @@ export class LinkedListAutomaton<T> {
     set(index: number, element: T): T {
         let result: T = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The set method cannot be bound.";
+            const msg: string = "The set method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -432,12 +432,12 @@ export class LinkedListAutomaton<T> {
     convertToArray(): Array<T> {
         let result: Array<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The convertToArray method cannot be bound.";
+            const msg: string = "The convertToArray method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             result = new Array<T>(this.storage.size());
-            let size: number = this.storage.size();
+            const size: number = this.storage.size();
             let i: number = 0;
             for (i = 0; i < size; i += 1) {
                 result[i] = this.storage.get(i);
@@ -452,7 +452,7 @@ export class LinkedListAutomaton<T> {
     getFirst(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getFirst method cannot be bound.";
+            const msg: string = "The getFirst method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -472,11 +472,11 @@ export class LinkedListAutomaton<T> {
     getLast(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getLast method cannot be bound.";
+            const msg: string = "The getLast method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            let index: number = this.storage.size() - 1;
+            const index: number = this.storage.size() - 1;
             if (index === -1) {
                 result = undefined;
             }
@@ -493,7 +493,7 @@ export class LinkedListAutomaton<T> {
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The Symbol.iterator method cannot be bound.";
+            const msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof LinkedList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

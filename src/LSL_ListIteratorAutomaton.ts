@@ -27,8 +27,8 @@ export class LSL_ListIteratorAutomaton<T> {
     next(): IteratorResult<T> {
         let result: IteratorResult<T> = libsl.ANYTHING;
         /* body */ {
-            let items: SymbolicList<T> = (this.container as any as lsl$concepts.LSL_ListContainer<T>).storage;
-            let pos: number = this.cursor;
+            const items: SymbolicList<T> = (this.container as any as lsl$concepts.LSL_ListContainer<T>).storage;
+            const pos: number = this.cursor;
             let isDone: boolean = true;
             let value: T | undefined = undefined;
             if (pos < items.size()) {

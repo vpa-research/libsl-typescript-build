@@ -26,7 +26,7 @@ export class LSL_MapIterator_K_Automaton<K> {
             let iteratorDone: boolean = true;
             let iteratorValue: K | undefined = undefined;
             if (this.unseen.size() !== 0) {
-                let key: K = this.unseen.anyKey();
+                const key: K = this.unseen.anyKey();
                 this.unseen.remove(key);
                 iteratorDone = false;
                 iteratorValue = key;

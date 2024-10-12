@@ -36,7 +36,7 @@ export class TreeSetAutomaton<T> {
     isEmpty(): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The isEmpty method cannot be bound.";
+            const msg: string = "The isEmpty method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -51,7 +51,7 @@ export class TreeSetAutomaton<T> {
     has(value: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The has method cannot be bound.";
+            const msg: string = "The has method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -71,7 +71,7 @@ export class TreeSetAutomaton<T> {
     getFirstValue(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getFirstValue method cannot be bound.";
+            const msg: string = "The getFirstValue method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -91,7 +91,7 @@ export class TreeSetAutomaton<T> {
     getLastValue(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getLastValue method cannot be bound.";
+            const msg: string = "The getLastValue method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -111,7 +111,7 @@ export class TreeSetAutomaton<T> {
     add(value: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The add method cannot be bound.";
+            const msg: string = "The add method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -132,7 +132,7 @@ export class TreeSetAutomaton<T> {
     remove(value: T): boolean {
         let result: boolean = false;
         /* body */ {
-            let msg: string = "The remove method cannot be bound.";
+            const msg: string = "The remove method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -150,7 +150,7 @@ export class TreeSetAutomaton<T> {
     getLowerValue(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getLowerValue method cannot be bound.";
+            const msg: string = "The getLowerValue method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -170,7 +170,7 @@ export class TreeSetAutomaton<T> {
     getHigherValue(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The getHigherValue method cannot be bound.";
+            const msg: string = "The getHigherValue method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -190,7 +190,7 @@ export class TreeSetAutomaton<T> {
     popFirst(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The popFirst method cannot be bound.";
+            const msg: string = "The popFirst method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -211,7 +211,7 @@ export class TreeSetAutomaton<T> {
     popLast(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The popLast method cannot be bound.";
+            const msg: string = "The popLast method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -231,7 +231,7 @@ export class TreeSetAutomaton<T> {
      * Source: ohos/util/TreeSet.main.lsl:211 */
     clear() {
         /* body */ {
-            let msg: string = "The clear method cannot be bound.";
+            const msg: string = "The clear method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -245,7 +245,7 @@ export class TreeSetAutomaton<T> {
     values(): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The values method cannot be bound.";
+            const msg: string = "The values method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -262,18 +262,18 @@ export class TreeSetAutomaton<T> {
      * Source: ohos/util/TreeSet.main.lsl:231 */
     forEach(callbackFn: (value?: T, key?: T, instance?: TreeSet<T>) => void, thisArg?: Object) {
         /* body */ {
-            let msg: string = "The forEach method cannot be bound.";
+            const msg: string = "The forEach method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             let storageSize: number = this.storage.size();
             if (storageSize > 0) {
-                let unseen: libsl.LSLMap<T, any> = this.storage.duplicate();
+                const unseen: libsl.LSLMap<T, any> = this.storage.duplicate();
                 storageSize = unseen.size();
                 Engine.assume(storageSize > 0);
                 let i: number = 0;
                 for (i = 0; i < storageSize; i += 1) {
-                    let value: T = unseen.anyKey();
+                    const value: T = unseen.anyKey();
                     callbackFn.call(thisArg, value, value, this);
                     unseen.remove(value);
                 }
@@ -287,7 +287,7 @@ export class TreeSetAutomaton<T> {
     entries(): IterableIterator<[T, T]> {
         let result: IterableIterator<[T, T]> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The entries method cannot be bound.";
+            const msg: string = "The entries method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
@@ -305,7 +305,7 @@ export class TreeSetAutomaton<T> {
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
-            let msg: string = "The Symbol.iterator method cannot be bound.";
+            const msg: string = "The Symbol.iterator method cannot be bound.";
             if (!(this instanceof TreeSet)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

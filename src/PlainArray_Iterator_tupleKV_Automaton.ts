@@ -30,7 +30,7 @@ export class PlainArray_Iterator_tupleKV_Automaton<K, V> {
         /* body */ {
             let iteratorDone: boolean = true;
             let iteratorValue: [K, V] | undefined = undefined;
-            let pos: number = this.cursor;
+            const pos: number = this.cursor;
             if (pos < this.keys.size()) {
                 Engine.assume(pos >= 0);
                 Engine.assume(pos < this.values.size());
