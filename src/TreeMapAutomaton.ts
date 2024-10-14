@@ -82,6 +82,8 @@ export class TreeMapAutomaton<K, V> {
             let storageSize: number = this.storage.size();
             if (storageSize !== 0) {
                 const unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
+                storageSize = unseen.size();
+                Engine.assume(storageSize > 0);
                 while (storageSize !== 0) {
                     const curKey: K = unseen.anyKey();
                     const curValue: V = this.storage.get(curKey);
@@ -99,7 +101,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::get(LSL_TreeMap<?::K, ?::V>, ?::K) -> ?::V | undefined
-     * Source: ohos/util/TreeMap.main.lsl:138 */
+     * Source: ohos/util/TreeMap.main.lsl:141 */
     get(key: K): V | undefined {
         let result: V | undefined = libsl.ANYTHING;
         /* body */ {
@@ -119,7 +121,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::getFirstKey(LSL_TreeMap<?::K, ?::V>) -> ?::K | undefined
-     * Source: ohos/util/TreeMap.main.lsl:150 */
+     * Source: ohos/util/TreeMap.main.lsl:153 */
     getFirstKey(): K | undefined {
         let result: K | undefined = libsl.ANYTHING;
         /* body */ {
@@ -139,7 +141,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::getLastKey(LSL_TreeMap<?::K, ?::V>) -> ?::K | undefined
-     * Source: ohos/util/TreeMap.main.lsl:162 */
+     * Source: ohos/util/TreeMap.main.lsl:165 */
     getLastKey(): K | undefined {
         let result: K | undefined = libsl.ANYTHING;
         /* body */ {
@@ -159,7 +161,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::setAll(LSL_TreeMap<?::K, ?::V>, LSL_TreeMap<?::K, ?::V>) -> void
-     * Source: ohos/util/TreeMap.main.lsl:174 */
+     * Source: ohos/util/TreeMap.main.lsl:177 */
     setAll(map: TreeMap<K, V>) {
         /* body */ {
             const msg: string = "The setAll method cannot be bound.";
@@ -169,8 +171,9 @@ export class TreeMapAutomaton<K, V> {
             const otherMapStorage: libsl.LSLMap<K, V> = (map as any as TreeMapAutomaton_<K, V>).storage;
             let otherSize: number = otherMapStorage.size();
             if (otherSize !== 0) {
-                Engine.assume(otherSize > 0);
                 const unseenOther: libsl.LSLMap<K, V> = otherMapStorage.duplicate();
+                otherSize = unseenOther.size();
+                Engine.assume(otherSize > 0);
                 while (otherSize !== 0) {
                     const key: K = unseenOther.anyKey();
                     const value: V = unseenOther.get(key);
@@ -184,7 +187,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::set(LSL_TreeMap<?::K, ?::V>, ?::K, ?::V) -> Object
-     * Source: ohos/util/TreeMap.main.lsl:206 */
+     * Source: ohos/util/TreeMap.main.lsl:210 */
     set(key: K, value: V): Object {
         let result: Object = libsl.ANYTHING;
         /* body */ {
@@ -200,7 +203,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::remove(LSL_TreeMap<?::K, ?::V>, ?::K) -> ?::V | undefined
-     * Source: ohos/util/TreeMap.main.lsl:216 */
+     * Source: ohos/util/TreeMap.main.lsl:220 */
     remove(key: K): V | undefined {
         let result: V | undefined = libsl.ANYTHING;
         /* body */ {
@@ -221,7 +224,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::getLowerKey(LSL_TreeMap<?::K, ?::V>, ?::K) -> ?::K | undefined
-     * Source: ohos/util/TreeMap.main.lsl:237 */
+     * Source: ohos/util/TreeMap.main.lsl:241 */
     getLowerKey(key: K): K | undefined {
         let result: K | undefined = libsl.ANYTHING;
         /* body */ {
@@ -241,7 +244,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::getHigherKey(LSL_TreeMap<?::K, ?::V>, ?::K) -> ?::K | undefined
-     * Source: ohos/util/TreeMap.main.lsl:251 */
+     * Source: ohos/util/TreeMap.main.lsl:255 */
     getHigherKey(key: K): K | undefined {
         let result: K | undefined = libsl.ANYTHING;
         /* body */ {
@@ -261,7 +264,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::replace(LSL_TreeMap<?::K, ?::V>, ?::K, ?::V) -> boolean
-     * Source: ohos/util/TreeMap.main.lsl:263 */
+     * Source: ohos/util/TreeMap.main.lsl:267 */
     replace(key: K, newValue: V): boolean {
         let result: boolean = false;
         /* body */ {
@@ -279,7 +282,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::clear(LSL_TreeMap<?::K, ?::V>) -> void
-     * Source: ohos/util/TreeMap.main.lsl:274 */
+     * Source: ohos/util/TreeMap.main.lsl:278 */
     clear() {
         /* body */ {
             const msg: string = "The clear method cannot be bound.";
@@ -292,7 +295,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::keys(LSL_TreeMap<?::K, ?::V>) -> IterableIterator<?::K>
-     * Source: ohos/util/TreeMap.main.lsl:283 */
+     * Source: ohos/util/TreeMap.main.lsl:287 */
     keys(): IterableIterator<K> {
         let result: IterableIterator<K> = libsl.ANYTHING;
         /* body */ {
@@ -310,7 +313,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::values(LSL_TreeMap<?::K, ?::V>) -> IterableIterator<?::V>
-     * Source: ohos/util/TreeMap.main.lsl:294 */
+     * Source: ohos/util/TreeMap.main.lsl:298 */
     values(): IterableIterator<V> {
         let result: IterableIterator<V> = libsl.ANYTHING;
         /* body */ {
@@ -328,7 +331,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::forEach(LSL_TreeMap<?::K, ?::V>, TreeMap_Callback<?::K, ?::V>, Object) -> void
-     * Source: ohos/util/TreeMap.main.lsl:305 */
+     * Source: ohos/util/TreeMap.main.lsl:309 */
     forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object) {
         /* body */ {
             const msg: string = "The forEach method cannot be bound.";
@@ -353,7 +356,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::entries(LSL_TreeMap<?::K, ?::V>) -> IterableIterator<tuple<?::K, ?::V>>
-     * Source: ohos/util/TreeMap.main.lsl:339 */
+     * Source: ohos/util/TreeMap.main.lsl:343 */
     entries(): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
@@ -371,7 +374,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::[Symbol.iterator](LSL_TreeMap<?::K, ?::V>) -> IterableIterator<tuple<?::K, ?::V>>
-     * Source: ohos/util/TreeMap.main.lsl:350 */
+     * Source: ohos/util/TreeMap.main.lsl:354 */
     [Symbol.iterator](): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
@@ -389,7 +392,7 @@ export class TreeMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] TreeMapAutomaton::length(LSL_TreeMap<?::K, ?::V>) -> number
-     * Source: ohos/util/TreeMap.main.lsl:363 */
+     * Source: ohos/util/TreeMap.main.lsl:367 */
     get length(): number {
         let result: number = 0;
         /* body */ {

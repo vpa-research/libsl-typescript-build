@@ -81,8 +81,9 @@ export class HashMapAutomaton<K, V> {
             result = false;
             let storageSize: number = this.storage.size();
             if (storageSize !== 0) {
-                Engine.assume(storageSize > 0);
                 const unseen: libsl.LSLMap<K, V> = this.storage.duplicate();
+                storageSize = unseen.size();
+                Engine.assume(storageSize > 0);
                 while (storageSize !== 0) {
                     const curKey: K = unseen.anyKey();
                     const curValue: V = this.storage.get(curKey);
@@ -100,7 +101,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::get(LSL_HashMap<?::K, ?::V>, ?::K) -> ?::V
-     * Source: ohos/util/HashMap.main.lsl:136 */
+     * Source: ohos/util/HashMap.main.lsl:137 */
     get(key: K): V {
         let result: V = libsl.ANYTHING;
         /* body */ {
@@ -120,7 +121,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::setAll(LSL_HashMap<?::K, ?::V>, LSL_HashMap<?::K, ?::V>) -> void
-     * Source: ohos/util/HashMap.main.lsl:149 */
+     * Source: ohos/util/HashMap.main.lsl:150 */
     setAll(map: HashMap<K, V>) {
         /* body */ {
             const msg: string = "The setAll method cannot be bound.";
@@ -130,8 +131,9 @@ export class HashMapAutomaton<K, V> {
             const otherMapStorage: libsl.LSLMap<K, V> = (map as any as HashMapAutomaton_<K, V>).storage;
             let otherSize: number = otherMapStorage.size();
             if (otherSize !== 0) {
-                Engine.assume(otherSize > 0);
                 const unseenOther: libsl.LSLMap<K, V> = otherMapStorage.duplicate();
+                otherSize = unseenOther.size();
+                Engine.assume(otherSize > 0);
                 while (otherSize !== 0) {
                     const key: K = unseenOther.anyKey();
                     const value: V = unseenOther.get(key);
@@ -145,7 +147,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::set(LSL_HashMap<?::K, ?::V>, ?::K, ?::V) -> Object
-     * Source: ohos/util/HashMap.main.lsl:181 */
+     * Source: ohos/util/HashMap.main.lsl:183 */
     set(key: K, value: V): Object {
         let result: Object = libsl.ANYTHING;
         /* body */ {
@@ -161,7 +163,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::remove(LSL_HashMap<?::K, ?::V>, ?::K) -> ?::V
-     * Source: ohos/util/HashMap.main.lsl:191 */
+     * Source: ohos/util/HashMap.main.lsl:193 */
     remove(key: K): V {
         let result: V = libsl.ANYTHING;
         /* body */ {
@@ -182,7 +184,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::clear(LSL_HashMap<?::K, ?::V>) -> void
-     * Source: ohos/util/HashMap.main.lsl:210 */
+     * Source: ohos/util/HashMap.main.lsl:212 */
     clear() {
         /* body */ {
             const msg: string = "The clear method cannot be bound.";
@@ -195,7 +197,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::keys(LSL_HashMap<?::K, ?::V>) -> IterableIterator<?::K>
-     * Source: ohos/util/HashMap.main.lsl:219 */
+     * Source: ohos/util/HashMap.main.lsl:221 */
     keys(): IterableIterator<K> {
         let result: IterableIterator<K> = libsl.ANYTHING;
         /* body */ {
@@ -213,7 +215,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::values(LSL_HashMap<?::K, ?::V>) -> IterableIterator<?::V>
-     * Source: ohos/util/HashMap.main.lsl:230 */
+     * Source: ohos/util/HashMap.main.lsl:232 */
     values(): IterableIterator<V> {
         let result: IterableIterator<V> = libsl.ANYTHING;
         /* body */ {
@@ -231,7 +233,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::replace(LSL_HashMap<?::K, ?::V>, ?::K, ?::V) -> boolean
-     * Source: ohos/util/HashMap.main.lsl:241 */
+     * Source: ohos/util/HashMap.main.lsl:243 */
     replace(key: K, newValue: V): boolean {
         let result: boolean = false;
         /* body */ {
@@ -252,7 +254,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::forEach(LSL_HashMap<?::K, ?::V>, HashMap_Callback<?::K, ?::V>, Object) -> void
-     * Source: ohos/util/HashMap.main.lsl:258 */
+     * Source: ohos/util/HashMap.main.lsl:260 */
     forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) {
         /* body */ {
             const msg: string = "The forEach method cannot be bound.";
@@ -277,7 +279,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::entries(LSL_HashMap<?::K, ?::V>) -> IterableIterator<tuple<?::K, ?::V>>
-     * Source: ohos/util/HashMap.main.lsl:292 */
+     * Source: ohos/util/HashMap.main.lsl:294 */
     entries(): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
@@ -295,7 +297,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::[Symbol.iterator](LSL_HashMap<?::K, ?::V>) -> IterableIterator<tuple<?::K, ?::V>>
-     * Source: ohos/util/HashMap.main.lsl:303 */
+     * Source: ohos/util/HashMap.main.lsl:305 */
     [Symbol.iterator](): IterableIterator<[K, V]> {
         let result: IterableIterator<[K, V]> = libsl.ANYTHING;
         /* body */ {
@@ -313,7 +315,7 @@ export class HashMapAutomaton<K, V> {
 
     /**
      * [FUNCTION] HashMapAutomaton::length(LSL_HashMap<?::K, ?::V>) -> number
-     * Source: ohos/util/HashMap.main.lsl:316 */
+     * Source: ohos/util/HashMap.main.lsl:318 */
     get length(): number {
         let result: number = 0;
         /* body */ {

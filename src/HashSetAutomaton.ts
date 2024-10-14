@@ -128,8 +128,9 @@ export class HashSetAutomaton<T> {
             }
             let storageSize: number = this.storage.size();
             if (storageSize !== 0) {
-                Engine.assume(storageSize > 0);
                 const unseen: libsl.LSLMap<T, any> = this.storage.duplicate();
+                storageSize = unseen.size();
+                Engine.assume(storageSize > 0);
                 while (storageSize !== 0) {
                     const value: T = unseen.anyKey();
                     callbackFn.call(thisArg, value, value, this);
@@ -142,7 +143,7 @@ export class HashSetAutomaton<T> {
 
     /**
      * [FUNCTION] HashSetAutomaton::entries(HashSet<?::T>) -> IterableIterator<tuple<?::T, ?::T>>
-     * Source: ohos/util/HashSet.main.lsl:164 */
+     * Source: ohos/util/HashSet.main.lsl:165 */
     entries(): IterableIterator<[T, T]> {
         let result: IterableIterator<[T, T]> = libsl.ANYTHING;
         /* body */ {
@@ -160,7 +161,7 @@ export class HashSetAutomaton<T> {
 
     /**
      * [FUNCTION] HashSetAutomaton::[Symbol.iterator](HashSet<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/HashSet.main.lsl:175 */
+     * Source: ohos/util/HashSet.main.lsl:176 */
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -178,7 +179,7 @@ export class HashSetAutomaton<T> {
 
     /**
      * [FUNCTION] HashSetAutomaton::values(HashSet<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/HashSet.main.lsl:186 */
+     * Source: ohos/util/HashSet.main.lsl:187 */
     values(): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -196,7 +197,7 @@ export class HashSetAutomaton<T> {
 
     /**
      * [FUNCTION] HashSetAutomaton::length(HashSet<?::T>) -> number
-     * Source: ohos/util/HashSet.main.lsl:199 */
+     * Source: ohos/util/HashSet.main.lsl:200 */
     get length(): number {
         let result: number = 0;
         /* body */ {
