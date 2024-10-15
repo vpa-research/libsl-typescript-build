@@ -45,25 +45,30 @@ export class StackAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] StackAutomaton::pop(LSL_Stack<?::T>) -> ?::T
+     * [FUNCTION] StackAutomaton::pop(LSL_Stack<?::T>) -> ?::T | undefined
      * Source: ohos/util/Stack.main.lsl:78 */
-    pop(): T {
-        let result: T = libsl.ANYTHING;
+    pop(): T | undefined {
+        let result: T | undefined = libsl.ANYTHING;
         /* body */ {
             const msg: string = "The pop method cannot be bound.";
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
             const pos: number = this.storage.size() - 1;
-            result = this.storage.get(pos);
-            this.storage.remove(pos);
+            if (pos === -1) {
+                result = undefined;
+            }
+            else {
+                result = this.storage.get(pos);
+                this.storage.remove(pos);
+            }
         }
         return result;
     }
 
     /**
      * [FUNCTION] StackAutomaton::peek(LSL_Stack<?::T>) -> ?::T | undefined
-     * Source: ohos/util/Stack.main.lsl:93 */
+     * Source: ohos/util/Stack.main.lsl:96 */
     peek(): T | undefined {
         let result: T | undefined = libsl.ANYTHING;
         /* body */ {
@@ -71,12 +76,12 @@ export class StackAutomaton<T> {
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            const size: number = this.storage.size();
-            if (size === 0) {
+            const pos: number = this.storage.size() - 1;
+            if (pos === -1) {
                 result = undefined;
             }
             else {
-                result = this.storage.get(size - 1);
+                result = this.storage.get(pos);
             }
         }
         return result;
@@ -84,7 +89,7 @@ export class StackAutomaton<T> {
 
     /**
      * [FUNCTION] StackAutomaton::locate(LSL_Stack<?::T>, ?::T) -> number
-     * Source: ohos/util/Stack.main.lsl:106 */
+     * Source: ohos/util/Stack.main.lsl:109 */
     locate(element: T): number {
         let result: number = 0;
         /* body */ {
@@ -92,14 +97,20 @@ export class StackAutomaton<T> {
             if (!(this instanceof Stack)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            result = libsl.ListActions.find(this.storage, element, 0, this.storage.size());
+            const size: number = this.storage.size();
+            if (size === 0) {
+                result = -1;
+            }
+            else {
+                result = libsl.ListActions.find(this.storage, element, 0, size);
+            }
         }
         return result;
     }
 
     /**
      * [FUNCTION] StackAutomaton::forEach(LSL_Stack<?::T>, Stack_Consumer<?::T>, Object) -> void
-     * Source: ohos/util/Stack.main.lsl:115 */
+     * Source: ohos/util/Stack.main.lsl:122 */
     forEach(callbackFn: (value: T, index?: number, queue?: Stack<T>) => void, thisArg?: Object) {
         /* body */ {
             const msg: string = "The forEach method cannot be bound.";
@@ -116,7 +127,7 @@ export class StackAutomaton<T> {
 
     /**
      * [FUNCTION] StackAutomaton::isEmpty(LSL_Stack<?::T>) -> boolean
-     * Source: ohos/util/Stack.main.lsl:134 */
+     * Source: ohos/util/Stack.main.lsl:141 */
     isEmpty(): boolean {
         let result: boolean = false;
         /* body */ {
@@ -131,7 +142,7 @@ export class StackAutomaton<T> {
 
     /**
      * [FUNCTION] StackAutomaton::[Symbol.iterator](LSL_Stack<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/Stack.main.lsl:143 */
+     * Source: ohos/util/Stack.main.lsl:150 */
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -150,7 +161,7 @@ export class StackAutomaton<T> {
 
     /**
      * [FUNCTION] StackAutomaton::length(LSL_Stack<?::T>) -> number
-     * Source: ohos/util/Stack.main.lsl:157 */
+     * Source: ohos/util/Stack.main.lsl:164 */
     get length(): number {
         let result: number = 0;
         /* body */ {

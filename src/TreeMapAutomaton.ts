@@ -248,7 +248,7 @@ export class TreeMapAutomaton<K, V> {
     getHigherKey(key: K): K | undefined {
         let result: K | undefined = libsl.ANYTHING;
         /* body */ {
-            const msg: string = "The getLowerKey method cannot be bound.";
+            const msg: string = "The getHigherKey method cannot be bound.";
             if (!(this instanceof TreeMap)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

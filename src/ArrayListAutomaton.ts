@@ -480,7 +480,7 @@ export class ArrayListAutomaton<T> {
      * Source: ohos/util/ArrayList.main.lsl:488 */
     set(index: number, value: T) {
         /* body */ {
-            const msg: string = "The get method cannot be bound.";
+            const msg: string = "The set method cannot be bound.";
             if (!(this instanceof ArrayList)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }

@@ -45,39 +45,49 @@ export class QueueAutomaton<T> {
     }
 
     /**
-     * [FUNCTION] QueueAutomaton::pop(LSL_Queue<?::T>) -> ?::T
-     * Source: ohos/util/Queue.main.lsl:74 */
-    pop(): T {
-        let result: T = libsl.ANYTHING;
+     * [FUNCTION] QueueAutomaton::pop(LSL_Queue<?::T>) -> ?::T | undefined
+     * Source: ohos/util/Queue.main.lsl:72 */
+    pop(): T | undefined {
+        let result: T | undefined = libsl.ANYTHING;
         /* body */ {
             const msg: string = "The pop method cannot be bound.";
             if (!(this instanceof Queue)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            result = this.storage.get(0);
-            this.storage.remove(0);
+            if (this.storage.size() === 0) {
+                result = undefined;
+            }
+            else {
+                result = this.storage.get(0);
+                this.storage.remove(0);
+            }
         }
         return result;
     }
 
     /**
-     * [FUNCTION] QueueAutomaton::getFirst(LSL_Queue<?::T>) -> ?::T
-     * Source: ohos/util/Queue.main.lsl:88 */
-    getFirst(): T {
-        let result: T = libsl.ANYTHING;
+     * [FUNCTION] QueueAutomaton::getFirst(LSL_Queue<?::T>) -> ?::T | undefined
+     * Source: ohos/util/Queue.main.lsl:89 */
+    getFirst(): T | undefined {
+        let result: T | undefined = libsl.ANYTHING;
         /* body */ {
             const msg: string = "The getFirst method cannot be bound.";
             if (!(this instanceof Queue)) {
                 throw libsl.new_ERROR("BusinessError", 10200011, msg);
             }
-            result = this.storage.get(0);
+            if (this.storage.size() === 0) {
+                result = undefined;
+            }
+            else {
+                result = this.storage.get(0);
+            }
         }
         return result;
     }
 
     /**
      * [FUNCTION] QueueAutomaton::forEach(LSL_Queue<?::T>, Queue_Consumer<?::T>, Object) -> void
-     * Source: ohos/util/Queue.main.lsl:97 */
+     * Source: ohos/util/Queue.main.lsl:101 */
     forEach(callbackFn: (value: T, index?: number, queue?: Queue<T>) => void, thisArg?: Object) {
         /* body */ {
             const msg: string = "The forEach method cannot be bound.";
@@ -94,7 +104,7 @@ export class QueueAutomaton<T> {
 
     /**
      * [FUNCTION] QueueAutomaton::[Symbol.iterator](LSL_Queue<?::T>) -> IterableIterator<?::T>
-     * Source: ohos/util/Queue.main.lsl:116 */
+     * Source: ohos/util/Queue.main.lsl:120 */
     [Symbol.iterator](): IterableIterator<T> {
         let result: IterableIterator<T> = libsl.ANYTHING;
         /* body */ {
@@ -113,7 +123,7 @@ export class QueueAutomaton<T> {
 
     /**
      * [FUNCTION] QueueAutomaton::length(LSL_Queue<?::T>) -> number
-     * Source: ohos/util/Queue.main.lsl:130 */
+     * Source: ohos/util/Queue.main.lsl:134 */
     get length(): number {
         let result: number = 0;
         /* body */ {

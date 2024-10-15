@@ -16,11 +16,11 @@ export class Queue<T> {
         throw new TypeError();
     }
 
-    pop(): T {
+    pop(): T | undefined {
         throw new TypeError();
     }
 
-    getFirst(): T {
+    getFirst(): T | undefined {
         throw new TypeError();
     }
 

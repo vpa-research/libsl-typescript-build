@@ -16,7 +16,7 @@ export class Stack<T> {
         throw new TypeError();
     }
 
-    pop(): T {
+    pop(): T | undefined {
         throw new TypeError();
     }
 

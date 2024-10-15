@@ -24,7 +24,7 @@ export class TreeSetAutomaton<T> {
         if (libsl.constructor_called_by_user) {
             // body
             if (!(this instanceof TreeSet)) {
-                throw libsl.new_ERROR("BusinessError", 10200012, "The TreeMap\'s constructor cannot be directly invoked.");
+                throw libsl.new_ERROR("BusinessError", 10200012, "The TreeSet\'s constructor cannot be directly invoked.");
             }
             this.storage = new libsl.LSLMap(new libsl.HashMapContainer());
         }
