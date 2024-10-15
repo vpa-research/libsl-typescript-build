@@ -237,8 +237,11 @@ function emptyClassMock(namePrefix: string) {
     return class {
 
         static [Symbol.hasInstance](other: any): boolean {
-            // example: QueueAutomaton == Queue
-            return other.constructor.name.startsWith(namePrefix);
+            if (other)
+                // example: QueueAutomaton == Queue
+                return other.constructor.name.startsWith(namePrefix);
+            else
+                return false;
         }
 
     };

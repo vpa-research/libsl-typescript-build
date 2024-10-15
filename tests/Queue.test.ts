@@ -18,6 +18,18 @@ describe("Queue", () => {
         } finally {
             libsl.constructor_called_by_user = true;
         }
+
+        // common error message validation
+        const testNameFull = expect.getState().currentTestName;
+        if (testNameFull) {
+            // the format is "Suite-name Case-name"
+            const methodName = testNameFull.split(' ')[1];
+
+            const obj = new QueueAutomaton();
+            const method: Function = (obj as any)[methodName];
+            if (method)
+                expect(() => method.apply(null, [])).toThrow(`The ${methodName} method cannot be bound.`);
+        }
     });
 
 
@@ -52,19 +64,6 @@ describe("Queue", () => {
         expect(x).toBe(true);
         expect(obj.length).toBe(1);
         expect((obj as QueueAutomaton<string>).storage.get(0)).toBe(value);
-
-        let failures = 0;
-        try {
-            let func = obj.add;
-            let unused = func.apply(new Object(), [value]);
-
-            failures += 2;
-            expect(unused); // just here to keep it from being optimized-out
-        } catch(e) {
-            // ok
-            failures += 1;
-        }
-        expect(failures).toBe(1);
     });
 
 

@@ -13,6 +13,17 @@ describe("TreeSet", () => {
         } finally {
             libsl.constructor_called_by_user = true;
         }
+
+        // common error message validation
+        const testNameFull = expect.getState().currentTestName;
+        if (testNameFull) {
+            const methodName = testNameFull.split(' ')[1];
+
+            const obj = new TreeSetAutomaton((a, b) => undefined);
+            const method: Function = (obj as any)[methodName];
+            if (method)
+                expect(() => method.apply(null, [])).toThrow(`The ${methodName} method cannot be bound.`);
+        }
     });
 
 
